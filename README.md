@@ -1,3 +1,7 @@
+Pascal Krautmacher [697450]
+Precilla Presley [7442803]
+Precilla Presley [7442803]
+
 # 002---Audio-News-Podcast-Generator
 002 - Audio News Podcast Generator, MBA HSD SS21
 
