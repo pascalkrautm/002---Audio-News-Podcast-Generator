@@ -1,6 +1,6 @@
-Pascal Krautmacher [697450]
-Eren Ünal [859039]
-Marco Alexander Meinhold [872406]
+- Pascal Krautmacher [697450]
+- Eren Ünal [859039]
+- Marco Alexander Meinhold [872406]
 
 # 002---Audio-News-Podcast-Generator
 002 - Audio News Podcast Generator, MBA HSD SS21
