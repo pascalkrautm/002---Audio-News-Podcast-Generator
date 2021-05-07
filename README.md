@@ -23,16 +23,66 @@ At the very top of the file, a list of first name and last name followed by the 
 - Sharon Zurkoswsky
 The title of the use case, exactly as defined by the lecturer (letter by letter) formatted as top level headline.Sample for valid markdown:
 
-# B2B Customer Churn Analysis
-Any subsequent text, images,tables, links, code fragments and anything else that explains/contains:
+### Business Analytics A - Use Case 
+**[...back to use case list](/../../blob/main/README.md)**
 
-What was the task to be accomplished? What was intended to achieve? Sometime analytics projects fail or end up with the insight that the user problem can not be solved. This is also a valid and valuable result.
+# 002 - Audio News Podcast Generator
+**Summary**: Automated generation of a podcast from relevant news
+available on the internet.
+### 1. Use Case Classification
+**Complexity:**  low to medium complex use case with focus on the selection and 
+orchestration of various Python packages to get the job done. 
 
-Description and your understanding of the business question or problem, analytical question and/or technical problem associated with the use case.
+**Challenges:** NewsFeed processing, (optional)Web Scraping, Text-to-Speech, 
+Commandline parsing, progress/status visualization in commandline,
+execution on Windows and Mac.
 
-The methodological approach chosen to process and implement the use case.
-For analytical uses cases it is wise to follow a structured approach like Microsoft's Team Database Science Process, which is the legitimate successor of the CrispDM methodology.
+**Team setup:** 2 to 3 students.
 
-Most important: A detailed description of your approach, work, findings and concrete achievements towards the use case. Here you should accumulate the largest part of your writing.
+### 2. Story
+>Fight the Corona blues! 
 
-A summary if the targets have been achieved, and if not - and whatever the reason is - why it wasn't achieved.
+**Me:** *I'm so bored, please read out something interesting to me.*
+
+**You:** *No problem, I'm a Python hero!*
+
+### 3. Functional Requirements / Expected Results
+Create a command line tool, named **podgen.py** that... 
+
+1. ...comes with a configuration file containing a user-editable list of news 
+   sources to be investigated. The primary news source should be public 
+   RSS or AtomFeeds, but additional sources are also welcome.
+   
+   The configuration file should contain a list of at least 30 RSS feeds
+   from popular news sources like CNN, NYT, FoxNews, Spiegel an others. 
+
+
+2. ...takes a list of comma separated keywords or phrases arguments to used 
+   to generate and filter the podcast. Some valid samples:
+   - **podgen.py Corona**
+   - **podgen.py "Angela Merkel"** 
+   - **podgen.py "Donald Trump" "Joe Biden"** 
+   - **podgen.py --keywords healthy food**
+   Multiple search arguments should be combined by an **AND** filter operations.
+   
+
+3. ...supports for a help function to advice users on tool usage by entering 
+   **'podgen.py /help'** or ** 'podgen.py /h'** on Windows or respective
+   **'podgen.py --help'** or  ** 'podgen.py --h'** on MAc/Unix.
+
+     
+4. ...displays progress and status information while the podcast is in generation.
+
+
+5. ...creates an audio file (e.g. MP3), ready for direct consumption.
+   Note: The audio file should be created in the current folder.
+
+
+### 4. Success Criteria
+A GitHub repository (public or private) that everyone can clone/download and that
+directly starts up after the requirements listed in ***requirements.txt*** are fulfilled.
+
+### 5. To get you started...
+- Reading news feeds: https://www.tutorialspoint.com/python_text_processing/python_reading_rss_feed.htm 
+- Web and API development with Python: https://flask.palletsprojects.com/  
+- Text to speech: https://pypi.org/project/pyttsx3/
