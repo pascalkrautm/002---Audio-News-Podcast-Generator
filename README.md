@@ -87,6 +87,8 @@ directly starts up after the requirements listed in ***requirements.txt*** are f
 - Web and API development with Python: https://flask.palletsprojects.com/  
 - Text to speech: https://pypi.org/project/pyttsx3/
 
+# requirements txt is uploaded 
+
 # 001 scrappingnews.py
 
 we’re going to call the Requests library and fetch our website using requests.get(...). 
@@ -94,15 +96,15 @@ Printing the status code to the terminal using r.status_code to check that the w
 Additionally, I’ve wrapped this into a try: except: to catch any errors we may have later on down the road.
 Once we run the program, we’ll see a successful status code of 200. This states that we’re able to ping the site and “get” information.
 
-scraping function
-def url('url'):
+scraping function:
+
+def url_opener(url):
+    print("Starting scraping" + str(url))
     try:
-        r = requests.get()
-        return print('The scraping job succeeded: ', r.status_code)
+        r = requests.get(url)
+        return print("Finished scraping" + str(url) + "with: ", r.status_code)
     except Exception as e:
         print('The scraping job failed. See exception: ')
         print(e)
-print('Starting scraping')
-url()
-print('Finished scraping')
+
 
