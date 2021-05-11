@@ -2,12 +2,34 @@ class SiteCheck():
     """Looking for news on given website. Checking site status"""
 class Downloader():
     """Downloading news  in txt"""
+class SourceList():
+    """List with news sources to scrap"""
+
+# Source List
+#url_list = ["https://rss.sueddeutsche.de/rss/Topthemen"]
+
+#scraping function
+# scraping function
+
+def url_opener(url):
+    print("Starting scraping" + {url})
+    try:
+        r = requests.get()
+        return print("Finished scraping" + str{url} + "with: ", r.status_code)
+    except Exception as e:
+        print('The scraping job failed. See exception: ')
+        print(e)
 
 
 import urllib.request, sys, time
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+
+url = "https://rss.sueddeutsche.de/rss/Topthemen"
+
+url_opener(url)
+
 
 pagesToGet = 1
 
@@ -29,6 +51,8 @@ for page in range(1, pagesToGet + 1):
         print(error_type, 'Line:', error_info.tb_lineno)  # print error info and line that threw the exception
         continue  # ignore this page. Abandon this and go back.
     time.sleep(2)
+    page.status_code
+    page.text
     soup = BeautifulSoup(page.text, 'html.parser')
     frame = []
     links = soup.find_all('li', attrs={'class': 'o-listicle__item'})
