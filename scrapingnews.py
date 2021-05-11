@@ -6,20 +6,40 @@ class SourceList():
     """List with news sources to scrap"""
 
 # Source List
-#url_list = ["https://rss.sueddeutsche.de/rss/Topthemen"]
+url_list = ["https://rss.sueddeutsche.de/rss/Topthemen","https://www.haz.de/rss/feed/haz_schlagzeilen"]
 
-#scraping function
+
 # scraping function
 
-def url_opener(url):
-    print("Starting scraping" + str(url))
+def url_opener():
+    for url in url_list:
+        print("Starting scraping " + str(url))
+        try:
+          r = requests.get(url)
+          return print("Finished scraping " + str(url) + " with: ", r.status_code)
+          url = url_list[0+1]
+        except Exception as e:
+          print('The scraping job failed. See exception: ')
+          print(e)
+    next(url)
+
+def get_articles():
+    article_list = []
     try:
         r = requests.get(url)
-        return print("Finished scraping" + str(url) + "with: ", r.status_code)
-    except Exception as e:
-        print('The scraping job failed. See exception: ')
-        print(e)
-
+        soup = BeautifulSoup(r.content, features='xml')
+        articles = soup.findAll('item')
+        for a in articles:
+            title = a.find('title').text #must contain topic
+            link = a.find('link').text
+            published = a.find('pubDate').text
+            article = {
+                'title': title,
+                'link': link,
+                'published': published
+                }
+            article_list.append(article)
+        return print(article_list)
 
 import urllib.request, sys, time
 from bs4 import BeautifulSoup
@@ -27,9 +47,9 @@ import requests
 import pandas as pd
 
 # Start the job with def url_opener
-url = "https://rss.sueddeutsche.de/rss/Topthemen"
-url_opener("https://rss.sueddeutsche.de/rss/Topthemen")
-
+#url = "https://rss.sueddeutsche.de/rss/Topthemen"
+url_opener()
+get_articles()
 # Loop for all Sites
 
 
