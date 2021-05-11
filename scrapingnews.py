@@ -31,6 +31,7 @@ def get_articles():
         articles = soup.findAll('item')
         for a in articles:
             title = a.find('title').text #must contain topic
+            description = a.find('description').text #contains news
             link = a.find('link').text
             published = a.find('pubDate').text
             article = {
