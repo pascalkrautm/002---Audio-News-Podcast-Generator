@@ -87,9 +87,9 @@ directly starts up after the requirements listed in ***requirements.txt*** are f
 - Web and API development with Python: https://flask.palletsprojects.com/  
 - Text to speech: https://pypi.org/project/pyttsx3/
 
-# requirements txt is uploaded 
 
-# 001 scrappingnews.py
+
+# 001 scrapingnews.py
 
 we’re going to call the Requests library and fetch our website using requests.get(...). 
 Printing the status code to the terminal using r.status_code to check that the website has been successfully called.
