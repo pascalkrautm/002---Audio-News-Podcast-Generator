@@ -87,14 +87,14 @@ directly starts up after the requirements listed in ***requirements.txt*** are f
 - Web and API development with Python: https://flask.palletsprojects.com/  
 - Text to speech: https://pypi.org/project/pyttsx3/
 
-#001 scrappingnews.py
+# 001 scrappingnews.py
 
 we’re going to call the Requests library and fetch our website using requests.get(...). 
 Printing the status code to the terminal using r.status_code to check that the website has been successfully called.
 Additionally, I’ve wrapped this into a try: except: to catch any errors we may have later on down the road.
 Once we run the program, we’ll see a successful status code of 200. This states that we’re able to ping the site and “get” information.
 
-# scraping function
+scraping function
 def url('url'):
     try:
         r = requests.get()
