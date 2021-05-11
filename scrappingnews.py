@@ -12,10 +12,10 @@ class SourceList():
 # scraping function
 
 def url_opener(url):
-    print("Starting scraping" + {url})
+    print("Starting scraping" + str(url))
     try:
-        r = requests.get()
-        return print("Finished scraping" + str{url} + "with: ", r.status_code)
+        r = requests.get(url)
+        return print("Finished scraping" + str(url) + "with: ", r.status_code)
     except Exception as e:
         print('The scraping job failed. See exception: ')
         print(e)
@@ -26,9 +26,11 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
+# Start the job with def url_opener
 url = "https://rss.sueddeutsche.de/rss/Topthemen"
+url_opener("https://rss.sueddeutsche.de/rss/Topthemen")
 
-url_opener(url)
+# Loop for all Sites
 
 
 pagesToGet = 1
