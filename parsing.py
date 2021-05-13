@@ -13,5 +13,5 @@ class Outputting():
 
 class Keywords():
     """Search by keywords"""
-    def search(self):
+    def search_keywords(self):
         pass
