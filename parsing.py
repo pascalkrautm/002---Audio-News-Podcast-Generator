@@ -3,7 +3,7 @@ class get_articles():
     def parsing(self):
         pass
 
-    def took_dataframe(self):
+    def into_dataframe(self):
         pass
 
 class Outputting():
