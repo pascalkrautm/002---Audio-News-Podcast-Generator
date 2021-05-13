@@ -1,6 +1,6 @@
 class get_articles():
     """parsing for description in news"""
-    def parsing_article(self):
+    def parsing_articles(self):
         pass
 
     def into_dataframe(self):
@@ -15,3 +15,5 @@ class Keywords():
     """Search by keywords"""
     def search_keywords(self):
         pass
+
+git config --global user.email "83067128+Eren1905@users.noreply.github.com"
