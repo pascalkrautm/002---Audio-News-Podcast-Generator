@@ -1,6 +1,6 @@
 class get_articles():
     """parsing for description in news"""
-    def parsing_articel(self):
+    def parsing_articles(self):
         pass
 
     def into_dataframe(self):
