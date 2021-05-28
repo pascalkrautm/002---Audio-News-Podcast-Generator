@@ -6,7 +6,7 @@ class get_articles(object):
     def into_dataframe(self):
         pass
 
-#test
+#testtest
 
 class Outputting(object):
     """putting the data into a .txt file"""
