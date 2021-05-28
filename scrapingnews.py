@@ -12,13 +12,16 @@ class SiteCheck():
 
 class get_articles():
     """parsing for description in news"""
-class SourceList():
-    """List with news sources to scrap"""
 
-# Source List
-url_list = ["https://rss.sueddeutsche.de/rss/Topthemen","https://www.haz.de/rss/feed/haz_schlagzeilen"]
+
 xml_list = []
 article_list = []
+#url_list
+content = open("url_list.txt", "r")
+content = content.read()
+
+url_list = content.split(",")
+print(url_list)
 # scraping function
 
 for url in url_list:
