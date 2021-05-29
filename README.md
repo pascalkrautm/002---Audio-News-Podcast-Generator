@@ -95,6 +95,7 @@ directly starts up after the requirements listed in ***requirements.txt*** are f
 
 ## class Keayword_provider
 - uses User Input as searching parameter for rss feed content
+- should be executed via podgen.py --keyowrds example1, example2
 
 ## class Rss_feed_scrapper
 - looping through all given urls from Class Url_list
@@ -110,6 +111,9 @@ directly starts up after the requirements listed in ***requirements.txt*** are f
 
 ## class mp3_converter
 - converts text from class text_exporter to one mp3 file
+
+## class help
+- podgen --help provides a help files with manual for the generator
 
 > enjoy your individual podcasts!
 
