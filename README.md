@@ -87,7 +87,35 @@ directly starts up after the requirements listed in ***requirements.txt*** are f
 - Web and API development with Python: https://flask.palletsprojects.com/  
 - Text to speech: https://pypi.org/project/pyttsx3/
 
+# Process
+## class Url_list
+- import url list from url_list.txt
+- formats all urls to readable url for code
+- all urls linking to different rss feeds
 
+## class Keayword_provider
+- uses User Input as searching parameter for rss feed content
+- should be executed via podgen.py --keyowrds example1, example2
+
+## class Rss_feed_scrapper
+- looping through all given urls from Class Url_list
+- searching for given keyword from Class Keyword_provider in titles from rss feed
+- saving all descriptions when keyword was found in title
+- Return list with all needed descriptions
+
+## class list_formatter
+- formats all list paramter to text only 
+
+## class text_exporter
+- exports list with formatted text to txt file
+
+## class mp3_converter
+- converts text from class text_exporter to one mp3 file
+
+## class help
+- podgen --help provides a help files with manual for the generator
+
+> enjoy your individual podcasts!
 
 # 001 scrapingnews.py
 

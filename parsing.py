@@ -1,4 +1,4 @@
-class get_articles():
+class get_articles(object):
     """parsing for description in news"""
     def parsing_articles(self):
         pass
@@ -6,12 +6,15 @@ class get_articles():
     def into_dataframe(self):
         pass
 
-class Outputting():
+#testtest
+
+class Outputting(object):
     """putting the data into a .txt file"""
     def txt_output(self):
         pass
 
-class Keywords():
+
+class Keywords(object):
     """Search by keywords"""
     def search_keywords(self):
         pass
