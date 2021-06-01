@@ -2,4 +2,5 @@ bs4
 requests
 pandas
 lxml
-pyttsx3
+pytts3
+feedparser
