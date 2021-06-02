@@ -117,22 +117,69 @@ directly starts up after the requirements listed in ***requirements.txt*** are f
 
 > enjoy your individual podcasts!
 
-# 001 scrapingnews.py
+# Installing apps for the job 
 
-we’re going to call the Requests library and fetch our website using requests.get(...). 
-Printing the status code to the terminal using r.status_code to check that the website has been successfully called.
-Additionally, I’ve wrapped this into a try: except: to catch any errors we may have later on down the road.
-Once we run the program, we’ll see a successful status code of 200. This states that we’re able to ping the site and “get” information.
+bs4
+requests
+pandas
+lxml
+pytts3
+feedparser
 
-scraping function:
+# Import
 
-def url_opener(url):
-    print("Starting scraping" + str(url))
-    try:
-        r = requests.get(url)
-        return print("Finished scraping" + str(url) + "with: ", r.status_code)
-    except Exception as e:
-        print('The scraping job failed. See exception: ')
-        print(e)
+import pandas as pd
+import requests
+import feedparser
+import ssl
 
+# 001 ree_feed_scrapper.py
+
+First we need to get several informations to fulfill our job. Important information are the url list from where we will get our sources. Url_list.py will import our sources and fomrats them to readable format for our app. 
+Feel free to extend the list on your own in Url_list.txt. The format has to be like (comma seperated: 
+https://rss.sueddeutsche.de/rss/Topthemen,https://www.haz.de/rss/feed/haz_schlagzeilen,https://www.duesseldorf.de/index.php?id=700027212&type=1457698658
+
+    def url_list(self):
+        content = open("url_list.txt", "r")
+        content = content.read()
+        url_list = content.split(",")
+    return url_list()
+
+Then we need the user input declared as our keyword. This keyword is the topic for our scrapping job. 
+In Keyword_provider.py we will ask the user for topics, he want to get new info for. This input should be provided in one word like Corona, Soccer etc.
+(disregard capital letters)
+
+   keyword = input("What topic are you interested in? Just type 'keyword' ('corona', 'soccer')")
+
+The rss_feed_scrapper will do the main job in scrapping our relevant information. 
+Via feedparser it will go through every url from Url_list.py and look for the keyword in "title". Inside a loop it will append the "summary" realting to that title inside a list feeds[]. If the keyword ist not found, it will pass. 
+
+   for url in url_list:
+      feed = feedparser.parse(str(url))
+      print("Starting scrap " + str(url))
+      entries_len = len(feed.entries)
+      print(f"getting {entries_len} entries")
+      print("searching for keyword")
+      for entry in feed.entries:
+         if keyword in entry.title:
+               #testline
+               print(entry.title)
+               #testline
+               print(entry.summary)
+               feeds.append(entry.summary)
+         else:
+               pass
+
+
+for a new run we need to clean our list feeds[] via 
+
+del feeds[:]
+
+For disregarding http or https we need to add the following to our code:
+
+ssl._create_default_https_context = ssl._create_unverified_context
+
+We will get a list with all summarys for our given topic. The output looks as follows:
+
+['<img alt="Coronavirus - Bayern" src="https://www.sueddeutsche.de/image/sz.1.5310784/208x156" /><p>Am Dienstag hatte er bayernweit bei 35,6 gelegen. Mindestens zwei Verdachtsfälle von Unregelmäßigkeiten in Testzentren.</p>', '<img alt="Stiko-Vorsitzender Mertens" src="https://www.sueddeutsche.de/image/sz.1.5310782/208x156" /><p>In einem Interview wirbt Mertens um Verständnis für die zögerliche Haltung der Ständigen Impfkommission bei Kinderimpfungen gegen Corona. Die bundesweite Inzidenz steigt dem RKI zufolge auf 36,8.</p>', 'Digitales Pressegespräch zur Corona-Pandemie mit Oberbürgermeister Dr. Keller und Stadtdirektor Hintzsche']
 
