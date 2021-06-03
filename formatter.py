@@ -22,3 +22,21 @@ class Formatter(object): #Create a cleaned dataframe and convert it to txt
     def clean_txt(self):
         pass
 
+#Test:
+import feedparser
+import pandas as pd
+
+rssfeed = 'https://rss.sueddeutsche.de/rss/Topthemen'
+parsethefeed = feedparser.parse(rssfeed)
+
+df = pd.DataFrame()
+
+df['title'] = [post.title for post in parsethefeed.entries]
+df['description'] = [post.description for post in parsethefeed.entries]
+df['link'] = [post.link for post in parsethefeed.entries]
+print(df)
+
+df.to_csv('myfilename.csv', header=None, index=None, sep=' ', mode='a')
+
+# To be clarified:
+# How can I use the filtered data from the scrapper?
