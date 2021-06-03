@@ -1,8 +1,10 @@
-class url():
+class Url_list():
     """List with news sources to scrap"""
+    def __init__(self, url):
+        self.url = url
 
-    content = open("url_list.txt", "r")
-    content = content.read()
-
-    url_list = content.split(",")
-    print(url_list)
+    def url_list(self):
+        content = open("url_list.txt", "r")
+        content = content.read()
+        url_list = content.split(",")
+    return url_list()

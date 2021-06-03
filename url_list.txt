@@ -1,3 +1,1 @@
-https://rss.sueddeutsche.de/rss/Topthemen,
-https://www.haz.de/rss/feed/haz_schlagzeilen
-
+https://rss.sueddeutsche.de/rss/Topthemen,https://www.haz.de/rss/feed/haz_schlagzeilen,https://www.duesseldorf.de/index.php?id=700027212&type=1457698658
