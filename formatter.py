@@ -1,4 +1,4 @@
-class Formatter(object): #Create a cleaned dataframe and convert it to txt
+class Formatter(object): #Create dataframe and convert it to txt
     def __init__(self):
         self.rssfeed = link
         #self.parsefeed = parsefeed
