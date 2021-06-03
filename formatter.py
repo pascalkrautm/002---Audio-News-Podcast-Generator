@@ -17,7 +17,7 @@ class Formatter(object): #Create dataframe and convert it to txt
         print(df)
 
     def convert_intotxt (self):
-        df.to_csv('myfilename.csv', header=None, index=None, sep=' ', mode='a') #write content of DataFrame into text File
+        df.to_csv('myfilename.txt', header=None, index=None, sep=' ', mode='a') #write content of DataFrame into text file
 
     def clean_txt(self):
         pass
@@ -25,6 +25,7 @@ class Formatter(object): #Create dataframe and convert it to txt
 #Test:
 import feedparser
 import pandas as pd
+import numpy as np
 
 rssfeed = 'https://rss.sueddeutsche.de/rss/Topthemen'
 parsethefeed = feedparser.parse(rssfeed)
@@ -36,7 +37,20 @@ df['description'] = [post.description for post in parsethefeed.entries]
 df['link'] = [post.link for post in parsethefeed.entries]
 print(df)
 
-df.to_csv('myfilename.csv', header=None, index=None, sep=' ', mode='a')
+df.to_csv('myfilename.txt', header=None, index=None, sep=' ', mode='a')
+df.to_csv(r'myfilename2.txt', header=None, index=None, sep='\t', mode='a')
+
+filename = 'myfilename.txt'
+file = open(filename, 'rt')
+text = file.read()
+file.close()
+# split into words by white space
+words = text.split()
+# remove punctuation from each word
+import string
+table = str.maketrans('', '', string.punctuation)
+stripped = [w.translate(table) for w in words]
+print(stripped[:100])
 
 # To be clarified:
 # How can I use the filtered data from the scrapper?
