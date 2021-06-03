@@ -93,7 +93,7 @@ directly starts up after the requirements listed in ***requirements.txt*** are f
 - formats all urls to readable url for code
 - all urls linking to different rss feeds
 
-## class Keayword_provider
+## class Keyword_provider
 - uses User Input as searching parameter for rss feed content
 - should be executed via podgen.py --keyowrds example1, example2
 
@@ -104,7 +104,7 @@ directly starts up after the requirements listed in ***requirements.txt*** are f
 - Return list with all needed descriptions
 
 ## class list_formatter
-- formats all list paramter to text only 
+- formats all list parameter to text only 
 
 ## class text_exporter
 - exports list with formatted text to txt file
