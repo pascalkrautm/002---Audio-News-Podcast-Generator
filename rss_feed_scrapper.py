@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 import feedparser
 import ssl
+import re
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -39,3 +40,8 @@ for url in url_list:
             pass
 
 print(feeds)
+feeds_new = str(feeds)
+
+print(re.findall("<p>(.*?)</p>", feeds_new, re.DOTALL))
+
+
