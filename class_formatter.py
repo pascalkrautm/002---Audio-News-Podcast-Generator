@@ -6,7 +6,7 @@ class Formatter(object): #format feedparser output to a readable text file
         return feedsnew
 
     def convert_into_string(self):
-        feedsnew= str.(self)
+        feedsnew= str.(feedsnew)
         return feedsnew
 
     def clean_string (self):
