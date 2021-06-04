@@ -34,8 +34,20 @@ for url in url_list:
             print(entry.title)
             #testline
             print(entry.summary)
-            feeds.append(entry.summary)
+            feeds.append(entry.summary & entry.title)
         else:
             pass
 
 print(feeds)
+
+import re
+feeds_new = str(feeds)
+
+feeds_clean = str(re.findall("<p>(.*?)</p>", feeds_new, re.DOTALL))
+print(feeds_clean)
+
+myText = open(r'test1.txt','w')
+myString = feeds_clean
+myText.write(myString)
+myText.close()
+
