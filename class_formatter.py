@@ -2,7 +2,7 @@ import re
 
 class Formatter(object): #format feedparser output to a readable text file
     def load_feedparser_output(self):
-        feedsnew = self
+        feedsnew = sel
         return feedsnew
 
     def convert_into_string(self):
