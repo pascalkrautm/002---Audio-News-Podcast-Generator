@@ -40,8 +40,6 @@ for url in url_list:
             pass
 
 print(feeds)
-feeds_new = str(feeds)
 
-print(re.findall("<p>(.*?)</p>", feeds_new, re.DOTALL))
 
 
