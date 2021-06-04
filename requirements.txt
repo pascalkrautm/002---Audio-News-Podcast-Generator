@@ -4,3 +4,6 @@ pandas
 lxml
 pyttsx3
 feedparser
+nltk
+seaborn
+replace

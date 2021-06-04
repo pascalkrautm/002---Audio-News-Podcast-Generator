@@ -37,8 +37,12 @@ df['description'] = [post.description for post in parsethefeed.entries]
 df['link'] = [post.link for post in parsethefeed.entries]
 print(df)
 
+df_cleaned = df.replace(":", "")
+print(df_cleaned)
+
 df.to_csv('myfilename.txt', header=None, index=None, sep=' ', mode='a')
 df.to_csv(r'myfilename2.txt', header=None, index=None, sep='\t', mode='a')
+df_cleaned.to_csv(r'myfilename3.txt', header=None, index=None, sep='\t', mode='a')
 
 filename = 'myfilename.txt'
 file = open(filename, 'rt')
@@ -51,6 +55,32 @@ import string
 table = str.maketrans('', '', string.punctuation)
 stripped = [w.translate(table) for w in words]
 print(stripped[:100])
+
+import nltk
+nltk.download()
+
+# load data
+filename = 'myfilename.txt'
+file = open(filename, 'rt')
+text = file.read()
+file.close()
+# split into words
+from nltk.tokenize import word_tokenize
+tokens = word_tokenize(text)
+# convert to lower case
+tokens = [w.lower() for w in tokens]
+# remove punctuation from each word
+import string
+table = str.maketrans('', '', string.punctuation)
+stripped = [w.translate(table) for w in tokens]
+# remove remaining tokens that are not alphabetic
+words = [word for word in stripped if word.isalpha()]
+# filter out stop words
+from nltk.corpus import stopwords
+stop_words = set(stopwords.words('english'))
+words = [w for w in words if not w in stop_words]
+print(words[:100])
+
 
 # To be clarified:
 # How can I use the filtered data from the scrapper?
