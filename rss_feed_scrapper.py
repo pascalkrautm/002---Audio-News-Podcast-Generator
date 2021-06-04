@@ -35,7 +35,7 @@ for url in url_list:
             print(entry.title)
             #testline
             print(entry.summary)
-            feeds.append(entry.summary)
+            feeds.append(entry.title + entry.summary)
         else:
             pass
 
