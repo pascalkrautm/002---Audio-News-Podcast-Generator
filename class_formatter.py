@@ -1,11 +1,11 @@
 import re
 
 class Formatter(object): #format feedparser output to a readable text file
-    def load_feedparseroutput(self):
+    def load_feedparser_output(self):
         feedsnew = self
         return feedsnew
 
-    def convert_intostring(self):
+    def convert_into_string(self):
         feedsnew= str.(self)
         return feedsnew
 
@@ -13,7 +13,7 @@ class Formatter(object): #format feedparser output to a readable text file
         feeds_clean = str(re.findall("<p>(.*?)</p>", feeds_new, re.DOTALL))
         return feeds_clean
 
-    def save_astxt(self):
+    def save_as_txt(self):
         myText = open(r'Feedoutputformp3.txt', 'w')
         myString = feeds_clean
         myText.write(myString)
