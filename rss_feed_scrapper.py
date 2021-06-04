@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 import feedparser
 import ssl
+import re
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -34,20 +35,13 @@ for url in url_list:
             print(entry.title)
             #testline
             print(entry.summary)
-            feeds.append(entry.summary & entry.title)
+            feeds.append(entry.summary)
         else:
             pass
 
 print(feeds)
-
-import re
 feeds_new = str(feeds)
 
-feeds_clean = str(re.findall("<p>(.*?)</p>", feeds_new, re.DOTALL))
-print(feeds_clean)
+print(re.findall("<p>(.*?)</p>", feeds_new, re.DOTALL))
 
-myText = open(r'test1.txt','w')
-myString = feeds_clean
-myText.write(myString)
-myText.close()
 
