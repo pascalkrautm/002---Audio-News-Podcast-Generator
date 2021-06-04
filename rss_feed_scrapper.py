@@ -35,13 +35,11 @@ for url in url_list:
             print(entry.title)
             #testline
             print(entry.summary)
-            feeds.append(entry.summary)
+            feeds.append(entry.title + entry.summary)
         else:
             pass
 
 print(feeds)
-feeds_new = str(feeds)
 
-print(re.findall("<p>(.*?)</p>", feeds_new, re.DOTALL))
 
 
