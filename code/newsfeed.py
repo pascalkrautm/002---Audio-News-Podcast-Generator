@@ -1,4 +1,8 @@
 import feedparser
+
+from formatter_new import keyword
+
+
 class NewsfeedEntry:
     def __init__(self, title: str, summary: str):
         self.title = title
@@ -13,6 +17,7 @@ class Newsfeed:
     def refresh(self):
         feed = feedparser.parse(str(url))
         entries_len = len(feed.entries)
+        keyword = input("What topic are you interested in? Just type 'keyword' ('corona', 'soccer')")
         for entry in feed.entries:
             if keyword in entry.title:
                 self.entries.append(NewsfeedEntry(entry.title, entry.summary))
