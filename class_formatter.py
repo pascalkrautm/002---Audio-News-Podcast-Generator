@@ -1,13 +1,8 @@
 import re
 
 class Formatter(object): #format feedparser output to a readable text file
-    def __init__(self):
-        self.rssfeed = feed
-        #self.parsefeed = parsefeed
-        #self.df = df
-
     def load_feedparseroutput(self):
-        feedsnew = rss_feed_scrapper (self)
+        feedsnew = self
         return feedsnew
 
     def convert_intostring(self):
