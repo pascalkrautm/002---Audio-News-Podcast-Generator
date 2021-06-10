@@ -21,10 +21,15 @@ class Converter(object): #Create class for the Object "Converter"
         engine.setProperty('volume', 1.0)  # setting up volume level  between 0 and 1
 
     def voice_option(self):
-
-        voices = engine.getProperty('voices')  # getting details of current voice
-        engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
-        engine.setProperty('voice', voices[1].id)  # changing index, changes voices. 1 for female
+        engine_voice = input("Which language do you want? (Type: english or german)")
+        if engine_voice == "english":
+            voice_gender = input("Do you want a male or a female voice? (Type: male or female)")
+            if voice_gender == "male":
+                engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
+            else:
+                engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
+        else:
+            engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
 
     def speak(self):
         engine.say("Hello World")
@@ -33,5 +38,3 @@ class Converter(object): #Create class for the Object "Converter"
     def saving_mp3(self):
         engine.save_to_file('Hello World', 'test.mp3')
         engine.runAndWait()
-
-
