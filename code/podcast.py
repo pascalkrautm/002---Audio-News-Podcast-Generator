@@ -1,6 +1,6 @@
 import re
 
-class Text:
+class Podcast:
     def __init__(self,feeds_new:str):
         self.feeds_new = feeds_new
         self.feeds_clean = []
@@ -8,7 +8,7 @@ class Text:
         self.myString = mystring
 
     def clean(self):
-        feeds_new = str(self.feeds)
+        self.feeds_new = str(self.feeds)
         feeds_clean = str(re.findall("<p>(.*?)</p>", self.feeds_new, re.DOTALL))
         print(feeds_clean)
 

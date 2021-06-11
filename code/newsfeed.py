@@ -17,7 +17,8 @@ class Newsfeed:
         self.entries = []
 
     def refresh(self):
-        feed = feedparser.parse(str(url))
+        feed = feedparser.parse(str(self.url))
+        title = feed["title"]
         entries_len = len(feed.entries)
         keyword = input("What topic are you interested in? Just type 'keyword' ('corona', 'soccer')")
         for entry in feed.entries:
