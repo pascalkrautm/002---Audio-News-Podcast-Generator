@@ -28,13 +28,14 @@ class Rss_feed_scrapper():
                     print(entry.title)
                     # testline
                     print(entry.summary)
+                    print(entry.pubDate)
                     feeds.append(entry.summary)
                 else:
                     pass
     return(feeds)
 
-    del feed_deleter(self):
-    feeds[:]
+#    del feed_deleter(self):
+#    feeds[:]
 
 
 

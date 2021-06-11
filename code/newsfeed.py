@@ -18,12 +18,13 @@ class Newsfeed:
 
     def refresh(self):
         feed = feedparser.parse(str(self.url))
-        title = feed["title"]
+        self.title = feed.channel["title"]
         entries_len = len(feed.entries)
         keyword = input("What topic are you interested in? Just type 'keyword' ('corona', 'soccer')")
+        print(title)
         for entry in feed.entries:
             if keyword in entry.title:
-                self.entries.append(NewsfeedEntry(entry.title, entry.summary, entry.published, entry.link))
+                self.entries.append(NewsfeedEntry(entry.title, entry.abstract, entry.published, entry.link))
             else:
                 pass
 
