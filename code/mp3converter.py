@@ -3,7 +3,7 @@ import pyttsx3
 engine = pyttsx3.init()
 
 class Converter(object): #Create class for the Object "Converter"
-    def __init__(self, file_name, text, rate, volume, voice):
+    def __init__(self, file_name : str, text: str, rate, volume, voices):
         self.file_name = file_name
         self.text = text
         self.rate = rate
@@ -11,14 +11,12 @@ class Converter(object): #Create class for the Object "Converter"
         self. voices = voices
 
     def rate_option(self):
-        rate = engine.getProperty('rate')  # getting details of current speaking rate
-        print(rate)  # printing current voice rate
-        engine.setProperty('rate', 125) # setting up new voice rate
+        engine_rate = input("Set the rate: (Type: from 100 to 200)")
+        engine.setProperty('rate', engine_rate)
 
     def volume_option(self):
-        volume = engine.getProperty('volume')  # getting to know current volume level (min=0 and max=1)
-        print(volume)  # printing current volume level
-        engine.setProperty('volume', 1.0)  # setting up volume level  between 0 and 1
+        engine_volume = input("set the volume: (Type: from 0 to 1.0")
+        engine.setProperty('volume', engine_volume)
 
     def voice_option(self):
         engine_voice = input("Which language do you want? (Type: english or german)")
@@ -32,9 +30,12 @@ class Converter(object): #Create class for the Object "Converter"
             engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
 
     def speak(self):
-        engine.say("Hello World")
-        engine.runAndWait()
+        with open("test2.txt") as file:
+            file = file.read()
+        engine.say(file)
 
     def saving_mp3(self):
-        engine.save_to_file('Hello World', 'test.mp3')
+        with open("test2.txt") as file:
+            file = file.read()
+        engine.save_to_file(file, 'test.mp3')
         engine.runAndWait()
