@@ -4,10 +4,11 @@ from formatter_new import keyword
 
 
 class NewsfeedEntry:
-    def __init__(self, title: str, summary: str, pubDate: str):
+    def __init__(self, title: str, summary: str, published: str, link: str):
         self.title = title
         self.summary = summary
-        self.pubDate = pubDate
+        self.published = published
+        self.link = link
 
 class Newsfeed:
     def __init__(self, url: str):
@@ -21,7 +22,7 @@ class Newsfeed:
         keyword = input("What topic are you interested in? Just type 'keyword' ('corona', 'soccer')")
         for entry in feed.entries:
             if keyword in entry.title:
-                self.entries.append(NewsfeedEntry(entry.title, entry.summary, entry.pubDate))
+                self.entries.append(NewsfeedEntry(entry.title, entry.summary, entry.published, entry.link))
             else:
                 pass
 
