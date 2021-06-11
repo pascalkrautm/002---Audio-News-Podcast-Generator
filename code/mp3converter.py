@@ -15,7 +15,7 @@ class Converter(object): #Create class for the Object "Converter"
         engine.setProperty('rate', engine_rate)
 
     def volume_option(self):
-        engine_volume = input("set the volume: (Type: from 0 to 1.0")
+        engine_volume = input("Set the volume: (Type: from 0 to 1.0")
         engine.setProperty('volume', engine_volume)
 
     def voice_option(self):
