@@ -21,7 +21,7 @@ else:
 voice = engine.getProperty('voice')
 engine.setProperty('rate', 150)
 
-with open("test2.txt") as file:
+with open("../test2.txt") as file:
     file = file.read()
 
 engine.say(file)
