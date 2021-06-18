@@ -1,6 +1,8 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup as bs
+#from pydub import AudioSegment
+import pyttsx3
 import feedparser
 import ssl
 import re
@@ -38,7 +40,7 @@ for url in url_list:
             #print(entry.summary)
             #print(entry.published)
             clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL | re.MULTILINE)
-            feeds.append(feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title + clean_summary)
+            feeds.append( "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title + clean_summary)
         else:
             pass
 
@@ -54,7 +56,7 @@ myText.write(myString)
 myText.close()
 print(myText)
 
-import pyttsx3
+
 
 engine = pyttsx3.init()
 
@@ -81,5 +83,8 @@ with open("podcast.txt") as file:
    file = file.read()
 
 engine.say(file)
-#engine.save_to_file(file, "Podcast")
+
+#sound = AudioSegment.from_file(file)
+#sound.export("Podcast", format="mp3", bitrate="128k")
+
 engine.runAndWait()
