@@ -76,6 +76,7 @@ if engine_voice == "english":
 else:
     engine.setProperty('voice', de_voice_female_id)
 
+engine.setProperty('volume', "5.0")
 voice = engine.getProperty('voice')
 engine.setProperty('rate', 150)
 
