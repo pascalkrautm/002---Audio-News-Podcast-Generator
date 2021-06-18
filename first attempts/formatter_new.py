@@ -8,7 +8,7 @@ article_list = []
 feeds = []
 
 #url_list
-content = open("url_list.txt", "r")
+content = open("../url_list.txt", "r")
 content = content.read()
 url_list = content.split(",")
 print(url_list)
@@ -45,7 +45,7 @@ feeds_new = str(feeds)
 feeds_clean = str(re.findall("<p>(.*?)</p>", feeds_new, re.DOTALL))
 print(feeds_clean)
 
-myText = open(r'test2.txt','w')
+myText = open(r'../test2.txt', 'w')
 myString = feeds_clean
 myText.write(myString)
 myText.close()
