@@ -6,6 +6,5 @@ class Helper:
         '''Returns the help description'''
         print('helper description')
 
-
 help(Helper)
 help(Helper.print_help)
