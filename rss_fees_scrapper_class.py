@@ -29,8 +29,8 @@ class Rss_feed_scrapper():
                     # testline
                     #print(entry.summary)
                     #print(entry.pubDate)
-                    feeds.append(feed.feed["title"] + entry.published + entry.title + entry.summary)
-                else:
+                    clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL | re.MULTILINE)
+                    feeds.append(feed.feed["title"] + entry.published + entry.title + clean_summary                else:
                     pass
     return(feeds)
 

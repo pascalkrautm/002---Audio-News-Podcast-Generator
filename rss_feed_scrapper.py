@@ -29,6 +29,7 @@ for url in url_list:
     entries_len = len(feed.entries)
     print(f"getting {entries_len} entries")
     print("searching for keyword")
+    #print(feed.entries)
     for entry in feed.entries:
         if keyword in entry.title:
             #testline
@@ -36,7 +37,8 @@ for url in url_list:
             #testline
             #print(entry.summary)
             #print(entry.published)
-            feeds.append(feed.feed["title"] + entry.published + entry.title + entry.summary)
+            clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL | re.MULTILINE)
+            feeds.append(feed.feed["title"] + entry.published + entry.title + clean_summary)
         else:
             pass
 
