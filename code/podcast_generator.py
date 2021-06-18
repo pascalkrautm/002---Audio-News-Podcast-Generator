@@ -13,9 +13,6 @@ class PodcastGenerator:
         self.saver = self.formatter.save()
         self.converter = Converter()
 
-        for feed in self.feeds:
-            for entry in feed.entries:
-                print(entry)
 
 
 

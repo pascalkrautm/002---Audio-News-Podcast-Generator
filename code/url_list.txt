@@ -1,1 +1,1 @@
-https://rss.sueddeutsche.de/rss/Topthemen,https://www.haz.de/rss/feed/haz_schlagzeilen,https://www.duesseldorf.de/index.php?id=700027212&type=1457698658,https://www.bild.de/rssfeeds/vw-alles/vw-alles-26970192,dzbildplus=false,sort=1,teaserbildmobil=false,view=rss2,wtmc=ob.feed.bild.xml,https://rp-online.de/feed.rss
+https://rss.sueddeutsche.de/rss/Topthemen,https://www.haz.de/rss/feed/haz_schlagzeilen,https://rss.dw.com/xml/rss-de-all,https://rss.dw.com/xml/rss_de_politik, https://rss.dw.com/xml/rss-de-news
