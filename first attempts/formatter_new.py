@@ -45,7 +45,7 @@ feeds_new = str(feeds)
 feeds_clean = str(re.findall("<p>(.*?)</p>", feeds_new, re.DOTALL))
 print(feeds_clean)
 
-myText = open(r'../test2.txt', 'w')
+myText = open(r'podcast.1txt', 'w')
 myString = feeds_clean
 myText.write(myString)
 myText.close()

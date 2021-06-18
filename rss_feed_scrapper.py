@@ -42,11 +42,15 @@ for url in url_list:
         else:
             pass
 
-print(feeds)
 
 feeds_clean = str(feeds)
 feeds_clean_new = feeds_clean.replace("</p>'", "")
 feeds_clean_new1 = feeds_clean_new.replace("<p>", ".")
 print(feeds_clean_new1)
 
+myText = open(r'podcast.txt', 'w')
+myString = feeds_clean_new1
+myText.write(myString)
+myText.close()
+print(myText)
 
