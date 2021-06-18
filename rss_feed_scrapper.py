@@ -38,11 +38,15 @@ for url in url_list:
             #print(entry.summary)
             #print(entry.published)
             clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL | re.MULTILINE)
-            feeds.append(feed.feed["title"] + entry.published + entry.title + clean_summary)
+            feeds.append(feed.feed["title"] + " " + entry.published + entry.title + clean_summary)
         else:
             pass
 
 print(feeds)
 
+feeds_clean = str(feeds)
+feeds_clean_new = feeds_clean.replace("</p>'", "")
+feeds_clean_new1 = feeds_clean_new.replace("<p>", ".")
+print(feeds_clean_new1)
 
 
