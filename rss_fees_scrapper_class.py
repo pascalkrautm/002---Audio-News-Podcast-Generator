@@ -25,11 +25,11 @@ class Rss_feed_scrapper():
             for entry in feed.entries:
                 if keyword in entry.title:
                     # testline
-                    print(entry.title)
+                    #print(entry.title)
                     # testline
-                    print(entry.summary)
-                    print(entry.pubDate)
-                    feeds.append(entry.summary)
+                    #print(entry.summary)
+                    #print(entry.pubDate)
+                    feeds.append(feed.feed["title"] + entry.published + entry.title + entry.summary)
                 else:
                     pass
     return(feeds)

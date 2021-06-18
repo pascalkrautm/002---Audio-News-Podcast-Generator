@@ -29,16 +29,14 @@ for url in url_list:
     entries_len = len(feed.entries)
     print(f"getting {entries_len} entries")
     print("searching for keyword")
-    print(feed.channel("title").text)
     for entry in feed.entries:
         if keyword in entry.title:
             #testline
-            print(entry.title)
+            #print(entry.title)
             #testline
-            print(entry.summary)
-            print(entry.published)
-            print(entry.publisher)
-            feeds.append(entry.title + entry.summary)
+            #print(entry.summary)
+            #print(entry.published)
+            feeds.append(feed.feed["title"] + entry.published + entry.title + entry.summary)
         else:
             pass
 
