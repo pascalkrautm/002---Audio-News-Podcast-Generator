@@ -8,7 +8,8 @@ class Helper:
 
     @staticmethod
     def get_keyword():
-        return input("What topic are you interested in? Just type 'keyword' ('Corona', 'Fußball')")
+        keyword = input("What topic are you interested in? Just type 'keyword' ('Corona', 'Fußball')")
+        return keyword
 
     @staticmethod
     def get_voice_rate():
