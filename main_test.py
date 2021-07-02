@@ -40,7 +40,8 @@ for url in url_list:
             #print(entry.summary)
             #print(entry.published)
             clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL | re.MULTILINE)
-            feeds.append( "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title + clean_summary)
+            feeds.append("Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title
+                         + clean_summary)
         else:
             pass
 
@@ -50,13 +51,11 @@ feeds_clean_new = feeds_clean.replace("</p>'", " ")
 feeds_clean_new1 = feeds_clean_new.replace("<p>", ".")
 print(feeds_clean_new1)
 
-myText = open(r'podcast.txt', 'w')
+myText = open(r'podcast.txt', 'w', encoding='utf-8')
 myString = feeds_clean_new1
 myText.write(myString)
 myText.close()
 print(myText)
-
-
 
 engine = pyttsx3.init()
 
