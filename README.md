@@ -13,7 +13,7 @@ available on the internet.
 
 ###Team
 ####Project Lead: 
-- Thomas Zeutschler (soon: Dr. Thomas Zeutschler)
+- Thomas Zeutschler
 
 ####Data Scientist:
 - Pascal Krautmacher
