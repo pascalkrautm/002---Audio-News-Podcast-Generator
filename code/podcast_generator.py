@@ -10,8 +10,28 @@ class PodcastGenerator:
         self.feeds = self.collector.refresh()
         self.formatter = Podcast()
         self.cleaner = self.formatter.clean()
-        self.saver = self.formatter.save()
         self.converter = Converter()
+
+        self.xml_list = []
+        self.article_list = []
+        self.feeds = []
+        self._content =
+
+        # url_list
+        content = open("url_list.txt", "r")
+        content = content.read()
+        url_list = content.split(",")
+        print(url_list)
+
+    def generate_podcast(self, keyword: str):
+
+        pass
+
+    def read_podcast(self):
+        pass
+
+
+
 
 
 

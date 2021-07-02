@@ -7,3 +7,4 @@ feedparser
 nltk
 seaborn
 replace
+pydub

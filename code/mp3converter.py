@@ -30,12 +30,12 @@ class Converter(object): #Create class for the Object "Converter"
             engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
 
     def speak(self):
-        with open("test2.txt") as file:
+        with open("podcast.txt") as file:
             file = file.read()
         engine.say(file)
 
     def saving_mp3(self):
-        with open("test2.txt") as file:
+        with open("podcast.txt") as file:
             file = file.read()
         engine.save_to_file(file, 'test.mp3')
         engine.runAndWait()
