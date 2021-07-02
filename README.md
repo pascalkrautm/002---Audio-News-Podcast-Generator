@@ -1,27 +1,50 @@
 - Pascal Krautmacher [697450]
-- Eren Ünal [859039]
 - Marco Alexander Meinhold [872406]
+- Eren Ünal [859039]
+
+The following markdown code would create a valid output. Only Pascal Krautmacher, Marco Alexander Meinhold and Eren Ünal
+will evaluted for the use case.
 
 # 002---Audio-News-Podcast-Generator
-002 - Audio News Podcast Generator, MBA HSD SS21
+**002 - Audio News Podcast Generator, MBA HSD SS21**
 
-The file README.md represents the central entry point and your main contributions for the evaluation and examination of the given use case. This document needs to contain at least 10.000 characters, but not more than 100.000 characters.
+**Summary**: Automated generation of a podcast from relevant news
+available on the internet.
 
-Important: The number of characters in will be evaluated by automated processes and, if outside this range, will reduce the grading of the use case evaluation by 0,5 grades (from 1.0 best down to 6.0 worst). Hence, better count your characters...
+###Team
+####Project Lead: 
+- Thomas Zeutschler (soon: Dr. Thomas Zeutschler)
 
-For advice on how to write and format MarkDown files please visit (either or both):
+####Data Scientist:
+- Pascal Krautmacher
+- Marco Alexander Meinhold
+- Eren Ünal
 
-https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
-https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
-The README.md file must be written in English language (expections on request only) and has to contain the following mandatory information in the following order:
+###1. Task
+The Task was to create a command line tool, named **podgen.py** that comes with a configuration file containing a user-editable list of news 
+sources to be investigated. The primary news source should be public 
+RSS or AtomFeeds, but additional sources are also welcome. The configuration file should contain a list of at least 30 RSS feeds
+from popular news sources like CNN, NYT, FoxNews, Spiegel an others. The command line tool takes a list of comma separated keywords or phrases arguments to used (like **Corona**; **Football**) to generate and filter the podcast. Multiple search arguments should be combined by an **AND** filter operations. 
+It also requires a help function to assist the user in using the tool by entering
+**'podgen.py /help'** or ** 'podgen.py /h'** on Windows or respective
+**'podgen.py --help'** or  ** 'podgen.py --h'** on MAc/Unix. 
+The commandline tool displays progress and status information while the podcast is in generation.
+At least, the command line tool reates an audio file (e.g. MP3), ready for direct consumption.
+Note: The audio file should be created in the current folder.
 
-At the very top of the file, a list of first name and last name followed by the matriculation number in squared brackets '[...]' for all students involved in and to be evaluated for the given use case. Other contributors must be listed without brackets and marticulation number. Sample: The following markdown code would create a valid output. Only Peter Parker and Precilla Presley will evaluted for the use case.
+To achieve this task, we proceed according to The Team Data Science Process (TDSP). This is a standardized process model for analytics projects. Each solution section follows the process steps of the TDSP
 
-- Peter Peter [7436450]
-- Precilla Presley [7442803]
-- Bob the Bausmeister (supporting on GitHub Actions)
-- Sharon Zurkoswsky
-The title of the use case, exactly as defined by the lecturer (letter by letter) formatted as top level headline.Sample for valid markdown:
+###2. Business Understanding
+
+
+###3. Data Acquisition and Understanding
+
+###4. Modeling
+
+###5. Deployment
+
+###6. Display the Process 
+
 
 ### Business Analytics A - Use Case 
 **[...back to use case list](/../../blob/main/README.md)**
