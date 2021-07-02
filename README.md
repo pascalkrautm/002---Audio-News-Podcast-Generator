@@ -35,11 +35,13 @@ Note: The audio file should be created in the current folder.
 To achieve this task, we proceed according to The Team Data Science Process (TDSP). This is a standardized process model for analytics projects. Each solution section follows the process steps of the TDSP
 
 ###2. Business Understanding
-
+Understand and Questions 
 
 ###3. Data Acquisition and Understanding
+Key word and txt-File
 
 ###4. Modeling
+MP3
 
 ###5. Deployment
 
