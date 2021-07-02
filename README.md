@@ -11,16 +11,16 @@ will evaluted for the use case.
 **Summary**: Automated generation of a podcast from relevant news
 available on the internet.
 
-###Team
-####Project Lead: 
+### Team
+#### Project Lead: 
 - Thomas Zeutschler
 
-####Data Scientist:
+#### Data Scientist:
 - Pascal Krautmacher
 - Marco Alexander Meinhold
 - Eren Ünal
 
-###1. Task
+### 1. Task
 The Task was to create a command line tool, named **podgen.py** that comes with a configuration file containing a user-editable list of news 
 sources to be investigated. The primary news source should be public 
 RSS or AtomFeeds, but additional sources are also welcome. The configuration file should contain a list of at least 30 RSS feeds
@@ -34,18 +34,18 @@ Note: The audio file should be created in the current folder.
 
 To achieve this task, we proceed according to The Team Data Science Process (TDSP). This is a standardized process model for analytics projects. Each solution section follows the process steps of the TDSP
 
-###2. Business Understanding
+### 2. Business Understanding
 Understand and Questions 
 
-###3. Data Acquisition and Understanding
+### 3. Data Acquisition and Understanding
 Key word and txt-File
 
-###4. Modeling
+### 4. Modeling
 MP3
 
-###5. Deployment
+### 5. Deployment
 
-###6. Display the Process 
+### 6. Display the Process 
 
 
 ### Business Analytics A - Use Case 
