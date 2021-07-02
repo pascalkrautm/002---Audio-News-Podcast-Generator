@@ -1,6 +1,6 @@
 import feedparser
-
-from formatter_new import keyword
+import re
+#from newsfeed_collection import NewsfeedCollector
 
 
 class NewsfeedEntry:
@@ -13,21 +13,22 @@ class NewsfeedEntry:
 
 class Newsfeed:
     def __init__(self, url: str):
+        self.feeds = []
         self.url = url
         self.refresh()
         self.entries = []
 
     def refresh(self):
-        feed = feedparser.parse(str(self.url))
-        self.title = feed.channel["title"]
-        entries_len = len(feed.entries)
+        self.feed = feedparser.parse(str(self.url))
+        self.title = self.feed.channel["title"]
+        entries_len = len(self.feed.entries)
         keyword = input("What topic are you interested in? Just type 'keyword' ('corona', 'soccer')")
         #print(title)
-        for entry in feed.entries:
+        for entry in self.feed.entries:
             if keyword in entry.title:
                 self.clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL | re.MULTILINE)
                 #self.entries.append(NewsfeedEntry(entry.title, entry.abstract, entry.published, entry.link))
-                self.feeds.append(NewsfeedEntry(feed.feed["title"], entry.published, entry.title, clean_summary))
+                feeds.append(NewsfeedEntry(self.feed.feed["title"], entry.published, entry.title, clean_summary))
             else:
                 pass
 

@@ -15,7 +15,7 @@ class PodcastGenerator:
         self.xml_list = []
         self.article_list = []
         self.feeds = []
-        self._content =
+        self._content = []
 
         # url_list
         content = open("url_list.txt", "r")
