@@ -1,8 +1,10 @@
 import re
+from newsfeed import Newsfeed
 
 class Podcast:
     def __init__(self,feeds_new:str):
-        self.feeds_new = feeds_new
+        self.feeds_clean = feeds_clean
+        self.feeds = self.collector.refresh()
         self.feeds_clean = []
         self.myText = mytext
         self.myString = mystring
@@ -11,6 +13,9 @@ class Podcast:
         self.feeds_new = str(self.feeds)
         feeds_clean = str(re.findall("<p>(.*?)</p>", self.feeds_new, re.DOTALL))
         print(feeds_clean)
+        self.feeds_clean = str(feeds)
+        feeds_clean_new = feeds_clean.replace("</p>'", " ")
+        feeds_clean_new1 = feeds_clean_new.replace("<p>", ".")
 
         return self.feeds_clean
 

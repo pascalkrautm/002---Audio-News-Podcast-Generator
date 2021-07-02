@@ -4,7 +4,7 @@ from newsfeed import Newsfeed
 
 
 class NewsfeedCollector:
-    def __init__(self,path:str):
+    def __init__(self, path: str):
         self.path = path
         self.feeds = []
 
