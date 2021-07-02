@@ -3,23 +3,15 @@ import pyttsx3
 engine = pyttsx3.init()
 
 class Converter(object): #Create class for the Object "Converter"
-    def __init__(self, file_name : str, text: str, rate, volume, voices):
-        self.file_name = file_name
-        self.text = text
+    def __init__(self, rate:int=150, volume:int=100, language:str="english"):
+        self.text = ""
         self.rate = rate
         self.volume = volume
-        self. voices = voices
+        self.language = language
 
-    def rate_option(self):
-        engine_rate = input("Set the rate: (Type: from 100 to 200)")
-        engine.setProperty('rate', engine_rate)
-
-    def volume_option(self):
-        engine_volume = input("Set the volume: (Type: from 0 to 1.0")
-        engine.setProperty('volume', engine_volume)
-
-    def voice_option(self):
-        engine_voice = input("Which language do you want? (Type: english or german)")
+        engine.setProperty('rate', self.rate)
+        engine.setProperty('volume', self.volume)
+        engine_voice = self.language
         if engine_voice == "english":
             voice_gender = input("Do you want a male or a female voice? (Type: male or female)")
             if voice_gender == "male":
@@ -29,13 +21,10 @@ class Converter(object): #Create class for the Object "Converter"
         else:
             engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
 
-    def speak(self):
-        with open("podcast.txt") as file:
-            file = file.read()
-        engine.say(file)
+    def speak(self, text:str):
+        engine.say(text)
+        engine.runAndWait()
 
-    def saving_mp3(self):
-        with open("podcast.txt") as file:
-            file = file.read()
-        engine.save_to_file(file, 'test.mp3')
+    def save_as_mp3(self, text:str, file_name:str = "podcast.mp3"):
+        engine.save_to_file(text, file_name)
         engine.runAndWait()

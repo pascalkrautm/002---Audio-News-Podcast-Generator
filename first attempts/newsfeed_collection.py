@@ -1,4 +1,3 @@
-import feedparser
 from newsfeed import Newsfeed
 #from formatter_new import feeds
 
