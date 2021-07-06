@@ -1,6 +1,6 @@
 import feedparser
 import re
-import keywords
+from progressbar import ProgressBar
 
 
 class PodcastGenerator:
@@ -14,14 +14,14 @@ class PodcastGenerator:
         self.url_list = self.content.split(",")
 
 
-    def generate_podcast(self, keyword: str):
+    def generate_podcast(self, keywords):
         """
         Generate podcost from current url list.
         :param keyword: The keyword to filter content for.
         :return:
         """
         self.number_of_posts = 0
-        self.keyword = keyword
+#        self.keyword = keyword
         self. keywords = keywords
         self.get_feed_data()
         self.text = self.clean_data()
@@ -31,22 +31,17 @@ class PodcastGenerator:
 
     def get_feed_data(self):
 
-        # rss_feed_scrapper
-        for self.keyword in self.keywords:
-            for url in self.url_list:
-                feed = feedparser.parse(str(url))
-                print("Starting scrap " + str(url))
-                entries_len = len(feed.entries)
-                print(f"getting {entries_len} entries")
-                print("searching for keyword")
+    # rss_feed_scrapper
+        for url in self.url_list:
+            feed = feedparser.parse(str(url))
+            print("Starting scrap " + str(url))
+            entries_len = len(feed.entries)
+            print(f"getting {entries_len} entries")
+            print("searching for keyword")
                 # print(feed.entries)
-                for entry in feed.entries:
-                    if self.keyword in entry.title:
-                        # testline
-                        # print(entry.title)
-                        # testline
-                        # print(entry.summary)
-                        # print(entry.published)
+            for entry in feed.entries:
+                for keyword in self.keywords:
+                    if keyword in entry.title.lower():
                         clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL | re.MULTILINE)
                         self.feeds.append(
                             "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title

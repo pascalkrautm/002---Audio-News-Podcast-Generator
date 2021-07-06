@@ -9,9 +9,9 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 def main():
     generator = PodcastGenerator()
-    keyword = Helper.get_keyword()
+    keywords = Helper.get_keyword()
     #keyword = input("What topic are you interested in? Just type 'keyword' ('Corona', 'Fußball')")
-    number_of_podcast = generator.generate_podcast(keyword)
+    number_of_podcast = generator.generate_podcast(keywords)
     if number_of_podcast > 0:
         voice_rate = Helper.get_voice_rate()
         voice_volume = Helper.get_voice_volume()
@@ -20,7 +20,7 @@ def main():
         mp3_converter.speak(generator.text)
 
     else:
-        print(f"No podcast with Keyword {keyword} found.")
+        print(f"No podcast with Keyword {keywords} found.")
 
 
 if __name__ == "__main__":
