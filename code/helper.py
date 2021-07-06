@@ -11,13 +11,17 @@ class Helper:
         keywords = []
         keyword = input("Type in your first keyword' ('Corona', 'Fußball')")
         keywords.append(keyword)
-        answer = input("Do you wish to add a keyowrd? (y/n")
-        while answer is "y":
+        answer = input("Do you wish to add a keyowrd? (y/n)")
+        while answer == "y":
             keyword = input("Type in your next keyword!")
             keywords.append(keyword)
             answer = input("Do you wish to add a keyword? (y/n)")
         else:
             pass
+
+        #convert to small letters
+        for i in range(len(keywords)):
+            keywords[i] = keywords[i].lower()
 
         return keywords
 

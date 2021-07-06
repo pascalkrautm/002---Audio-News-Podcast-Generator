@@ -1,5 +1,7 @@
 import feedparser
 import re
+import keywords
+
 
 class PodcastGenerator:
     def __init__(self):
@@ -19,8 +21,8 @@ class PodcastGenerator:
         :return:
         """
         self.number_of_posts = 0
-        self.keywords = []
         self.keyword = keyword
+        self. keywords = keywords
         self.get_feed_data()
         self.text = self.clean_data()
 
@@ -30,7 +32,7 @@ class PodcastGenerator:
     def get_feed_data(self):
 
         # rss_feed_scrapper
-        for keyword in keywords:
+        for self.keyword in self.keywords:
             for url in self.url_list:
                 feed = feedparser.parse(str(url))
                 print("Starting scrap " + str(url))
@@ -50,6 +52,8 @@ class PodcastGenerator:
                             "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title
                             + clean_summary)
                         self.number_of_posts += 1
+                for i in range(len(self.feeds)):
+                    self.feeds[i] = self.feeds[i].lower()
 
 
     def clean_data(self, save_to_disc:bool=False):
