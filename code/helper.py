@@ -8,8 +8,18 @@ class Helper:
 
     @staticmethod
     def get_keyword():
-        keyword = input("What topic are you interested in? Just type 'keyword' ('Corona', 'Fußball')")
-        return keyword
+        keywords = []
+        keyword = input("Type in your first keyword' ('Corona', 'Fußball')")
+        keywords.append(keyword)
+        answer = input("Do you wish to add a keyowrd? (y/n")
+        while answer is "y":
+            keyword = input("Type in your next keyword!")
+            keywords.append(keyword)
+            answer = input("Do you wish to add a keyword? (y/n)")
+        else:
+            pass
+
+        return keywords
 
     @staticmethod
     def get_voice_rate():

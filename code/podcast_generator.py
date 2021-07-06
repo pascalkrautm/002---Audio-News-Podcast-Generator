@@ -19,6 +19,7 @@ class PodcastGenerator:
         :return:
         """
         self.number_of_posts = 0
+        self.keywords = []
         self.keyword = keyword
         self.get_feed_data()
         self.text = self.clean_data()
@@ -29,25 +30,26 @@ class PodcastGenerator:
     def get_feed_data(self):
 
         # rss_feed_scrapper
-        for url in self.url_list:
-            feed = feedparser.parse(str(url))
-            print("Starting scrap " + str(url))
-            entries_len = len(feed.entries)
-            print(f"getting {entries_len} entries")
-            print("searching for keyword")
-            # print(feed.entries)
-            for entry in feed.entries:
-                if self.keyword in entry.title:
-                    # testline
-                    # print(entry.title)
-                    # testline
-                    # print(entry.summary)
-                    # print(entry.published)
-                    clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL | re.MULTILINE)
-                    self.feeds.append(
-                        "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title
-                        + clean_summary)
-                    self.number_of_posts += 1
+        for keyword in keywords:
+            for url in self.url_list:
+                feed = feedparser.parse(str(url))
+                print("Starting scrap " + str(url))
+                entries_len = len(feed.entries)
+                print(f"getting {entries_len} entries")
+                print("searching for keyword")
+                # print(feed.entries)
+                for entry in feed.entries:
+                    if self.keyword in entry.title:
+                        # testline
+                        # print(entry.title)
+                        # testline
+                        # print(entry.summary)
+                        # print(entry.published)
+                        clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL | re.MULTILINE)
+                        self.feeds.append(
+                            "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title
+                            + clean_summary)
+                        self.number_of_posts += 1
 
 
     def clean_data(self, save_to_disc:bool=False):

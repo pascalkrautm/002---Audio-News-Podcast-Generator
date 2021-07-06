@@ -6,7 +6,10 @@ import pyttsx3
 import feedparser
 import ssl
 import re
+from art import *
 
+rt = text2art("Podcast Gen",font='block',chr_ignore=True) # Return ASCII text with block font
+print(rt)
 ssl._create_default_https_context = ssl._create_unverified_context
 
 xml_list = []
