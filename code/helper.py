@@ -27,7 +27,7 @@ class Helper:
 
     @staticmethod
     def ask_parameters():
-        return input("Do you want to use the recommended parameters?")
+        return input("Do you want to use the recommended parameters? (y/n)")
 
     @staticmethod
     def get_voice_rate():
@@ -47,6 +47,7 @@ class Helper:
 
     @staticmethod
     def ask_read_or_save():
+        return input("Read podcast (r) or save as mp3 (s)? (r/s)")
 
 help(Helper)
 help(Helper.print_help)
