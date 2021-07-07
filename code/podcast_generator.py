@@ -42,7 +42,8 @@ class PodcastGenerator:
             for entry in feed.entries:
                 for keyword in self.keywords:
                     if keyword in entry.title.lower():
-                        clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL | re.MULTILINE)
+                        clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
+                                               re.MULTILINE)
                         self.feeds.append(
                             "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title
                             + clean_summary)
