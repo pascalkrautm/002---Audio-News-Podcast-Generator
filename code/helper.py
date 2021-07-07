@@ -11,7 +11,7 @@ class Helper:
         keywords = []
         keyword = input("Type in your first keyword' ('Corona', 'Fußball')")
         keywords.append(keyword)
-        answer = input("Do you wish to add a keyowrd? (y/n)")
+        answer = input("Do you wish to add a keyword? (y/n)")
         while answer == "y":
             keyword = input("Type in your next keyword!")
             keywords.append(keyword)
@@ -26,6 +26,10 @@ class Helper:
         return keywords
 
     @staticmethod
+    def ask_parameters():
+        return input("Do you want to use the recommended parameters?")
+
+    @staticmethod
     def get_voice_rate():
         return input("Please select a voice rate between 100 and 200 (Recommendation = 150).")
 
@@ -36,6 +40,13 @@ class Helper:
     @staticmethod
     def get_voice_language():
         return input("Please select the language (Type 'german' or 'english').")
+
+    @staticmethod
+    def ask_to_save_parameter():
+        return input("Do you want to save the parameter as new standard parameters for the next time? (y/n)")
+
+    @staticmethod
+    def ask_read_or_save():
 
 help(Helper)
 help(Helper.print_help)
