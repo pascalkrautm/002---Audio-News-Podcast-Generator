@@ -56,7 +56,7 @@ class PodcastGenerator:
         """
         Cleans feed data for reading.
         :param save_to_disc: (optional) Set to True to save file to disk, otherwise False.
-        :return: the cleaned text, readz for reading
+        :return: the cleaned text, ready for reading
         """
         feeds_clean = str(self.feeds)
         feeds_clean = feeds_clean.replace("</p>'", " ").replace("<p>", ".")
