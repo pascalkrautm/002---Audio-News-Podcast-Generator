@@ -38,15 +38,22 @@ information while the podcast is in generation. At least, the command line tool 
 for direct consumption. Note: The audio file should be created in the current folder.
 
 To achieve this task, we proceed according to The Team Data Science Process (TDSP). This is a standardized process model
-for analytics projects. Each solution section follows the process steps of the TDSP
+for analytics projects. Each solution section follows the process steps of the TDSP.
 
 ### 2. Business Understanding
 
-Understand and Questions
+In the course of the task, a command line tool was created that automatically generates a podcast for the user after he
+enters his interests. The podcast plays the latest interesting news for the user.
+
+So, the **goal of the task** was to create a user-friendly tool for automatic podcast generation. The tool asks the 
+user for their topic preferences and generates the latest news. These news items are then read aloud by the tool. 
+In the process, the user can set the volume, speed and language of the podcast according to his preferences. 
+The generated podcast can be saved according to the user's preferences. 
+
 
 ### 3. Data Acquisition and Understanding
-
--Which Packages used?
+- What is an RSS-Feed?
+- Which Packages used? 
 
 -Scrapper, Key word and txt-File
 
@@ -63,8 +70,9 @@ Understand and Questions
 MP3
 
 ### 5. Deployment
-
-What are the optimization potentials of the program? What were the problems?
+- Summary, if the target have been archived
+- What are the optimization potentials of the program? What were the problems?
+    - Nicht nur nach KeyWord suchen sondern auch nach Synoymen oder zugehörigen Themen 
 
 ### 6. Display the Process
 
