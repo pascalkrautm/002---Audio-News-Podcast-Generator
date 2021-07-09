@@ -28,3 +28,4 @@ class Converter(object): #Create class for the Object "Converter"
     def save_as_mp3(self, text:str, file_name:str = "podcast.mp3"):
         engine.save_to_file(text, file_name)
         engine.runAndWait()
+#TEXT
