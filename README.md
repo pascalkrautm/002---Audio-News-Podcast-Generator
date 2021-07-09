@@ -38,12 +38,15 @@ To achieve this task, we proceed according to The Team Data Science Process (TDS
 Understand and Questions 
 
 ### 3. Data Acquisition and Understanding
-Key word and txt-File
+-Which Packages used?
+-Scrapper, Key word and txt-File
 
 ### 4. Modeling
 MP3
 
 ### 5. Deployment
+What are the optimization potentials of the program?
+What were the problems?
 
 ### 6. Display the Process 
 
