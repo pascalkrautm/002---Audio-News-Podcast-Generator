@@ -5,13 +5,13 @@ import ssl
 import pickle
 from art import *
 
-print(text2art('''Podcast Gen''', font="small")) # Multi-line print
+print(text2art('''Podcast Gen''', font="small"))  # Multi-line print
 ssl._create_default_https_context = ssl._create_unverified_context
+
 
 def main():
     generator = PodcastGenerator()
     keywords = Helper.get_keyword()
-    #keyword = input("What topic are you interested in? Just type 'keyword' ('Corona', 'Fußball')")
     number_of_podcast = generator.generate_podcast(keywords)
     if number_of_podcast > 0:
         ask_parameters = Helper.ask_parameters()
@@ -53,4 +53,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

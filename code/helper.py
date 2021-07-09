@@ -18,11 +18,9 @@ class Helper:
             answer = input("Do you wish to add a keyword? (y/n)")
         else:
             pass
-
         #convert to small letters
-        for i in range(len(keywords)):
-            keywords[i] = keywords[i].lower()
-
+        for words in range(len(keywords)):
+            keywords[words] = keywords[words].lower()
         return keywords
 
     @staticmethod
