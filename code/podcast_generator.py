@@ -1,6 +1,10 @@
 import feedparser
 import re
-from progressbar import ProgressBar
+from tqdm import tqdm
+from multiprocessing import Pool
+import time
+
+
 
 
 class PodcastGenerator:
@@ -38,18 +42,20 @@ class PodcastGenerator:
             entries_len = len(feed.entries)
             print(f"getting {entries_len} entries")
             print("searching for keyword")
-                # print(feed.entries)
             for entry in feed.entries:
                 for keyword in self.keywords:
-                    if keyword in entry.title.lower():
-                        clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
-                                               re.MULTILINE)
-                        self.feeds.append(
-                            "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title
-                            + clean_summary)
-                        self.number_of_posts += 1
-                for i in range(len(self.feeds)):
-                    self.feeds[i] = self.feeds[i].lower()
+                        if keyword in entry.title.lower():
+                            clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
+                                                    re.MULTILINE)
+                            self.feeds.append(
+                                "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title
+                                       + clean_summary)
+                            self.number_of_posts += 1
+            for i in range(len(self.feeds)):
+                self.feeds[i] = self.feeds[i].lower()
+
+            for i in tqdm(range(0, 100), ncols=100):
+                time.sleep(.01)
 
 
     def clean_data(self, save_to_disc:bool=False):
@@ -72,7 +78,4 @@ class PodcastGenerator:
 
     def read_podcast(self):
         pass
-
-if __name__ == "__main__":
-    pg = PodcastGenerator()
 
