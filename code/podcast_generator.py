@@ -22,7 +22,6 @@ class PodcastGenerator:
         :return:
         """
         self.number_of_posts = 0
-        # self.keyword = keyword
         self.keywords = keywords
         self.get_feed_data()
         self.text = self.clean_data()
@@ -45,7 +44,7 @@ class PodcastGenerator:
 
                 for entry in feed.entries:
                     for keyword in self.keywords:
-                        if keyword in entry.title.lower():
+                        if str(keyword) in entry.title.lower():
                             clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
                                                    re.MULTILINE)
                             self.feeds.append(

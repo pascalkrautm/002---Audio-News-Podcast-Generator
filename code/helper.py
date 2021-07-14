@@ -9,18 +9,17 @@ class Helper:
     @staticmethod
     def get_keyword():
         keywords = []
-        keyword = input("Type in your first keyword' ('Corona', 'Fußball')")
-        keywords.append(keyword)
-        answer = input("Do you wish to add a keyword? (y/n)")
-        while answer == "y":
-            keyword = input("Type in your next keyword!")
-            keywords.append(keyword)
-            answer = input("Do you wish to add a keyword? (y/n)")
-        else:
-            pass
+        keyword = str(input("Enter comma separated topics (eg: corona, soccer, germany)"))
+        keywords = keyword.lower().split(",")
+        print(f"Given topics are {keywords}")
+        #answer = input("Do you wish to add a keyword? (y/n)")
+        #while answer == "y":
+        #    keyword = input("Type in your next keyword!")
+        #    keywords.append(keyword)
+        #    answer = input("Do you wish to add a keyword? (y/n)")
+        #else:
+        #    pass
         #convert to small letters
-        for words in range(len(keywords)):
-            keywords[words] = keywords[words].lower()
         return keywords
 
     @staticmethod
