@@ -45,7 +45,7 @@ class Helper:
 
     @staticmethod
     def ask_read_or_save():
-        return input("Read podcast (r) or save as mp3 (s)? (r/s)")
+        return input("Read podcast (r) or save as mp3 (m) or save as pdf (p)? (r/m/p)")
 
 help(Helper)
 help(Helper.print_help)
