@@ -41,8 +41,6 @@ class PodcastGenerator:
                 feed = feedparser.parse(str(url))
 
                 entries_len = len(feed.entries)
-                # print(f"getting {entries_len} entries")
-                # print("searching for keyword")
 
 
                 for entry in feed.entries:
@@ -58,14 +56,11 @@ class PodcastGenerator:
                 for i in range(len(self.feeds)):
                     self.feeds[i] = self.feeds[i].lower()
 
-                counter += 1
+                counter += 0.5
                 progress_bar.update(counter)
             progress_bar.update(ticks)
+            print("Scraping done! Process finished: 100%")
 
-            # progress_bar.close()
-            # tqdm(ticks, ncols=ticks)
-            # for i in tqdm(range(0, 100), ncols=100):
-            #     time.sleep(.01)
 
     def clean_data(self, save_to_disc: bool = False):
         """
