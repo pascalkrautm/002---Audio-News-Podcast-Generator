@@ -24,7 +24,7 @@ class Helper:
 
     @staticmethod
     def ask_parameters():
-        return input("Do you want to use the recommended parameters? (y/n)")
+        return input("Do you want to use the recommended parameters? (eg. voice rate, female or male voice, volume) (y/n)")
 
     @staticmethod
     def get_voice_rate():
