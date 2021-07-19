@@ -12,19 +12,12 @@ class Helper:
         keyword = str(input("Enter comma separated topics (eg: corona, soccer, germany)"))
         keywords = keyword.lower().split(",")
         print(f"Given topics are {keywords}")
-        #answer = input("Do you wish to add a keyword? (y/n)")
-        #while answer == "y":
-        #    keyword = input("Type in your next keyword!")
-        #    keywords.append(keyword)
-        #    answer = input("Do you wish to add a keyword? (y/n)")
-        #else:
-        #    pass
-        #convert to small letters
+
         return keywords
 
     @staticmethod
     def ask_parameters():
-        return input("Do you want to use the recommended parameters? (eg. voice rate, female or male voice, volume) (y/n)")
+        return input("Do you want to use the recommended parameters for the speaker? (eg. voice rate, language, volume) (y/n)")
 
     @staticmethod
     def get_voice_rate():
