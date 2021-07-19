@@ -6,7 +6,7 @@ import pickle
 from art import *
 
 print(text2art('''Podcast Gen''', font="small"))  # Multi-line print
-print("by Krautmacher - Eren - Meinhold ")
+print("by Krautmacher - Ünal - Meinhold ")
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
