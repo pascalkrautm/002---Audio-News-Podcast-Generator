@@ -45,41 +45,68 @@ for analytics projects. Each solution section follows the process steps of the T
 In the course of the task, a command line tool was created that automatically generates a podcast for the user after he
 enters his interests. The podcast plays the latest interesting news for the user.
 
-So, the **goal of the task** was to create a user-friendly tool for automatic podcast generation. The tool asks the 
-user for their topic preferences and generates the latest news. These news items are then read aloud by the tool. 
-In the process, the user can set the volume, speed and language of the podcast according to his preferences. 
-The generated podcast can be saved according to the user's preferences. 
-
+So, the **goal of the task** was to create a user-friendly tool for automatic podcast generation. The tool asks the user
+for their topic preferences and generates the latest news. These news items are then read aloud by the tool. In the
+process, the user can set the volume, speed and language of the podcast according to his preferences. The generated
+podcast can be saved according to the user's preferences.
 
 ### 3. Data Acquisition and Understanding
+
 - What is an RSS-Feed?
-- Which Packages used? 
-
--Scrapper, Key word and txt-File
-
--Display codes as follows:
-
-    def url_list(self):
-        content = open("url_list.txt", "r")
-        content = content.read()
-        url_list = content.split(",")
-    return url_list(
+- Which python-packages used?
+- Implementation is..
 
 ### 4. Modeling
 
-MP3
+- MP3
+- Scrapper
+- Key-Word
+- txt-file .....
 
-### 5. Deployment
+- Example:
+    - Class: Converter
+    - Explanation: text........
+
+
+    def __init__(self, rate:int=150, volume:int=100, language:str="english"):
+        self.text = ""
+        self.rate = rate
+        self.volume = volume
+        self.language = language
+
+        engine.setProperty('rate', self.rate)
+        engine.setProperty('volume', self.volume)
+        engine_voice = self.language
+        if engine_voice == "english":
+            voice_gender = input("Do you want a male or a female voice? (Type: male or female)")
+            if voice_gender == "male":
+                engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
+            else:
+                engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
+        else:
+            engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
+
+    def speak(self, text:str):
+        engine.say(text)
+        engine.runAndWait()
+
+    def save_as_mp3(self, text:str, file_name:str = "podcast.mp3"):
+        engine.save_to_file(text, file_name)
+        engine.runAndWait()
+
+- Learnings: text.......
+
+### 5. Achievements
+
 - Summary, if the target have been archived
 - What are the optimization potentials of the program? What were the problems?
-    - Nicht nur nach KeyWord suchen sondern auch nach Synoymen oder zugehörigen Themen 
+    - Nicht nur nach KeyWord suchen sondern auch nach Synoymen oder zugehörigen Themen
 
 ### 6. Display the Process
 
-**Me:** *I'm so bored, please read out something interesting to me.*
+Example:
+![img.png](img.png)
 
-**You:** *No problem, I'm a Python hero!*
-
-#
+### Outlook future/ Reference
 
 > enjoy your individual podcasts!

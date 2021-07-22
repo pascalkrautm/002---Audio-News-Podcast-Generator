@@ -38,7 +38,7 @@ class PodcastGenerator:
             # rss_feed_scrapper
             for url in self.url_list:
                 feed = feedparser.parse(str(url))
-
+                # delete entries_len not in use?
                 entries_len = len(feed.entries)
 
 
@@ -48,8 +48,8 @@ class PodcastGenerator:
                             clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
                                                    re.MULTILINE)
                             self.feeds.append(
-                                "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", " + entry.title
-                                + clean_summary)
+                                "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", "
+                                + entry.title + clean_summary)
                             self.number_of_posts += 1
 
                 for i in range(len(self.feeds)):
