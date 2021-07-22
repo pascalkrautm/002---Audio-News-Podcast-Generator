@@ -9,7 +9,7 @@ class Helper:
     @staticmethod
     def get_keyword():
         keywords = []
-        keyword = str(input("Enter comma separated topics (eg: corona, soccer, germany)"))
+        keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)"))
         keywords = keyword.lower().split(",")
         print(f"Given topics are {keywords}")
 
@@ -17,7 +17,7 @@ class Helper:
 
     @staticmethod
     def ask_parameters():
-        return input("Do you want to use the recommended parameters for the speaker? (eg. voice rate, language, volume) (y/n)")
+        return input("Would you like to use our recommended settings for the Podcast? (voice rate, language, volume) (y/n)")
 
     @staticmethod
     def get_voice_rate():
@@ -29,15 +29,27 @@ class Helper:
 
     @staticmethod
     def get_voice_language():
-        return input("Please select the language (Type 'german' or 'english').")
+        return input("Please select german or english as language (Type 'g' for german or 'e' for english).")
+
+    @staticmethod
+    def get_voice_gender():
+        return input("Please select the speakers gender (Type 'm' for male or 'f' for female).")
 
     @staticmethod
     def ask_to_save_parameter():
-        return input("Do you want to save the parameter as new standard parameters for the next time? (y/n)")
+        return input("Do you like to save the parameter you have entered as new standard parameters for the next time? (y/n)")
 
     @staticmethod
     def ask_read_or_save():
-        return input("Read podcast (r) or save as mp3 (m) or save as pdf (p)? (r/m/p)")
+        return input("Please select whether you want the podcast to be read aloud (r) now, saved as an mp3 (m) for later, or saved as a pdf (p) for later (r/m/p).")
 
-help(Helper)
-help(Helper.print_help)
+    @staticmethod
+    def ask_name_mp3():
+        return input("What name should the mp3-file have? (Please do not type '.mp3' after the name)")
+
+    @staticmethod
+    def ask_name_pdf():
+        return input("What name should the pdf-file have? (Please do not type '.pdf' after the name)")
+
+#help(Helper)
+#help(Helper.print_help)
