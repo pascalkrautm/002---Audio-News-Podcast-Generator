@@ -10,3 +10,4 @@ replace
 pydub
 art
 progressbar
+fpdf
