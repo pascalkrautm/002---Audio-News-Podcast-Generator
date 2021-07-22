@@ -1,8 +1,6 @@
 import feedparser
 import re
 from tqdm import tqdm
-from multiprocessing import Pool
-import time
 
 
 class PodcastGenerator:
@@ -41,14 +39,13 @@ class PodcastGenerator:
                 # delete entries_len not in use?
                 entries_len = len(feed.entries)
 
-
                 for entry in feed.entries:
                     for keyword in self.keywords:
                         if str(keyword) in entry.title.lower():
                             clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
                                                    re.MULTILINE)
                             self.feeds.append(
-                                "Neuer Artikel: " + feed.feed["title"] + " " + entry.published[3:17] + ", "
+                                "New Article: " + feed.feed["title"] + " " + entry.published[3:17] + ", "
                                 + entry.title + clean_summary)
                             self.number_of_posts += 1
 
@@ -60,7 +57,6 @@ class PodcastGenerator:
             progress_bar.update(ticks)
             print("Scraping done! Process finished: 100%")
 
-
     def clean_data(self, save_to_disc: bool = False):
         """
         Cleans feed data for reading.
@@ -68,7 +64,9 @@ class PodcastGenerator:
         :return: the cleaned text, ready for reading
         """
         feeds_clean = str(self.feeds)
-        feeds_clean = feeds_clean.replace("</p>'", " ").replace("<p>", ".")
+        feeds_clean = feeds_clean.replace("</p>'", " ").replace("<p>", ".").replace("<h1>", " ").replace("</h1>",
+                                                                                                         " ").replace(
+            "</p>", " ").replace("<hr />.", " ")
         # print(feeds_clean)
 
         if save_to_disc:
