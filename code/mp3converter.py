@@ -1,4 +1,8 @@
 import pyttsx3
+import fpdf
+from fpdf import FPDF
+
+from helper import Helper
 
 engine = pyttsx3.init()
 
@@ -10,15 +14,17 @@ class Converter(object): #Create class for the Object "Converter"
         self.language = language
 
         engine.setProperty('rate', self.rate)
+
         engine.setProperty('volume', self.volume)
+
         engine_voice = self.language
-        if engine_voice == "english":
-            voice_gender = input("Do you want a male or a female voice? (Type: male or female)")
-            if voice_gender == "male":
+        if engine_voice == "e":
+            voice_gender = Helper.get_voice_gender()
+            if voice_gender == "m":
                 engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
             else:
                 engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
-        else:
+        if engine_voice== "g":
             engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
 
     def speak(self, text:str):
@@ -28,4 +34,16 @@ class Converter(object): #Create class for the Object "Converter"
     def save_as_mp3(self, text:str, file_name:str = "podcast.mp3"):
         engine.save_to_file(text, file_name)
         engine.runAndWait()
-#TEXT
+
+    def save_as_pdf(self, text:str, file_name:str = "Podcast.pdf"):
+        text = text.encode('utf-8')
+
+        # using list comprehension
+        listToStr = ' '.join([str(elem) for elem in text])
+
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Arial", size=12)
+        pdf.cell(200, 10, txt=listToStr, ln=1, align='C')
+        pdf.output(file_name)
+
