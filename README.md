@@ -101,10 +101,53 @@ podcast can be saved according to the user's preferences.
 - Functions:
   - def init: The init function initiates the class and sets the parameters (volume, rate and speech). 
   - def speak: The speak function reads out the podcast with the previously set parameters.  
-  - def save_as_mp3: The save_as_mp3 function saves the podcast as an mp3 file on the user's disk so that the user can access it offline. While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely.
-  - def save_as_pdf: The save_as_pdf function saves the podcast as a pdf file to the user's hard disk so that the user can read it offline. 
+  - def save_as_mp3: 
+    - Code:
+      ```
+        text = text.replace(".", ", ")
+        engine.save_to_file(text, file_name)
+        engine.runAndWait()
+      ```
+    - The save_as_mp3 function saves the podcast as an mp3 file on the user's disk so that the user can access it offline. 
+    - Problem: While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely.
+  - def save_as_pdf: 
+    - The save_as_pdf function saves the podcast as a pdf file to the user's hard disk so that the user can read it offline.
+    - Problem: It is problematic to save the text as utf-8, because it contains special characters that can only be captured by latin-1 (uses the fpdf package). So text has to be encoded in latin-q beforehand
+    - Code:
+      ```
+        text_encoded = text.encode('latin-1', 'replace').decode('latin-1')
+        text = text_encoded.replace("?", ".").replace("[", "").replace("]", "").replace("'", "")
+
+        a4_width_mm = 210
+        pt_to_mm = 0.35
+        fontsize_pt = 10
+        fontsize_mm = fontsize_pt * pt_to_mm
+        margin_bottom_mm = 10
+        character_width_mm = 7 * pt_to_mm
+        width_text = a4_width_mm / character_width_mm
+
+        pdf = FPDF(orientation='P', unit='mm', format='A4')
+        pdf.set_auto_page_break(True, margin=margin_bottom_mm)
+        pdf.add_page()
+        pdf.set_font(family='Courier', size=fontsize_pt)
+        splitted = text.split('\n')
+
+        for line in splitted:
+            lines = textwrap.wrap(line, width_text)
+
+            if len(lines) == 0:
+                pdf.ln()
+
+            for wrap in lines:
+                pdf.cell(0, fontsize_mm, wrap, ln=1)
+
+            pdf.output(file_name, 'F')
+            print(text)```
 - Learnings:
 
+```
+shell
+```
 
 ### 5. Achievements
 
