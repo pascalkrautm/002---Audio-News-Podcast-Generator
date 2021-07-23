@@ -44,9 +44,10 @@ class PodcastGenerator:
                         if str(keyword) in entry.title.lower():
                             clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
                                                    re.MULTILINE)
+
                             self.feeds.append(
                                 "New Article: " + feed.feed["title"] + " " + entry.published[3:17] + ", "
-                                + entry.title + clean_summary)
+                                + entry.title + ". " + clean_summary)
                             self.number_of_posts += 1
 
                 for i in range(len(self.feeds)):
