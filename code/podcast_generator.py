@@ -42,7 +42,7 @@ class PodcastGenerator:
                 for entry in feed.entries:
                     for keyword in self.keywords:
                         if str(keyword) in entry.title.lower():
-                            clean_summary = re.sub("(<img.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
+                            clean_summary = re.sub("(<.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
                                                    re.MULTILINE)
 
                             self.feeds.append(
