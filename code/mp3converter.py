@@ -41,9 +41,8 @@ class Converter(object): #Create class for the Object "Converter"
         import textwrap
         from fpdf import FPDF
 
-        text = text.replace("'", "").replace("–", " ").replace("[", "").replace("]", "").replace("’", "")\
-            .replace("'", "")
-        text.encode("utf-8")
+        text_encoded = text.encode('latin-1', 'replace').decode('latin-1')
+        text = text_encoded.replace("?", ".").replace("[", "").replace("]", "").replace("'", "")
 
         a4_width_mm = 210
         pt_to_mm = 0.35
@@ -56,7 +55,7 @@ class Converter(object): #Create class for the Object "Converter"
         pdf = FPDF(orientation='P', unit='mm', format='A4')
         pdf.set_auto_page_break(True, margin=margin_bottom_mm)
         pdf.add_page()
-        pdf.set_font(family='Arial', size=fontsize_pt)
+        pdf.set_font(family='Courier', size=fontsize_pt)
         splitted = text.split('\n')
 
         for line in splitted:
