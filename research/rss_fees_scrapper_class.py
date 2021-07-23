@@ -4,7 +4,7 @@ class Rss_feed_scrapper():
 
 
     def url_list(self):
-        content = open("../url_list.txt", "r")
+        content = open("url_list.txt", "r")
         content = content.read()
         url_list = content.split(",")
     return url_list()
