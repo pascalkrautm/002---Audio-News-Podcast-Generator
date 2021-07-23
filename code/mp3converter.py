@@ -41,7 +41,7 @@ class Converter(object): #Create class for the Object "Converter"
         import textwrap
         from fpdf import FPDF
 
-        text = text.replace("'", "").replace(" – ", " ").replace("[", "").replace("]", "").replace("’", "")\
+        text = text.replace("'", "").replace("–", " ").replace("[", "").replace("]", "").replace("’", "")\
             .replace("'", "")
         text.encode("utf-8")
 
