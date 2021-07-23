@@ -7,7 +7,9 @@ from art import *
 
 print(text2art('''Podcast Gen''', font="small"))  # Multi-line print
 print("by Krautmacher - Ünal - Meinhold ")
-print("With this podcast generator you get an overview of the news that are interesting for you. You can either have them read to you immediately or download them for later as mp3 or pdf. ")
+print("With this podcast generator you get an overview of the news that are interesting for you. "
+      "You can either have them read to you immediately or download them for later as mp3 or pdf. ")
+print(" ")
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
