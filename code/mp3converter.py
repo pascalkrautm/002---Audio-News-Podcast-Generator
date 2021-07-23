@@ -1,7 +1,6 @@
 import pyttsx3
-import fpdf
+import textwrap
 from fpdf import FPDF
-
 from helper import Helper
 
 engine = pyttsx3.init()
@@ -38,8 +37,6 @@ class Converter(object): #Create class for the Object "Converter"
         engine.runAndWait()
 
     def save_as_pdf(self, text:str, file_name:str = "Podcast.pdf"):
-        import textwrap
-        from fpdf import FPDF
 
         text_encoded = text.encode('latin-1', 'replace').decode('latin-1')
         text = text_encoded.replace("?", ".").replace("[", "").replace("]", "").replace("'", "")
