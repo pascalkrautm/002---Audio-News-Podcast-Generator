@@ -96,11 +96,14 @@ podcast can be saved according to the user's preferences.
 
 - Learnings: text.......
 
--Class: Converter()
+1. Class: Converter()
 - Task: The Converter class includes the functions to read out the podcast, save it as mp3 and save it as pdf. Also, the class includes the setting of the speed, the rate and the language of the podcast. 
 - Functions:
-  def save_as_mp3: While creating an mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely. 
-
+  - def init: The init function initiates the class and sets the parameters (volume, rate and speech). 
+  - def speak: The speak function reads out the podcast with the previously set parameters.  
+  - def save_as_mp3: The save_as_mp3 function saves the podcast as an mp3 file on the user's disk so that the user can access it offline. While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely.
+  - def save_as_pdf: The save_as_pdf function saves the podcast as a pdf file to the user's hard disk so that the user can read it offline. 
+- Learnings:
 
 
 ### 5. Achievements
