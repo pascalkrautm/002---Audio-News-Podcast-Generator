@@ -67,3 +67,4 @@ class Converter(object):  # Create class for the Object "Converter"
 
             pdf.output(file_name, 'F')
             print(text)
+
