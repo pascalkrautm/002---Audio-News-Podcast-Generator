@@ -5,8 +5,9 @@ from helper import Helper
 
 engine = pyttsx3.init()
 
-class Converter(object): #Create class for the Object "Converter"
-    def __init__(self, rate:int=150, volume:int=100, language:str="english"):
+
+class Converter(object):  # Create class for the Object "Converter"
+    def __init__(self, rate: int = 150, volume: int = 100, language: str = "english"):
         self.text = ""
         self.rate = rate
         self.volume = volume
@@ -23,20 +24,20 @@ class Converter(object): #Create class for the Object "Converter"
                 engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
             else:
                 engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
-        if engine_voice== "g":
+        if engine_voice == "g":
             engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
 
-    def speak(self, text:str):
+    def speak(self, text: str):
         engine.say(text)
         engine.runAndWait()
 
-    def save_as_mp3(self, text:str, file_name:str = "podcast.mp3"):
+    def save_as_mp3(self, text: str, file_name: str = "podcast.mp3"):
 
         text = text.replace(".", ", ")
         engine.save_to_file(text, file_name)
         engine.runAndWait()
 
-    def save_as_pdf(self, text:str, file_name:str = "Podcast.pdf"):
+    def save_as_pdf(self, text: str, file_name: str = "Podcast.pdf"):
 
         text_encoded = text.encode('latin-1', 'replace').decode('latin-1')
         text = text_encoded.replace("?", ".").replace("[", "").replace("]", "").replace("'", "")
@@ -66,4 +67,3 @@ class Converter(object): #Create class for the Object "Converter"
 
             pdf.output(file_name, 'F')
             print(text)
-

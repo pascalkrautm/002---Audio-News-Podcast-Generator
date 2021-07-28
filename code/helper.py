@@ -1,14 +1,13 @@
 class Helper:
     def __init__(self):
-        '''The helper class is initialized'''
+        """The helper class is initialized"""
 
-    def print_help(self):
-        '''Returns the help description'''
-        print('helper description')
+    # def print_help(self):
+        # """Returns the help description"""
+        # print('helper description')
 
     @staticmethod
     def get_keyword():
-        keywords = []
         keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)"))
         keywords = keyword.lower().split(",")
         print(f"Given topics are {keywords}")
@@ -17,7 +16,8 @@ class Helper:
 
     @staticmethod
     def ask_parameters():
-        return input("Would you like to use our recommended settings for the Podcast? (voice rate, language, volume) (y/n)")
+        return input(
+            "Would you like to use our recommended settings for the Podcast? (voice rate, language, volume) (y/n)")
 
     @staticmethod
     def get_voice_rate():
@@ -37,11 +37,14 @@ class Helper:
 
     @staticmethod
     def ask_to_save_parameter():
-        return input("Do you like to save the parameter you have entered as new standard parameters for the next time? (y/n)")
+        return input(
+            "Do you like to save the parameter you have entered as new standard parameters for the next time? (y/n)")
 
     @staticmethod
     def ask_read_or_save():
-        return input("Please select whether you want the podcast to be read aloud (r) now, saved as an mp3 (m) for later, or saved as a pdf (p) for later (r/m/p).")
+        return input(
+            "Please select whether you want the podcast to be read aloud (r) now, saved as an mp3 (m) for later, "
+            "or saved as a pdf (p) for later (r/m/p).")
 
     @staticmethod
     def ask_name_mp3():
@@ -51,5 +54,5 @@ class Helper:
     def ask_name_pdf():
         return input("What name should the pdf-file have? (Please do not type '.pdf' after the name)")
 
-#help(Helper)
-#help(Helper.print_help)
+# help(Helper)
+# help(Helper.print_help)
