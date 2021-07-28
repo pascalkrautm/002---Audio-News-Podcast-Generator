@@ -11,3 +11,4 @@ pydub
 art
 progressbar
 fpdf
+tqdm
