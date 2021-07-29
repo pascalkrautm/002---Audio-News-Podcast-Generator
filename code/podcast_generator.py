@@ -12,11 +12,14 @@ class PodcastGenerator:
         file = open("url_list.txt", "r")
         self.content = file.read()
         self.url_list = self.content.split(",")
+        self.number_of_posts = []
+        self.keywords = ()
+        self.text = self.clean_data()
 
     def generate_podcast(self, keywords):
         """
-        Generate podcost from current url list.
-        :param keyword: The keyword to filter content for
+        Generate podcast from current url list.
+        :param keywords: The keywords to filter content for
         :return:
         """
         self.number_of_posts = 0
@@ -27,7 +30,6 @@ class PodcastGenerator:
         return self.number_of_posts > 0
 
     def get_feed_data(self):
-        counter = 0
         ticks = len(self.url_list)
         with tqdm(total=ticks, leave=False) as progress_bar:
             progress_bar.set_description("Scraping")
@@ -37,7 +39,7 @@ class PodcastGenerator:
             for url in self.url_list:
                 feed = feedparser.parse(str(url))
                 # delete entries_len not in use?
-                entries_len = len(feed.entries)
+                len(feed.entries)
 
                 for entry in feed.entries:
                     for keyword in self.keywords:
@@ -79,4 +81,3 @@ class PodcastGenerator:
 
     def read_podcast(self):
         pass
-
