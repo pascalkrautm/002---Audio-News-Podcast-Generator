@@ -1,5 +1,6 @@
 import pyttsx3
 import textwrap
+import pickle
 from fpdf import FPDF
 from helper import Helper
 
@@ -13,24 +14,63 @@ class Converter(object):  # Create class for the Object "Converter"
         self.volume = volume
         self.language = language
 
-        engine.setProperty('rate', self.rate)
-
-        engine.setProperty('volume', self.volume)
-
-        engine_voice = self.language
-        if engine_voice == "e":
-            while True:
-                voice_gender = Helper.get_voice_gender()
-                if voice_gender == "m":
-                    engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
-                    break
-                if voice_gender == "f":
-                    engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
-                    break
-                else:
-                    print(r"Your answer may not comply, please note that you may only press m or f")
-        if engine_voice == "g":
-            engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
+    def parameter_settings(self):
+        while True:
+            engine_parameters = Helper.ask_parameters()
+            if engine_parameters == "n":
+                self.rate = Helper.get_voice_rate()
+                engine.setProperty('rate', self.rate)
+                self.volume = Helper.get_voice_volume()
+                engine.setProperty('volume', self.volume)
+                while True:
+                    self.language = Helper.get_voice_language()
+                    if self.language == "e":
+                        while True:
+                            voice_gender = Helper.get_voice_gender()
+                            if voice_gender == "m":
+                                engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
+                                break
+                            if voice_gender == "f":
+                                engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
+                                break
+                            else:
+                                print(r"Your answer may not comply, please note that you may only press 'm' or 'f'")
+                        break
+                    if self.language == "g":
+                        engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
+                        break
+                    else:
+                        print(r"Your answer may not comply, please note that you may only press 'g' or 'e'")
+                while True:
+                    engine_save_parameter = Helper.ask_to_save_parameter()
+                    if engine_save_parameter == "y":
+                        # create a list with our default parameters
+                        save_parameters = [self.rate, self.volume, self.language]
+                        # save our list for next session
+                        open_file = open("parameters.pkl", "wb")
+                        pickle.dump(save_parameters, open_file)
+                        open_file.close()
+                        break
+                    if engine_save_parameter == "n":
+                        pass
+                        break
+                    else:
+                        print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
+                break
+            if engine_parameters == "y":
+                # load saved parameters from last session
+                open_file = open("parameters.pkl", "rb")
+                parameter_list = pickle.load(open_file)
+                open_file.close()
+                voice_rate_default = parameter_list[0]
+                voice_volume_default = parameter_list[1]
+                voice_language_default = parameter_list[2]
+                engine.setProperty('rate', voice_rate_default)
+                engine.setProperty('volume', voice_volume_default)
+                engine.setProperty('language', voice_language_default)
+                break
+            else:
+                print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
 
     def speak(self, text: str):
         engine.say(text)
