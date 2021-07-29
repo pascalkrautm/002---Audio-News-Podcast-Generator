@@ -37,13 +37,11 @@ class Converter(object):  # Create class for the Object "Converter"
         engine.runAndWait()
 
     def save_as_mp3(self, text: str, file_name: str = "podcast.mp3"):
-
         text = text.replace(".", ", ")
         engine.save_to_file(text, file_name)
         engine.runAndWait()
 
     def save_as_pdf(self, text: str, file_name: str = "Podcast.pdf"):
-
         text_encoded = text.encode('latin-1', 'replace').decode('latin-1')
         text = text_encoded.replace("?", ".").replace("[", "").replace("]", "").replace("'", "")
 
@@ -51,16 +49,12 @@ class Converter(object):  # Create class for the Object "Converter"
         pdf.set_auto_page_break(True, margin=10)
         pdf.add_page()
         pdf.set_font(family='Courier', size=12)
-        splitted = text.split('\n')
+        splitter = text.split('\n')
 
-        for line in splitted:
+        for line in splitter:
             lines = textwrap.wrap(line, 75)
-
             if len(lines) == 0:
                 pdf.ln()
-
             for wrap in lines:
-                pdf.cell(0, 3.5, wrap, ln=1)
-
+                pdf.cell(0, 4, wrap, ln=1)
             pdf.output(file_name, 'F')
-            print(text)
