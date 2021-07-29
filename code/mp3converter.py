@@ -19,11 +19,16 @@ class Converter(object):  # Create class for the Object "Converter"
 
         engine_voice = self.language
         if engine_voice == "e":
-            voice_gender = Helper.get_voice_gender()
-            if voice_gender == "m":
-                engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
-            else:
-                engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
+            while True:
+                voice_gender = Helper.get_voice_gender()
+                if voice_gender == "m":
+                    engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
+                    break
+                if voice_gender == "f":
+                    engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
+                    break
+                else:
+                    print(r"Your answer may not comply, please note that you may only press m or f")
         if engine_voice == "g":
             engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
 
