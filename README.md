@@ -175,7 +175,17 @@ tqdm
 - Learnings: text.......
 
 1. Class: PodcastGenerator()
+- Task: The Generator first splits the URL list into different sources of RSS feeds. 
 
+    
+    file = open("url_list.txt", "r")
+    self.content = file.read()
+    self.url_list = self.content.split(",")
+    '''
+After that it takes the user input as comma sperated strings. 
+This strings are keywords to look for in the title element of every url via loop. If the title contains one of the keywords the summary of the article gets downloaded.
+The output gets saved in a list. 
+This list gets cleaned to readable and necessary content. Additionally we add " New article" after every article 
 
 1. Class: Converter()
 - Task: The Converter class includes the functions to read out the podcast, save it as mp3 and save it as pdf. Also, the class includes the setting of the speed, the rate and the language of the podcast. 
