@@ -95,19 +95,25 @@ This was not optimal, however, as some emails could end up in the junk folder or
 plus the fact that the emails are formatted differently. In contrast, an RSS reader presents all the feeds using its own interface.
 
 #### Used Python Packages:
-requests 
-- For xxyz
-pandas
-lxml
+requests using?
+pandas using?
+lxml using?
+
 pyttsx3
+- Text to Speech (TTS) library for Python 2 and 3. Works without internet connection or delay. 
+Supports multiple TTS engines, including Sapi5, nsss, and espeak.
+
 feedparser
-nltk
-seaborn
+- Feedparser is a Python library that parses feeds in all known formats, including. Atom, RSS, and RDF. It runs on Python 2.4 all the way up to 3.3. 
+
+nltk using?
+seaborn using?
 
 replace
 - Text processing and cleaning the output getting directly from feeds
 
 pydub
+- pydub is a Python library to work with only . wav files. By using this library we can play, split, merge, edit our . wav audio files.
 
 art
 - ASCII art is also known as "computer text art". 
@@ -167,6 +173,9 @@ tqdm
         engine.runAndWait()
 
 - Learnings: text.......
+
+1. Class: PodcastGenerator()
+
 
 1. Class: Converter()
 - Task: The Converter class includes the functions to read out the podcast, save it as mp3 and save it as pdf. Also, the class includes the setting of the speed, the rate and the language of the podcast. 
