@@ -221,7 +221,7 @@ This list got cleaned to readable and necessary content. Additionally we add " N
 Inside this function a progressbar was implemented to show the scrapping progress to user.
 
 The function clean_data cleans the data for the export from noise. Noise are special characters which will disturb the speech output later.
-Such characters are tags from html as well as false punctuation. AS result of this class 
+Such characters are tags from html as well as false punctuation. As result of this class an output in txt format will be generated.
 
         def clean_data(self, save_to_disc: bool = False):
         """
