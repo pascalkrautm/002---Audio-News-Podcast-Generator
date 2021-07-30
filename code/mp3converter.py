@@ -8,11 +8,12 @@ engine = pyttsx3.init()
 
 
 class Converter(object):  # Create class for the Object "Converter"
-    def __init__(self, rate: int = 150, volume: int = 100, language: str = "english"):
+    def __init__(self, rate: int = 150, volume: int = 100, language: str = "e", gender: str = "m"):
         self.text = ""
         self.rate = rate
         self.volume = volume
         self.language = language
+        self.gender = gender
 
     def parameter_settings(self):
         while True:
@@ -26,11 +27,11 @@ class Converter(object):  # Create class for the Object "Converter"
                     self.language = Helper.get_voice_language()
                     if self.language == "e":
                         while True:
-                            voice_gender = Helper.get_voice_gender()
-                            if voice_gender == "m":
+                            self.gender = Helper.get_voice_gender()
+                            if self.gender == "m":
                                 engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
                                 break
-                            if voice_gender == "f":
+                            if self.gender == "f":
                                 engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
                                 break
                             else:
@@ -45,7 +46,7 @@ class Converter(object):  # Create class for the Object "Converter"
                     engine_save_parameter = Helper.ask_to_save_parameter()
                     if engine_save_parameter == "y":
                         # create a list with our default parameters
-                        save_parameters = [self.rate, self.volume, self.language]
+                        save_parameters = [self.rate, self.volume, self.language, self.gender]
                         # save our list for next session
                         open_file = open("parameters.pkl", "wb")
                         pickle.dump(save_parameters, open_file)
@@ -65,8 +66,17 @@ class Converter(object):  # Create class for the Object "Converter"
                 voice_rate_default = parameter_list[0]
                 voice_volume_default = parameter_list[1]
                 voice_language_default = parameter_list[2]
+                voice_gender_default = parameter_list[3]
                 engine.setProperty('rate', voice_rate_default)
                 engine.setProperty('volume', voice_volume_default)
+                if voice_language_default == "e":
+                    if voice_gender_default == "m":
+                        engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
+                    if voice_gender_default == "f":
+                        engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
+                if self.language == "g":
+                    engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
+
                 engine.setProperty('language', voice_language_default)
                 break
             else:
