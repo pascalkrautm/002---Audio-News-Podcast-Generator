@@ -40,6 +40,25 @@ for direct consumption. Note: The audio file should be created in the current fo
 To achieve this task, we proceed according to The Team Data Science Process (TDSP). This is a standardized process model
 for analytics projects. Each solution section follows the process steps of the TDSP.
 
+Proposal:
+The Task was to create a command line tool, named **podgen.py** that comes with a configuration file containing a
+user-editable list of news sources to be investigated. The primary news source should be public RSS or AtomFeeds, but
+additional sources are also welcome. The configuration file should contain a list of at least 30 RSS feeds from popular
+news sources like CNN, NYT, FoxNews, Spiegel an others. The command line tool takes a list of comma separated keywords
+or phrases arguments to used (like **Corona**; **Football**) to generate and filter the podcast. It also requires a help function to assist the user in
+using the tool by entering
+Do we have the help option and is it working as follows?
+**'podgen.py /help'** or ** 'podgen.py /h'** on Windows or respective
+**'podgen.py --help'** or  ** 'podgen.py --h'** on MAc/Unix. The commandline tool displays progress and status
+information while the podcast is in generation. As result the user has different options to get the output. 
+1. Read it directly with given parameters
+2. Save as MP3
+3. Save as PDF
+Note: The audio file should be created in the current folder.
+
+To achieve this task, we proceed according to The Team Data Science Process (TDSP). This is a standardized process model
+for analytics projects. Each solution section follows the process steps of the TDSP.
+
 ### 2. Business Understanding
 
 In the course of the task, a command line tool was created that automatically generates a podcast for the user after he
@@ -50,10 +69,63 @@ for their topic preferences and generates the latest news. These news items are 
 process, the user can set the volume, speed and language of the podcast according to his preferences. The generated
 podcast can be saved according to the user's preferences.
 
+Proposal:
+In the course of the task, a command line tool was created that automatically generates a podcast for the user after he
+enters his interests. The podcast plays the latest interesting news for the user.
+
+So, the **goal of the task** was to create a user-friendly tool for automatic podcast generation. The tool asks the user
+for their topic preferences and generates the latest news. These news items are then read aloud by the tool. In the
+process, the user can set the volume, speed and language of the podcast according to his preferences. The generated
+podcast can be saved according to the user's preferences to an MP§ file or as PDF document. 
+
 ### 3. Data Acquisition and Understanding
 
-- What is an RSS-Feed?
-- Which python-packages used?
+#### What is an RSS Feed?
+An RSS feed is an up-to-date information or list of notifications that a website delivers to its subscribers. 
+RSS means "rich site summary" or "really simple syndication."
+
+An RSS feed is read by an RSS reader or a feed reader, which can be either Web based, 
+a standalone desktop application or a mobile application. 
+The reader aggregates all the RSS feeds that a user is subscribed to and presents them in its UI; 
+this avoids the need for the user to go to each website just to read the updates.
+
+An RSS feed is delivered in XML format, allowing maximum compatibility between readers.
+Before the advent of RSS feeds, websites sent subscribers email notifications regarding new content. 
+This was not optimal, however, as some emails could end up in the junk folder or mixed with other emails, 
+plus the fact that the emails are formatted differently. In contrast, an RSS reader presents all the feeds using its own interface.
+
+#### Used Python Packages:
+requests 
+- For xxyz
+pandas
+lxml
+pyttsx3
+feedparser
+nltk
+seaborn
+
+replace
+- Text processing and cleaning the output getting directly from feeds
+
+pydub
+
+art
+- ASCII art is also known as "computer text art". 
+It involves the smart placement of typed special characters or letters to make a visual shape that is spread over multiple lines of text.
+
+progressbar
+- A text progress bar is typically used to display the progress of a long running operation, 
+providing a visual cue that processing is underway.
+
+fpdf
+- PyFPDF is a library for PDF document generation under Python, 
+ported from PHP (see FPDF “Free”-PDF, a well-known PDFlib-extension replacement with many examples, scripts and derivatives).
+Compared with other PDF libraries, PyFPDF is simple, small and versatile, with advanced capabilities and easy to learn, extend and maintain.
+
+tqdm
+- Instantly make your loops show a smart progress meter - just wrap any iterable with tqdm(iterable), and you’re done!
+
+
 - Implementation is..
 
 ### 4. Modeling

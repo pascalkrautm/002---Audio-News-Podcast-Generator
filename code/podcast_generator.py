@@ -1,6 +1,8 @@
 import feedparser
 import re
 from tqdm import tqdm
+import ssl
+
 
 
 class PodcastGenerator:
@@ -30,6 +32,7 @@ class PodcastGenerator:
         return self.number_of_posts > 0
 
     def get_feed_data(self):
+        ssl._create_default_https_context = ssl._create_unverified_context
         ticks = len(self.url_list)
         with tqdm(total=ticks, leave=False) as progress_bar:
             progress_bar.set_description("Scraping")
