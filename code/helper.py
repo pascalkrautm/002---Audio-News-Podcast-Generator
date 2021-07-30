@@ -2,17 +2,26 @@ class Helper:
     def __init__(self):
         """The helper class is initialized"""
 
-    # def print_help(self):
-        # """Returns the help description"""
-        # print('helper description')
+    @staticmethod
+    def print_help():
+        """Returns the help description"""
+        helper_description = "Test"
+        print(helper_description)
 
     @staticmethod
     def get_keyword():
-        keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)"))
-        keywords = keyword.lower().split(",")
-        print(f"Given topics are {keywords}")
-
-        return keywords
+        keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany) or enter "
+                            "'h' to get an introduction into the program "))
+        if keyword == "h":
+            Helper.print_help()
+            keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)"))
+            keywords = keyword.lower().split(",")
+            print(f"Given topics are {keywords}")
+            return keywords
+        else:
+            keywords = keyword.lower().split(",")
+            print(f"Given topics are {keywords}")
+            return keywords
 
     @staticmethod
     def ask_parameters():
