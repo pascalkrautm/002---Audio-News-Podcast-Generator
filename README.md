@@ -174,8 +174,72 @@ tqdm
 
 - Learnings: text.......
 
-1. Class: PodcastGenerator()
-- Task: The Generator first splits the URL list into different sources of RSS feeds. 
+1. Class: Main()
+- Task: Main functionality of the app.
+
+First part provides the design of the terminal app.
+
+    print(text2art('''Podcast Gen''', font="small"))  # Multi-line print
+    print("by Krautmacher - Ünal - Meinhold ")
+    print("With this podcast generator you get an overview of the news that are interesting for you. "
+      "You can either have them read to you immediately or download them for later as mp3 or pdf. ")
+    print(" ")
+
+First the PodcastGenerator will be started. With the provided Keywords from Class: Helper it will crawl through all urls inside the url list.
+If the number of podcast with entries > 0 it will start the user input from Class: Help to decide the further steps. 
+    
+    def main():
+        generator = PodcastGenerator()
+        keywords = Helper.get_keyword()
+        number_of_podcast = generator.generate_podcast(keywords)
+        if number_of_podcast > 0:
+    
+If the user type in "r" it will start the reading sequence. 
+    
+            while True:
+                read_or_save = Helper.ask_read_or_save()
+                if read_or_save == "r":
+                    mp3_converter = Converter()
+                    mp3_converter.parameter_settings()
+                    mp3_converter.speak(generator.text)
+                    print("Thank you for using the Podcast Generator. We hope to see you soon!")
+                    break
+
+If the user type in "m" it will start the MP3 saving and ask for a filename. 
+
+                if read_or_save == "m":
+                    mp3_converter = Converter()
+                    mp3_converter.parameter_settings()
+                    mp3_file_name = Helper.ask_name_mp3()
+                    mp3_converter.save_as_mp3(generator.text, f"{mp3_file_name}.mp3")
+                    print("Thank you for using the Podcast Generator. We hope to see you soon!")
+                    break
+                    
+If the user type in "p" it will start the PDF saving and ask for a filename. 
+                    
+                if read_or_save == "p":
+                    pdf_file_name = Helper.ask_name_pdf()
+                    mp3_converter = Converter()
+                    mp3_converter.save_as_pdf(generator.text, f"{pdf_file_name}.pdf")
+                    print("Thank you for using the Podcast Generator. We hope to see you soon!")
+                    break
+                else:
+                    print(r"Your answer may not comply, please note that you may only press 'r', 'm' or 'p'.")
+        
+If no podcasts are found it will just print the following sentences. 
+
+        
+        else:
+            print(f"No podcast with Keyword {keywords} found.")
+    
+    
+    if __name__ == "__main__":
+        main()
+    
+2. Class: PodcastGenerator()
+- Task: This class provides the content from rss sites based on user given topics. It will prepare the content to a speachable format.
+
+The Generator first splits the URL list into different sources of RSS feeds. 
 
     
     file = open("url_list.txt", "r")
@@ -242,6 +306,88 @@ Such characters are tags from html as well as false punctuation. As result of th
 
         return feeds_clean
 
+3. Class: Helper()
+- Task: Supports the main functions and gets every user input
+
+print_help provides the manual instructions to the user when typing "h" instead of keywords 
+        
+    @staticmethod
+    def print_help():
+        """Returns the help description"""
+        helper_description = "Test"
+        print(helper_description)
+            
+get_keyword provides the user input as topics to the PodcastGenerator. Also the previous class is implented to this function. 
+This will provide ther manual to the user when typing "h" instead of any topic. 
+After the user typed in his keywords, this function will split all inputs with "," to prepare them for crawling through feeds.
+
+    @staticmethod
+    def get_keyword():
+        keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany) or enter "
+                            "'h' to get an introduction into the program"))
+        if keyword == "h":
+            Helper.print_help()
+            keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)"))
+            keywords = keyword.lower().split(",")
+            print(f"Given topics are {keywords}")
+            return keywords
+        else:
+            keywords = keyword.lower().split(",")
+            print(f"Given topics are {keywords}")
+            return keywords
+
+    
+Following functions will ask the user fo his parameters used inside speech part. These paramters can be saved and automatically used for the next run. 
+Paramters can be:
+
+- Voice rate 
+- Voice volume
+- Voice language ( at this moment only german and english )
+- Voice gender
+
+You will also find the questions for reading or saving in MP3 or PDF in this part
+
+    @staticmethod
+    def ask_parameters():
+       return input(
+         "Would you like to use the default settings (voice rate, language, volume) for the Podcast? (Type 'y' for "
+         "yes or 'n' for no.)")
+
+    @staticmethod
+    def get_voice_rate():
+        return input("Please select a voice rate between 100 and 200 (Recommendation = 150).")
+
+    @staticmethod
+    def get_voice_volume():
+        return input("Please select the volume between 0 and 1.0 (Recommendation = 1.0).")
+
+    @staticmethod
+    def get_voice_language():
+        return input("Please select german or english as language (Type 'g' for german or 'e' for english).")
+
+    @staticmethod
+    def get_voice_gender():
+        return input("Please select the speakers gender (Type 'm' for male or 'f' for female).")
+
+    @staticmethod
+    def ask_to_save_parameter():
+        return input(
+            "Do you like to save the parameter you have entered as new standard parameters for the next time? (y/n)")
+
+    @staticmethod
+    def ask_read_or_save():
+        return input(
+            "Please select whether you want the podcast to be read aloud (r) now, saved as an mp3 (m) for later, "
+            "or saved as a pdf (p) for later (r/m/p).")
+
+    @staticmethod
+    def ask_name_mp3():
+        return input("What name should the mp3-file have? (Please do not type '.mp3' after the name)")
+
+    @staticmethod
+    def ask_name_pdf():
+        return input("What name should the pdf-file have? (Please do not type '.pdf' after the name)")
+
 1. Class: Converter()
 - Task: The Converter class includes the functions to read out the podcast, save it as mp3 and save it as pdf. Also, the class includes the setting of the speed, the rate and the language of the podcast. 
 - Functions:
@@ -298,8 +444,31 @@ shell
 ### 5. Achievements
 
 - Summary, if the target have been archived
-- What are the optimization potentials of the program? What were the problems?
-    - Nicht nur nach KeyWord suchen sondern auch nach Synoymen oder zugehörigen Themen
+
+#### What are the optimization potentials of the program? What were problems?
+One big problem was the letter structur of the user input. "Corona" should be the same as "corona".
+Actually these words are not the same while working with python. 
+So we implement the transformation of every word in small letters. For the PDF file we had to use another output because for reading it is necessary to get capital letters also. 
+
+Also the cleaning part for the speaking was a big problem we had to deal with. Code loaded directly from rss page is full of tags and special characters, also called noise.
+We had to clean everything except the part we really needed for the speaking, writing or MP3 output. 
+
+
+There are also some topics we would like to implement in future: 
+
+1. User input
+- check for synonyms for the user input
+- Make recommendations for keywords to search for 
+- Possibility to look for given topics 
+
+2. Set options in application 
+- enter save path for the MP3 and PDF file
+- enter url to extend the url list
+
+3. Output
+- only show new entries
+- nice formatting inside PDF file 
+
 
 ### 6. Display the Process
 
