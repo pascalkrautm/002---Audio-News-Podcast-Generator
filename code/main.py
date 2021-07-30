@@ -9,6 +9,7 @@ print("With this podcast generator you get an overview of the news that are inte
       "You can either have them read to you immediately or download them for later as mp3 or pdf. ")
 print(" ")
 
+
 def main():
     generator = PodcastGenerator()
     keywords = Helper.get_keyword()
