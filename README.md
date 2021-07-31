@@ -539,7 +539,7 @@ There are also some topics we would like to implement in the future:
 ***
 
 ### 6. Display the Process
-
+-Coming soon
 ***
 ### 7. Outlook/Reference 
 - Coming soon
