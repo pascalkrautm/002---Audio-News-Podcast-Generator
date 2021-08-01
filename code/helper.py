@@ -5,20 +5,22 @@ class Helper:
     @staticmethod
     def print_help():
         """Returns the help description"""
-        helper_description = ("To generate the RSS feed, you need to answer several questions."
+        helper_description = ("",
+                              "To generate the RSS feed, you need to answer several questions."
                               "Below are these questions with their purpose for clarification and understanding:",
                               "-In the first step you need to enter your desired topics so that the present program"
-                              " can search the Internet according to your entered interests",
-                              "-You will then be asked whether you want the news to be generated as a pdf, mp3 or"
-                              " voice-speak. If you choose the pdf or mp3 variant, please note that the result will"
-                              " be saved in the 'data' folder. If you decide for pdf, there is nothing more to do in "
-                              " the following.",
-                              "-If you use the mp3 or voice-speak variant there are further questions to consider"
-                              " You have to set the voice rate, language and volume for your output."
-                              " You will be asked if you want to use the default settings."
+                              " can search the Internet according to your entered interests.",
+                              "-You will then be asked whether you want the news to be generated as a pdf, MP3 or"
+                              " voice-speak. If you choose the pdf or MP3 variant, please note that the result will"
+                              " be saved in the 'data' folder. If you decide for PDF, there is nothing more to do, "
+                              "accept entering the name you wish for you file. ",
+                              "-If you use the MP3 or voice-speak variant there are further questions to consider"
+                              " You have to set the voice rate, language and volume for your output. "
+                              " You will be asked if you want to use the default settings. "
                               " Note: When you start the program for the first time, these settings are not yet"
                               " available, so you have to define the parameters once. You can change the parameters"
-                              " at any time at this point")
+                              " at any time at this point.",
+                              "")
         for value in helper_description:
             print(value)
 
