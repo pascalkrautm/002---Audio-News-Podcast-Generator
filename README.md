@@ -517,7 +517,7 @@ We had to clean everything except the part we really needed for the speaking, wr
 
 _Problem:_  While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely.
 _Problem:_ It is problematic to save the text as utf-8, because it contains special characters that can only be captured by latin-1 (uses the fpdf package). So text has to be encoded in latin-q beforehand. Another problem was that when the pdf file was created, a paragraph was made for each letter in the pdf file. We solved the problem by splitting the feed entries beforehand with `('\n')` and then using a for loop to apply the module [textwrap.wrap](https://docs.python.org/3/library/textwrap.html) to all entries.
-_Problem:_ clean data -> UTF-8
+_Problem:_ clean data -> UTF-8, deepen!
 
 Explain the problematic with the pkl-file #please complete 
 
