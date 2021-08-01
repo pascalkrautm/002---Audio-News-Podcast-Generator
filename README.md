@@ -473,8 +473,7 @@ With speak() the commandline reads out the podcast with the previously set param
         engine.say(text)
         engine.runAndWait()
 
-The save_as_mp3 function saves the podcast as a mp3 file on the user's disk so that the user can access it offline. 
-_Problem:_  While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely.
+The save_as_mp3 function saves the podcast as a mp3 file on the user's disk so that the user can access it offline.
 
     def save_as_mp3(self, text: str, file_name: str = "podcast.mp3"):
         text = text.replace(".", ", ")
@@ -482,7 +481,6 @@ _Problem:_  While creating the mp3 file, the problem appeared that the mp3 was s
         engine.runAndWait()
 
 The save_as_pdf function saves the podcast as a pdf file, so that the user can access it offline. 
-_Problem:_ It is problematic to save the text as utf-8, because it contains special characters that can only be captured by latin-1 (uses the fpdf package). So text has to be encoded in latin-q beforehand. Another problem was that when the pdf file was created, a paragraph was made for each letter in the pdf file. We solved the problem by splitting the feed entries beforehand with `('\n')` and then using a for loop to apply the module [textwrap.wrap](https://docs.python.org/3/library/textwrap.html) to all entries.
 
     def save_as_pdf(self, text: str, file_name: str = "Podcast.pdf"):
         text_encoded = text.encode('latin-1', 'replace').decode('latin-1')
@@ -516,6 +514,12 @@ So we implement the transformation of every word in small letters. For the PDF f
 
 Also, the cleaning part for the speaking was a big problem we had to deal with. Code loaded directly from rss page is full of tags and special characters, also called noise.
 We had to clean everything except the part we really needed for the speaking, writing or MP3 output. 
+
+_Problem:_  While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely.
+_Problem:_ It is problematic to save the text as utf-8, because it contains special characters that can only be captured by latin-1 (uses the fpdf package). So text has to be encoded in latin-q beforehand. Another problem was that when the pdf file was created, a paragraph was made for each letter in the pdf file. We solved the problem by splitting the feed entries beforehand with `('\n')` and then using a for loop to apply the module [textwrap.wrap](https://docs.python.org/3/library/textwrap.html) to all entries.
+_Problem:_ clean data -> UTF-8
+
+Explain the problematic with the pkl-file #please complete 
 
 ***
 
