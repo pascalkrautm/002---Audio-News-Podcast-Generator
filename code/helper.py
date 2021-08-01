@@ -17,9 +17,9 @@ class Helper:
                               "-If you use the MP3 or voice-speak variant there are further questions to consider"
                               " You have to set the voice rate, language and volume for your output. "
                               " You will be asked if you want to use the default settings. "
-                              " Note: When you start the program for the first time, these settings are not yet"
-                              " available, so you have to define the parameters once. You can change the parameters"
-                              " at any time at this point.",
+                              " Note: When you start the program for the first time, please note to enter your "
+                              "desired parameters. Otherwise the program will start with the default parameters "
+                              "set by us. You can change the parameters at any time according to your preferences.",
                               "")
         for value in helper_description:
             print(value)
@@ -82,3 +82,4 @@ class Helper:
 
 # help(Helper)
 # help(Helper.print_help)
+
