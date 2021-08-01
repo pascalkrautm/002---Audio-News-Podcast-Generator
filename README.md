@@ -571,8 +571,11 @@ Only then the package fpdf can deal with the text output
 
 - <ins>creating MP3 file</ins> <br>
 While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely.
+
+
+- <ins>creating pdf file:</ins> <br>
 It is problematic to save the text as utf-8, because it contains special characters that can only be captured by latin-1 (uses the fpdf package). So text has to be encoded in latin-q beforehand. Another problem was that when the pdf file was created, a paragraph was made for each letter in the pdf file. We solved the problem by splitting the feed entries beforehand with `('\n')` and then using a for loop to apply the module [textwrap.wrap](https://docs.python.org/3/library/textwrap.html) to all entries.
-clean data -> UTF-8, deepen!
+clean data
 
 
 - <ins>pkl file:</ins> <br>
@@ -596,21 +599,20 @@ The process steps in this project have been illustrated for clarity:
 ### 7. Outlook 
 There are also some topics we would like to implement in the future: 
 
-1. User input
+1. <ins>User input</ins>
 - check for synonyms for the user input
 - Make recommendations for keywords to search for 
 - Possibility to look for given topics 
 
-2. Set options in application 
+2. <ins>Set options in application</ins> 
 - enter save path for the MP3 and PDF file
-
 - enter url to extend the url list
 
-3. Output
+3. <ins>Output</ins>
 - only show new entries
 - nice formatting inside PDF file e.g. by inserting images or bulleted lists  
 
-4. Design features
+4. <ins>Design features</ins>
 - some more design features like web interface would be great
 - Implement main menu to start with 
 - use python package to make parts looking better
