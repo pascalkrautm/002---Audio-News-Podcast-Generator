@@ -182,54 +182,60 @@ First the PodcastGenerator will be started. With the provided Keywords from Clas
 If the number of podcast with entries > 0 it will start the user input from Class: Help to decide the further steps. 
     
     def main():
-        generator = PodcastGenerator()
-        keywords = Helper.get_keyword()
-        number_of_podcast = generator.generate_podcast(keywords)
-        if number_of_podcast > 0:
+        while True:
+            try:
+                generator = PodcastGenerator()
+                keywords = Helper.get_keyword()
+                number_of_podcast = generator.generate_podcast(keywords)
+                if number_of_podcast > 0:
     
 If the podcasts with entries > 0, the user is first asked if he wants to have the entries read aloud or if he wants to save it as pdf or as mp3 to be able to refer to it in a later time course
 
 If the user enters "r" and thus selects the reading out of the entries, the reading sequence is started. 
     
-            while True:
-                read_or_save = Helper.ask_read_or_save()
-                if read_or_save == "r":
-                    mp3_converter = Converter()
-                    mp3_converter.parameter_settings()
-                    mp3_converter.speak(generator.text)
-                    print("Thank you for using the Podcast Generator. We hope to see you soon!")
-                    break
+                while True:
+                    read_or_save = Helper.ask_read_or_save()
+                    if read_or_save == "r":
+                        mp3_converter = Converter()
+                        mp3_converter.parameter_settings()
+                        mp3_converter.speak(generator.text)
+                        print("Thank you for using the Podcast Generator. We hope to see you soon!")
+                        break
 
 If, on the other hand, the user selects "m" and thus saves as mp3, mp3 saving is started and a file name is requested. 
 
-                if read_or_save == "m":
-                    mp3_converter = Converter()
-                    mp3_converter.parameter_settings()
-                    mp3_file_name = Helper.ask_name_mp3()
-                    mp3_converter.save_as_mp3(generator.text, f"{mp3_file_name}.mp3")
-                    print("Thank you for using the Podcast Generator. We hope to see you soon!")
-                    break
+                    if read_or_save == "m":
+                        mp3_converter = Converter()
+                        mp3_converter.parameter_settings()
+                        mp3_file_name = Helper.ask_name_mp3()
+                        mp3_converter.save_as_mp3(generator.text, f"{mp3_file_name}.mp3")
+                        print("Thank you for using the Podcast Generator. We hope to see you soon!")
+                        break
                     
 If the user types "p" to select save as PDF, the PDF saving will start and ask for a file name. 
                     
-                if read_or_save == "p":
-                    pdf_file_name = Helper.ask_name_pdf()
-                    mp3_converter = Converter()
-                    mp3_converter.save_as_pdf(generator.text, f"{pdf_file_name}.pdf")
-                    print("Thank you for using the Podcast Generator. We hope to see you soon!")
-                    break
-                else:
-                    print(r"Your answer may not comply, please note that you may only press 'r', 'm' or 'p'.")
+                    if read_or_save == "p":
+                        pdf_file_name = Helper.ask_name_pdf()
+                        mp3_converter = Converter()
+                        mp3_converter.save_as_pdf(generator.text, f"{pdf_file_name}.pdf")
+                        print("Thank you for using the Podcast Generator. We hope to see you soon!")
+                        break
+
+                    else:
+                        print(r"Your answer may not comply, please note that you may only press 'r', 'm' or 'p'.")
         
 If no podcasts are found, only the following records will be printed. The user must manually restart or run the process 
-at this point
+at this point. In the event that errors occur that we have not currently identified, we have a while error loop so as not to disrupt the flow of the program.
 
-        else:
-            print(f"No podcast with Keyword {keywords} found.")
-    
+                else:
+                    print(f"No podcast with Keyword {keywords} found.")
+                break
+            except AttributeError:
+                print("Ups an error has occurred. Please try another keyword.")    
     
     if __name__ == "__main__":
         main()
+
     
 <ins>2. Class: **PodcastGenerator()**
 - <ins>Task</ins>: This class provides the content of RSS pages based on user-defined topics. It searches the XML files for appropriate information and prepares the content in a searchable format. 
@@ -245,36 +251,40 @@ If the title contains one of the keywords, the summary of the article is stored 
 This list is adjusted for readable and necessary content. We go there and pull out only the pure text in the respective day. This means, for example, that we extract only the plain text from the tags `<summary>` or `<published>` and remove the special characters. In addition, we add “New Item”, “Date” and “Source” to ensure clarity
 
         def get_feed_data(self):
-        ssl._create_default_https_context = ssl._create_unverified_context
-        ticks = len(self.url_list)
-        with tqdm(total=ticks, leave=False) as progress_bar:
-            progress_bar.set_description("Scraping")
-            counter = 0
-
-            # rss_feed_scrapper
-            for url in self.url_list:
-                feed = feedparser.parse(str(url))
-                # delete entries_len not in use?
-                len(feed.entries)
-
-                for entry in feed.entries:
-                    for keyword in self.keywords:
-                        if str(keyword) in entry.title.lower():
-                            clean_summary = re.sub("(<.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
-                                                   re.MULTILINE)
-
-                            self.feeds.append(
-                                "New Article: " + feed.feed["title"] + " " + entry.published[3:17] + ", "
-                                + entry.title + ". " + clean_summary)
-                            self.number_of_posts += 1
-
-                for i in range(len(self.feeds)):
-                    self.feeds[i] = self.feeds[i].lower()
-
-                counter += 0.5
-                progress_bar.update(counter)
-            progress_bar.update(ticks)
-            print("Scraping done! Process finished: 100%")
+            """
+            Create a List with all articles that include the keywords.
+            :return: List with all article that include the keywords
+            """
+            ssl._create_default_https_context = ssl._create_unverified_context
+            ticks = len(self.url_list)
+            with tqdm(total=ticks, leave=False) as progress_bar:
+                progress_bar.set_description("Scraping")
+                counter = 0
+    
+                # rss_feed_scrapper
+                for url in self.url_list:
+                    feed = feedparser.parse(str(url))
+                    # delete entries_len not in use?
+                    len(feed.entries)
+    
+                    for entry in feed.entries:
+                        for keyword in self.keywords:
+                            if str(keyword) in entry.title.lower():
+                                clean_summary = re.sub("(<.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
+                                                       re.MULTILINE)
+    
+                                self.feeds.append(
+                                    "New Article: " + feed.feed["title"] + " " + entry.published[3:17] + ", "
+                                    + entry.title + ". " + clean_summary)
+                                self.number_of_posts += 1
+    
+                    for i in range(len(self.feeds)):
+                        self.feeds[i] = self.feeds[i].lower()
+    
+                    counter += 0.5
+                    progress_bar.update(counter)
+                progress_bar.update(ticks)
+                print("Scraping done! Process finished: 100%")
 
 Inside this function a progressbar was implemented to show the scrapping progress to user.
 
@@ -282,23 +292,15 @@ The function clean_data cleans the data for the export from noise. Noise are spe
 Such characters are tags from html as well as false punctuation. As result of this class an output in txt format will be generated.
 
         def clean_data(self, save_to_disc: bool = False):
-        """
-        Cleans feed data for reading.
-        :param save_to_disc: (optional) Set to True to save file to disk, otherwise False.
-        :return: the cleaned text, ready for reading
-        """
-        feeds_clean = str(self.feeds)
-        feeds_clean = feeds_clean.replace("</p>'", " ").replace("<p>", ".").replace("<h1>", " ").replace("</h1>",
-                                                                                                         " ").replace(
-            "</p>", " ").replace("<hr />.", " ")
-        # print(feeds_clean)
+            """
+            Cleans feed data for reading.
+            :return: the cleaned text, ready for reading
+            """
+            feeds_clean = str(self.feeds)
+            feeds_clean = feeds_clean.replace("</p>'", " ").replace("<p>", ".").replace("<h1>", " ").replace("</h1>", " ")\
+                .replace("</p>", " ").replace("<hr />.", " ")
+            return feeds_clean
 
-        if save_to_disc:
-            file = open(r'podcast.txt', 'w', encoding='utf-8')
-            file.write(feeds_clean)
-            file.close()
-
-        return feeds_clean
 
 3. <ins>Class: **Helper()**
 - <ins>Task</ins>: Supports the main functions and gets every user input
@@ -308,22 +310,24 @@ print_help provides the user with the manual instructions when he enters “h”
     @staticmethod
         def print_help():
         """Returns the help description"""
-        helper_description = ("To generate the RSS feed, you need to answer several questions."
-                              "Below are these questions with their purpose for clarification and understanding:",
-                              "-In the first step you need to enter your desired topics so that the present program"
-                              " can search the Internet according to your entered interests",
-                              "-You will then be asked whether you want the news to be generated as a pdf, mp3 or"
-                              " voice-speak. If you choose the pdf or mp3 variant, please note that the result will"
-                              " be saved in the 'data' folder. If you decide for pdf, there is nothing more to do in "
-                              " the following.",
-                              "-If you use the mp3 or voice-speak variant there are further questions to consider"
-                              " You have to set the voice rate, language and volume for your output."
-                              " You will be asked if you want to use the default settings."
-                              " Note: When you start the program for the first time, these settings are not yet"
-                              " available, so you have to define the parameters once. You can change the parameters"
-                              " at any time at this point")
-        for value in helper_description:
-            print(value)
+            helper_description = ("",
+                                  "To generate the RSS feed, you need to answer several questions."
+                                  "Below are these questions with their purpose for clarification and understanding:",
+                                  "-In the first step you need to enter your desired topics so that the present program"
+                                  " can search the Internet according to your entered interests.",
+                                  "-You will then be asked whether you want the news to be generated as a pdf, MP3 or"
+                                  " voice-speak. If you choose the pdf or MP3 variant, please note that the result will"
+                                  " be saved in the 'data' folder. If you decide for PDF, there is nothing more to do, "
+                                  " accept entering the name you wish for you file. ",
+                                  "-If you use the MP3 or voice-speak variant there are further questions to consider"
+                                  " You have to set the voice rate, language and volume for your output. "
+                                  " You will be asked if you want to use the default settings. "
+                                  " Note: When you start the program for the first time, please note to enter your "
+                                  " desired parameters. Otherwise the program will start with the default parameters "
+                                  " set by us. You can change the parameters at any time according to your preferences.",
+                                  "")
+            for value in helper_description:
+                print(value)
             
 get_keyword provides the user input as topics to the PodcastGenerator. Also, the previous class is implemented to this function. 
 This will provide there manual to the user when typing "h" instead of any topic. 
@@ -331,8 +335,12 @@ After the user typed in his keywords, this function will split all inputs with "
 
     @staticmethod
     def get_keyword():
+        """
+        Ask for keywords or helper.
+        :return: List of keywords.
+        """
         keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany) or enter "
-                            "'h' to get an introduction into the program"))
+                            "'h' to get an introduction into the program: "))
         if keyword == "h":
             Helper.print_help()
             keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)"))
@@ -357,9 +365,9 @@ You will also find the questions for reading or saving in MP3 or PDF in this par
 
     @staticmethod
     def ask_parameters():
-       return input(
-         "Would you like to use the default settings (voice rate, language, volume) for the Podcast? (Type 'y' for "
-         "yes or 'n' for no.)")
+        return input(
+            "Would you like to use the default settings (voice rate, language, volume) for the Podcast?"
+            "(Type 'y' for yes or 'n' for no.)")
 
     @staticmethod
     def get_voice_rate():
@@ -379,8 +387,8 @@ You will also find the questions for reading or saving in MP3 or PDF in this par
 
     @staticmethod
     def ask_to_save_parameter():
-        return input(
-            "Do you like to save the parameter you have entered as new standard parameters for the next time? (y/n)")
+        return input("Do you like to save the parameter you have entered as new standard parameters "
+                     "for the next time? (y/n)")
 
     @staticmethod
     def ask_read_or_save():
@@ -395,13 +403,16 @@ You will also find the questions for reading or saving in MP3 or PDF in this par
     @staticmethod
     def ask_name_pdf():
         return input("What name should the pdf-file have? (Please do not type '.pdf' after the name)")
-
 4. <ins>Class: **Converter()**
 - <ins>Task</ins>: Supports the main functions. The Converter class includes the functions to read out the podcast, save it as mp3 and save it as pdf. Also, the class includes the setting of the speed, the rate and the language of the podcast.
 
-With parameter_settings () the user’s information is taken into account in the program. If the user indicates that he does not want to use the preset parameters, the resulting queries are managed here. Several while loops have been coded here to warn the user that the program is unable to process it in the event of an incorrect entry. At this point, however, the user is again asked to enter the information correct
-        
+With parameter_settings () the user's specifications are taken into account in the program. Several while loops are coded here to warn the user if he enters information that is not within the definition range and thus cannot be processed by the program.  At this point, however, the user is prompted again to enter the information correctly. If the user answers whether he wants to use the default settings with "n", he must enter his desired parameters (=rate, volume) in the context of the queries
+
     def parameter_settings(self):
+        """
+        Set the parameters for read or save as mp3
+        :return: Parameters are set
+        """
         while True:
             engine_parameters = Helper.ask_parameters()
             if engine_parameters == "n":
@@ -409,6 +420,9 @@ With parameter_settings () the user’s information is taken into account in the
                 engine.setProperty('rate', self.rate)
                 self.volume = Helper.get_voice_volume()
                 engine.setProperty('volume', self.volume)
+
+After the user has specified the rate and volume, he is asked for the desired language. If the user selects "e" and thus English, he has the option to choose between a female ("f") and male ("m") voice. If, on the other hand, the user selects "g" and thus the German language, a female voice is used by default.
+
                 while True:
                     self.language = Helper.get_voice_language()
                     if self.language == "e":
@@ -428,6 +442,9 @@ With parameter_settings () the user’s information is taken into account in the
                         break
                     else:
                         print(r"Your answer may not comply, please note that you may only press 'g' or 'e'")
+
+As soon as the user has completely answered all the questions about the parameters, the program asks him whether he wants to save them for the next session. If the user chooses "y" and thus to save, the file parameters.pkl is created in the background, which the program then accesses the next time. If, on the other hand, the user chooses "n" and thus does not want to save, the program already begins with the next query.
+
                 while True:
                     engine_save_parameter = Helper.ask_to_save_parameter()
                     if engine_save_parameter == "y":
@@ -445,7 +462,7 @@ With parameter_settings () the user’s information is taken into account in the
                         print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
                 break
 
-However, this definition also takes into account the case when the user wants to work with the preset parameters. Several while loops have been coded here to warn the user that the program is unable to process it in the event of an incorrect entry. At this point, however, the user is again asked to enter the information correct
+If the user decides to use the already entered parameters again and thus types "y", the program will fetch the corresponding parameters from the parameters.pkl file. If the user starts the program for the first time and still selects "y" at this point, the program will run with the parameters we have already preset.
 
             if engine_parameters == "y":
                 # load saved parameters from last session
@@ -474,19 +491,31 @@ However, this definition also takes into account the case when the user wants to
 With speak() the commandline reads out the podcast with the previously set parameters. 
 
     def speak(self, text: str):
+        """
+        Read aloud the cleaned text based on the set parameters
+        :return: Reads cleaned text aloud
+        """
         engine.say(text)
         engine.runAndWait()
 
 The save_as_mp3 function saves the podcast as a mp3 file on the user's disk so that the user can access it offline.
 
-    def save_as_mp3(self, text: str, file_name: str = "podcast.mp3"):
+    def save_as_mp3(self, text: str, file_name: str = "Podcast.mp3"):
+        """
+        Saves the cleaned text as mp3 based on the set parameters.
+        :return: mp3-file
+        """
         text = text.replace(".", ", ")
         engine.save_to_file(text, file_name)
         engine.runAndWait()
 
-The save_as_pdf function saves the podcast as a pdf file, so that the user can access it offline. 
+The save_as_pdf function saves the podcast as a pdf file so that the user can access it offline. To change the pdf the user can set the page orientation, user unit and format within [FPDF](https://pyfpdf.readthedocs.io/en/latest/reference/FPDF/index.html). Furthermore, it is possible to set the bottom page margin using [set_auto_page_break](http://www.fpdf.org/en/doc/setautopagebreak.htm). With [set_font](https://pyfpdf.readthedocs.io/en/latest/reference/set_font/index.html) the font and font size can be set. 
 
     def save_as_pdf(self, text: str, file_name: str = "Podcast.pdf"):
+        """
+        Saves the cleaned text as pdf based on the set parameters.
+        :return: pdf-file
+        """
         text_encoded = text.encode('latin-1', 'replace').decode('latin-1')
         text = text_encoded.replace("?", ".").replace("[", "").replace("]", "").replace("'", "")
 
@@ -505,7 +534,7 @@ The save_as_pdf function saves the podcast as a pdf file, so that the user can a
             pdf.output(file_name, 'F')
 
 
-- Learnings:
+- Learnings: 
 
 ### 5. Achievements
 
@@ -558,6 +587,10 @@ By saving new parameters via input from the user the pkl file gets overwritten a
 Following you will find the whole process based on bpmn notation. 
 Please find notations language details here: https://www.omg.org/spec/BPMN/2.0/
 
+
+The process steps in this project have been illustrated for clarity: 
+-coming soon
+
 ***
 
 ### 7. Outlook 
@@ -570,11 +603,12 @@ There are also some topics we would like to implement in the future:
 
 2. Set options in application 
 - enter save path for the MP3 and PDF file
+
 - enter url to extend the url list
 
 3. Output
 - only show new entries
-- nice formatting inside PDF file 
+- nice formatting inside PDF file e.g. by inserting images or bulleted lists  
 
 4. Design features
 - some more design features like web interface would be great
@@ -584,3 +618,4 @@ There are also some topics we would like to implement in the future:
 ***
 
 ### 8. Reference
+- coming soon
