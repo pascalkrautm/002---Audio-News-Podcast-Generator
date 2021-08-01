@@ -23,7 +23,7 @@ will evaluate for the use case.
 - Marco Alexander Meinhold
 - Eren Ünal
 
-![img.png](docs/Cover page.png)
+![img.png](docs/Cover.png)
 
 ***
 ### Table of Contents
@@ -33,7 +33,8 @@ will evaluate for the use case.
 4. [Modeling](#4-modeling)
 5. [Achievements](#5-achievements)
 6. [Display the Process](#6-display-the-process)
-7. [Outlook/Reference ](#7-outlookreference)
+7. [Outlook](#7-outlook)
+8. [Reference](#8-reference)
 ***
 ### Installation
 
@@ -104,8 +105,8 @@ text file with user-defined tags that describe the document structure and specif
 transported.
 
 <ins>For example, an XML file looks like this:</ins>
-![img_1.png](docs/Example_of_XML-File.png)
-In this example we have the <channel> tag, which contains several sub-elements or tags.
+![img_1.png](docs/Example_of_XML-file.png)
+In this example we have the `<channel>` tag, which contains several sub-elements or tags.
 
 The tags are listed and explained below:
   - title = channel name of the rss feed
@@ -508,18 +509,18 @@ The save_as_pdf function saves the podcast as a pdf file, so that the user can a
 
 ### 5. Achievements
 
-All requierements are fullfilled in first launch. The app can be used and produces output which meet the wished functionality from the task description.
+All requirements are fulfilled in first launch. The app can be used and produces output which meet the wished functionality from the task description.
 Anyway there were a few problems on the way which we had to deal with. 
-All problems with solution you will find below. Maybe they can also be as support for further developement. 
+All problems with solution you will find below. Maybe they can also be as support for further development. 
 
 #### Problems we had to deal with:
 
 - <ins>Helper:</ins><br>
-The goal was to create a user friendly way to use the app. 
+The goal was to create a user-friendly way to use the app. 
 So the first step was to create a process to guide the user through the process. 
 This process has to be that easy, that anybody will be able to use the app without questions by the first run.
 After the process was created we additionally add a helper function to guide the user.
-Its possible to call these function by typing `h` with the first answer the user can provide
+It's possible to call these function by typing `h` with the first answer the user can provide
 
 
 - <ins>Capitalization</ins> <br>
@@ -535,7 +536,7 @@ We had to clean everything except the part we really needed for the speaking, wr
   
 - <ins>Encoding the text:</ins> <br>
 For the proper cleaning the app needs to understand the text that we have transformed from our output. 
-This task is specially necessary in creating the PDF file. Its unpossible to celan up the text without endoing it to latin-8 format. 
+This task is specially necessary in creating the PDF file. It's possible to clean up the text without encoding it to latin-8 format. 
 Only then the package fpdf can deal with the text output 
 
 
@@ -577,7 +578,7 @@ There are also some topics we would like to implement in the future:
 
 4. Design features
 - some more design features like web interface would be great
-- Implement main menue to start with 
+- Implement main menu to start with 
 - use python package to make parts looking better
 
 ***
