@@ -7,8 +7,9 @@ from helper import Helper
 engine = pyttsx3.init()
 
 
-class Converter(object):  # Create class for the Object "Converter"
+class Converter(object):
     def __init__(self, rate: int = 150, volume: int = 100, language: str = "e", gender: str = "m"):
+        """The Converter class is initialized"""
         self.text = ""
         self.rate = rate
         self.volume = volume
@@ -16,6 +17,10 @@ class Converter(object):  # Create class for the Object "Converter"
         self.gender = gender
 
     def parameter_settings(self):
+        """
+        Set the parameters for read or save as mp3
+        :return: Parameters are set
+        """
         while True:
             engine_parameters = Helper.ask_parameters()
             if engine_parameters == "n":
@@ -86,15 +91,27 @@ class Converter(object):  # Create class for the Object "Converter"
                 print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
 
     def speak(self, text: str):
+        """
+        Read aloud the cleaned text based on the set parameters
+        :return: Reads cleaned text aloud
+        """
         engine.say(text)
         engine.runAndWait()
 
-    def save_as_mp3(self, text: str, file_name: str = "podcast.mp3"):
+    def save_as_mp3(self, text: str, file_name: str = "Podcast.mp3"):
+        """
+        Saves the cleaned text as mp3 based on the set parameters.
+        :return: mp3-file
+        """
         text = text.replace(".", ", ")
         engine.save_to_file(text, file_name)
         engine.runAndWait()
 
     def save_as_pdf(self, text: str, file_name: str = "Podcast.pdf"):
+        """
+        Saves the cleaned text as pdf based on the set parameters.
+        :return: pdf-file
+        """
         text_encoded = text.encode('latin-1', 'replace').decode('latin-1')
         text = text_encoded.replace("?", ".").replace("[", "").replace("]", "").replace("'", "")
 

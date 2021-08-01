@@ -6,7 +6,7 @@ import ssl
 
 class PodcastGenerator:
     def __init__(self):
-
+        """The PodcastGenerator class is initialized"""
         self.xml_list = []
         self.article_list = []
         self.feeds = []
@@ -20,8 +20,7 @@ class PodcastGenerator:
     def generate_podcast(self, keywords):
         """
         Generate podcast from current url list.
-        :param keywords: The keywords to filter content for
-        :return:
+        :return: Number of articles that include the keywords.
         """
         self.number_of_posts = 0
         self.keywords = keywords
@@ -31,6 +30,10 @@ class PodcastGenerator:
         return self.number_of_posts > 0
 
     def get_feed_data(self):
+        """
+        Create a List with all articles that include the keywords.
+        :return: List with all article that include the keywords
+        """
         ssl._create_default_https_context = ssl._create_unverified_context
         ticks = len(self.url_list)
         with tqdm(total=ticks, leave=False) as progress_bar:
@@ -40,8 +43,6 @@ class PodcastGenerator:
             # rss_feed_scrapper
             for url in self.url_list:
                 feed = feedparser.parse(str(url))
-                # delete entries_len not in use?
-                len(feed.entries)
 
                 for entry in feed.entries:
                     for keyword in self.keywords:
@@ -62,24 +63,12 @@ class PodcastGenerator:
             progress_bar.update(ticks)
             print("Scraping done! Process finished: 100%")
 
-    def clean_data(self, save_to_disc: bool = False):
+    def clean_data(self):
         """
         Cleans feed data for reading.
-        :param save_to_disc: (optional) Set to True to save file to disk, otherwise False.
         :return: the cleaned text, ready for reading
         """
         feeds_clean = str(self.feeds)
-        feeds_clean = feeds_clean.replace("</p>'", " ").replace("<p>", ".").replace("<h1>", " ").replace("</h1>",
-                                                                                                         " ").replace(
-            "</p>", " ").replace("<hr />.", " ")
-        # print(feeds_clean)
-
-        if save_to_disc:
-            file = open(r'podcast.txt', 'w', encoding='utf-8')
-            file.write(feeds_clean)
-            file.close()
-
+        feeds_clean = feeds_clean.replace("</p>'", " ").replace("<p>", ".").replace("<h1>", " ").replace("</h1>", " ")\
+            .replace("</p>", " ").replace("<hr />.", " ")
         return feeds_clean
-
-    def read_podcast(self):
-        pass

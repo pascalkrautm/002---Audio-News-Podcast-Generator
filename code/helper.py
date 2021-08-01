@@ -1,6 +1,6 @@
 class Helper:
     def __init__(self):
-        """The helper class is initialized"""
+        """The Helper class is initialized"""
 
     @staticmethod
     def print_help():
@@ -26,8 +26,12 @@ class Helper:
 
     @staticmethod
     def get_keyword():
+        """
+        Ask for keywords or helper.
+        :return: List of keywords.
+        """
         keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany) or enter "
-                            "'h' to get an introduction into the program"))
+                            "'h' to get an introduction into the program: "))
         if keyword == "h":
             Helper.print_help()
             keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)"))
@@ -79,6 +83,3 @@ class Helper:
     @staticmethod
     def ask_name_pdf():
         return input("What name should the pdf-file have? (Please do not type '.pdf' after the name)")
-
-# help(Helper)
-# help(Helper.print_help)
