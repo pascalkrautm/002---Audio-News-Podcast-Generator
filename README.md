@@ -125,7 +125,7 @@ The tags are listed and explained below:
     - guid = a string that uniquely identifies the item
     
 As part of the scraper, the desired tags are given as arguments, so that only the text behind the respective tag is 
-filtered out of the XML file. For more detailed information see chapter 4.
+filtered out of the XML file. See here: [get_feed_data](#4-modeling).
 #### Used Python Packages:
 The used packages are all already listed in the requirements and only need to be installed. For ease of reference, however, these are listed separately and briefly explained in the following. If you click on the respective package, you will be automatically redirected to the documentation of the respective package. 
 
