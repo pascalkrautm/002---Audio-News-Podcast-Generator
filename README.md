@@ -63,8 +63,7 @@ information while the podcast is in generation. As result the user has different
 3. Save as PDF
 Note: The audio file should be created in the current folder.
 
-To achieve this task, we proceed according to The Team Data Science Process (TDSP). This is a standardized process model
-for analytics projects. Each solution section follows the process steps of the TDSP.
+To achieve this task, we proceed according to the idea of the Team Data Science Process (TDSP). This is a standardized process model for analysis projects. Since we cannot comply with all components of the TDSP within the scope of our analysis project, such as deployment or acceptance, we have only oriented ourselves to the TDSP. 
 
 ***
 
