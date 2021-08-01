@@ -23,7 +23,7 @@ will evaluate for the use case.
 - Marco Alexander Meinhold
 - Eren Ünal
 
-![img.png](docs/Cover.png)
+![Cover.png](docs/Cover.png)
 
 ***
 ### Table of Contents
@@ -63,7 +63,7 @@ information while the podcast is in generation. As result the user has different
 3. Save as PDF
 Note: The audio file should be created in the current folder.
 
-To achieve this task, we proceed according to the idea of the Team Data Science Process (TDSP). This is a standardized process model for analysis projects. Since we cannot comply with all components of the TDSP within the scope of our analysis project, such as deployment or acceptance, we have only oriented ourselves to the TDSP. 
+To achieve this task, we proceed according to the idea of the Team Data Science Process ([TDSP](https://docs.microsoft.com/en-us/azure/architecture/data-science-process/overview)). This is a standardized process model for analysis projects. Since we cannot comply with all components of the TDSP within the scope of our analysis project, such as deployment or acceptance, we have only oriented ourselves to the TDSP. 
 
 ***
 
@@ -104,7 +104,7 @@ text file with user-defined tags that describe the document structure and specif
 transported.
 
 <ins>For example, an XML file looks like this:</ins>
-![img_1.png](docs/Example_of_XML-file.png)
+![XML-file.png](docs/Example_of_XML-file.png)
 In this example we have the `<channel>` tag, which contains several sub-elements or tags.
 
 The tags are listed and explained below:
@@ -591,7 +591,9 @@ Please find notations language details here: https://www.omg.org/spec/BPMN/2.0/
 
 
 The process steps in this project have been illustrated for clarity: 
--coming soon
+
+![Project_Process.png](docs/Project_Process_Overview.png)
+
 
 ***
 
