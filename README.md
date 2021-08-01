@@ -64,6 +64,7 @@ Note: The audio file should be created in the current folder.
 
 To achieve this task, we proceed according to The Team Data Science Process (TDSP). This is a standardized process model
 for analytics projects. Each solution section follows the process steps of the TDSP.
+
 ***
 
 ### 2. Business Understanding
@@ -74,6 +75,8 @@ So, the **goal of the task** was to create a user-friendly tool for automatic po
 for their topic preferences and generates the latest news. These news items are then read aloud by the tool. In the
 process, the user can set the volume, speed and language of the podcast according to his preferences. The generated
 podcast can be saved according to the user's preferences to an MP3 file or as PDF document. 
+
+***
 
 ### 3. Data Acquisition and Understanding
 
