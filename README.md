@@ -588,7 +588,7 @@ By saving new parameters via input from the user the pkl file gets overwritten a
 ### 6. Display the Process
 Following you will find the whole process based on bpmn notation. 
 Please find notations language details here: https://www.omg.org/spec/BPMN/2.0/
-
+![img.png](docs/User_process.png)
 
 The process steps in this project have been illustrated for clarity: 
 
