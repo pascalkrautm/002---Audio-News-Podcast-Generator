@@ -403,7 +403,7 @@ You will also find the questions for reading or saving in MP3 or PDF in this par
     def ask_name_pdf():
         return input("What name should the pdf-file have? (Please do not type '.pdf' after the name)")
 4. <ins>Class: **Converter()**
-- <ins>Task</ins>: Supports the main functions. The Converter class includes the functions to read out the podcast, save it as mp3 and save it as pdf. Also, the class includes the setting of the speed, the rate and the language of the podcast.
+- <ins>Task</ins>: Supports the main functions. The Converter class includes the functions to read out the podcast, save it as mp3 and save it as pdf. Also, the class includes the setting of the rate, the volume and the voice of the podcast.
 
 With parameter_settings () the user's specifications are taken into account in the program. Several while loops are coded here to warn the user if he enters information that is not within the definition range and thus cannot be processed by the program.  At this point, however, the user is prompted again to enter the information correctly. If the user answers whether he wants to use the default settings with "n", he must enter his desired parameters (=rate, volume) in the context of the queries
 
@@ -535,6 +535,8 @@ The save_as_pdf function saves the podcast as a pdf file so that the user can ac
 
 - Learnings: 
 
+***
+
 ### 5. Achievements
 
 All requirements are fulfilled in first launch. The app can be used and produces output which meet the wished functionality from the task description.
@@ -568,11 +570,11 @@ This task is specially necessary in creating the PDF file. It's possible to clea
 Only then the package fpdf can deal with the text output 
 
 
-- <ins>creating MP3 file</ins> <br>
+- <ins>Creating MP3 file</ins> <br>
 While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely.
 
 
-- <ins>creating pdf file:</ins> <br>
+- <ins>Creating pdf file:</ins> <br>
 It is problematic to save the text as utf-8, because it contains special characters that can only be captured by latin-1 (uses the fpdf package). So text has to be encoded in latin-q beforehand. Another problem was that when the pdf file was created, a paragraph was made for each letter in the pdf file. We solved the problem by splitting the feed entries beforehand with `('\n')` and then using a for loop to apply the module [textwrap.wrap](https://docs.python.org/3/library/textwrap.html) to all entries.
 clean data
 
@@ -586,7 +588,7 @@ By saving new parameters via input from the user the pkl file gets overwritten a
 ***
 
 ### 6. Display the Process
-Following you will find the whole process based on bpmn notation. 
+The following shows the whole process based on bpmn notation. 
 Please find notations language details here: https://www.omg.org/spec/BPMN/2.0/
 ![img.png](docs/User_process.png)
 
@@ -604,6 +606,7 @@ There are also some topics we would like to implement in the future:
 - check for synonyms for the user input
 - Make recommendations for keywords to search for 
 - Possibility to look for given topics 
+- Possibility to select more languages
 
 2. <ins>Set options in application</ins> 
 - enter save path for the MP3 and PDF file
