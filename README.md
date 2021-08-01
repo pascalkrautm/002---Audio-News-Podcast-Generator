@@ -54,10 +54,8 @@ user-editable list of news sources to be investigated. The primary news source s
 additional sources are also welcome. The configuration file should contain a list of at least 30 RSS feeds from popular
 news sources like CNN, NYT, FoxNews, Spiegel an others. The command line tool takes a list of comma separated keywords
 or phrases arguments to used (like **Corona**; **Football**) to generate and filter the podcast. It also requires a help function to assist the user in
-using the tool by entering
-Do we have the help option and is it working as follows?
-**'podgen.py /help'** or ** 'podgen.py /h'** on Windows or respective
-**'podgen.py --help'** or  ** 'podgen.py --h'** on MAc/Unix. The commandline tool displays progress and status
+using the tool. 
+The commandline tool displays progress and status
 information while the podcast is in generation. As result the user has different options to get the output. 
 1. Read it directly with given parameters
 2. Save as MP3
@@ -75,7 +73,7 @@ enters his interests. The podcast plays the latest interesting news for the user
 So, the **goal of the task** was to create a user-friendly tool for automatic podcast generation. The tool asks the user
 for their topic preferences and generates the latest news. These news items are then read aloud by the tool. In the
 process, the user can set the volume, speed and language of the podcast according to his preferences. The generated
-podcast can be saved according to the user's preferences to an MP§ file or as PDF document. 
+podcast can be saved according to the user's preferences to an MP3 file or as PDF document. 
 
 ### 3. Data Acquisition and Understanding
 
@@ -160,8 +158,6 @@ Compared with other PDF libraries, PyFPDF is simple, small and versatile, with a
 [tqdm](https://pypi.org/project/tqdm/)
 - Instantly make your loops show a smart progress meter - just wrap any iterable with tqdm(iterable), and you’re done!
 
-
-- Implementation is.#What do we want to say here?
 ***
 
 ### 4. Modeling
@@ -521,7 +517,12 @@ So we implement the transformation of every word in small letters. For the PDF f
 Also, the cleaning part for the speaking was a big problem we had to deal with. Code loaded directly from rss page is full of tags and special characters, also called noise.
 We had to clean everything except the part we really needed for the speaking, writing or MP3 output. 
 
+***
 
+### 6. Display the Process
+-Coming soon
+***
+### 7. Outlook/Reference 
 There are also some topics we would like to implement in the future: 
 
 1. User input
@@ -536,10 +537,3 @@ There are also some topics we would like to implement in the future:
 3. Output
 - only show new entries
 - nice formatting inside PDF file 
-***
-
-### 6. Display the Process
--Coming soon
-***
-### 7. Outlook/Reference 
-- Coming soon
