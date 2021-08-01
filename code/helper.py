@@ -67,8 +67,8 @@ class Helper:
 
     @staticmethod
     def ask_to_save_parameter():
-        return input(
-            "Do you like to save the parameter you have entered as new standard parameters for the next time? (y/n)")
+        return input("Do you like to save the parameter you have entered as new standard parameters "
+                     "for the next time? (y/n)")
 
     @staticmethod
     def ask_read_or_save():
