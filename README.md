@@ -505,9 +505,11 @@ The save_as_pdf function saves the podcast as a pdf file, so that the user can a
 
 ### 5. Achievements
 
-- Summary, if the target have been archived
+All requierements are fullfilled in first launch. The app can be used and produces output which meet the wished functionality from the task description.
+Anyway there were a few problems on the way which we had to deal with. 
+All problems with solution you will find below. Maybe they can also be as support for further developement. 
 
-#### What are the optimization potentials of the program? What were problems?
+#### Problems we had to deal with:
 One big problem was the letter structure of the user input. "Corona" should be the same as "corona".
 Actually these words are not the same while working with python. 
 So we implement the transformation of every word in small letters. For the PDF file we had to use another output because for reading it is necessary to get capital letters also. 
