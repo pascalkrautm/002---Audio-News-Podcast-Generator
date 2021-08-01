@@ -467,7 +467,7 @@ However, this definition also takes into account the case when the user wants to
             else:
                 print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
 
-With speak() the commandline reads out the podcast with the previously set parameters.  
+With speak() the commandline reads out the podcast with the previously set parameters. 
 
     def speak(self, text: str):
         engine.say(text)
@@ -510,24 +510,47 @@ Anyway there were a few problems on the way which we had to deal with.
 All problems with solution you will find below. Maybe they can also be as support for further developement. 
 
 #### Problems we had to deal with:
+
+- The goal was to create a user friendly way to use the app. 
+So the first step was to create a process to guide the user through the process. 
+This process has to be that easy, that anybody will be able to use the app without questions by the first run.
+After the process was created we additionally add a helper function to guide the user.
+Its possible to call these function by typing 'h' with the first answer the user can provide
+
+- capitalization
 One big problem was the letter structure of the user input. "Corona" should be the same as "corona".
 Actually these words are not the same while working with python. 
 So we implement the transformation of every word in small letters. For the PDF file we had to use another output because for reading it is necessary to get capital letters also. 
 
+- cleaning up the output
 Also, the cleaning part for the speaking was a big problem we had to deal with. Code loaded directly from rss page is full of tags and special characters, also called noise.
 We had to clean everything except the part we really needed for the speaking, writing or MP3 output. 
 
-_Problem:_  While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely.
-_Problem:_ It is problematic to save the text as utf-8, because it contains special characters that can only be captured by latin-1 (uses the fpdf package). So text has to be encoded in latin-q beforehand. Another problem was that when the pdf file was created, a paragraph was made for each letter in the pdf file. We solved the problem by splitting the feed entries beforehand with `('\n')` and then using a for loop to apply the module [textwrap.wrap](https://docs.python.org/3/library/textwrap.html) to all entries.
-_Problem:_ clean data -> UTF-8, deepen!
+- Encoding the text
+For the proper cleaning the app needs to understand the text that we have transformed from our output. 
+This task is specially necessary in creating the PDF file. Its unpossible to celan up the text without endoing it to latin-8 format. 
+Only then the package fpdf can deal with the text output 
 
-Explain the problematic with the pkl-file #please complete 
+- creating MP3 file
+While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely.
+It is problematic to save the text as utf-8, because it contains special characters that can only be captured by latin-1 (uses the fpdf package). So text has to be encoded in latin-q beforehand. Another problem was that when the pdf file was created, a paragraph was made for each letter in the pdf file. We solved the problem by splitting the feed entries beforehand with `('\n')` and then using a for loop to apply the module [textwrap.wrap](https://docs.python.org/3/library/textwrap.html) to all entries.
+clean data -> UTF-8, deepen!
+
+- pkl file
+When the app runs the first time it asks for the default parameters to use. 
+But in first run there is no pkl to load the parameters from. As a solution the default parameters get saved in a pkl by answering this question the first time. 
+For the second run the pkl file can be loaded by answering for the default parameters.
+By saving new parameters via input from the user the pkl file gets overwritten and saved as default parameters for the next run. 
+
 
 ***
 
 ### 6. Display the Process
--Coming soon
-***
+Following you will find the whole process based on bpmn notation. 
+Please find notations language details here: https://www.omg.org/spec/BPMN/2.0/
+
+
+
 ### 7. Outlook/Reference 
 There are also some topics we would like to implement in the future: 
 
@@ -543,3 +566,8 @@ There are also some topics we would like to implement in the future:
 3. Output
 - only show new entries
 - nice formatting inside PDF file 
+
+4. Design features
+- some more design features like web interface would be great
+- Implement main menue to start with 
+- use python package to make parts looking better 
