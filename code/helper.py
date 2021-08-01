@@ -42,7 +42,7 @@ class Helper:
     @staticmethod
     def ask_parameters():
         return input(
-            "Would you like to use the saved settings (voice rate, language, volume) for the Podcast?"
+            "Would you like to use the default settings (voice rate, language, volume) for the Podcast?"
             "(Type 'y' for yes or 'n' for no.)")
 
     @staticmethod

@@ -59,25 +59,28 @@ class Converter(object):  # Create class for the Object "Converter"
                         print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
                 break
             if engine_parameters == "y":
-                # load saved parameters from last session
-                open_file = open("parameters.pkl", "rb")
-                parameter_list = pickle.load(open_file)
-                open_file.close()
-                voice_rate_default = parameter_list[0]
-                voice_volume_default = parameter_list[1]
-                voice_language_default = parameter_list[2]
-                voice_gender_default = parameter_list[3]
-                engine.setProperty('rate', voice_rate_default)
-                engine.setProperty('volume', voice_volume_default)
-                if voice_language_default == "e":
-                    if voice_gender_default == "m":
-                        engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
-                    if voice_gender_default == "f":
-                        engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
-                if self.language == "g":
-                    engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
-
-                engine.setProperty('language', voice_language_default)
+                try:
+                    # load saved parameters from last session
+                    open_file = open("parameters.pkl", "rb")
+                    parameter_list = pickle.load(open_file)
+                    open_file.close()
+                    voice_rate_default = parameter_list[0]
+                    voice_volume_default = parameter_list[1]
+                    voice_language_default = parameter_list[2]
+                    voice_gender_default = parameter_list[3]
+                    engine.setProperty('rate', voice_rate_default)
+                    engine.setProperty('volume', voice_volume_default)
+                    if voice_language_default == "e":
+                        if voice_gender_default == "m":
+                            engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
+                        if voice_gender_default == "f":
+                            engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
+                    if self.language == "g":
+                        engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
+                except IOError:
+                    engine.setProperty('rate', 200)
+                    engine.setProperty('volume', 1.0)
+                    engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
                 break
             else:
                 print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
