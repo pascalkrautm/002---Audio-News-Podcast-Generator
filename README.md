@@ -67,6 +67,12 @@ To achieve this task, we proceed according to the idea of the Team Data Science 
 
 ***
 
+####Working Process 
+
+The process steps in this project have been illustrated for clarity: 
+
+![Project_Process.png](docs/Project_Process_Overview.png)
+
 ### 2. Business Understanding
 In the course of the task, a command line tool was created that automatically generates a podcast for the user after he
 enters his interests. The podcast plays the latest interesting news for the user.
@@ -588,7 +594,8 @@ By saving new parameters via input from the user the pkl file gets overwritten a
 ***
 
 ### 6. Display the Process
-The following shows the whole process based on bpmn notation. 
+The following shows the whole process of the app based on bpmn notation. 
+This illustrates the user's way through the communication.
 Please find notations language details here: https://www.omg.org/spec/BPMN/2.0/
 ![img.png](docs/User_process.png)
 
