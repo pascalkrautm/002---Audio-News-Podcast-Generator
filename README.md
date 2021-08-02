@@ -582,7 +582,14 @@ While creating the mp3 file, the problem appeared that the mp3 was stopped after
 
 - <ins>Creating pdf file:</ins> <br>
 It is problematic to save the text as utf-8, because it contains special characters that can only be captured by latin-1 (uses the fpdf package). So text has to be encoded in latin-q beforehand. Another problem was that when the pdf file was created, a paragraph was made for each letter in the pdf file. We solved the problem by splitting the feed entries beforehand with `('\n')` and then using a for loop to apply the module [textwrap.wrap](https://docs.python.org/3/library/textwrap.html) to all entries.
-clean data
+In the following you can see the process of creating the pdf:
+  - Step 1: [test1.pdf](docs/test1.pdf)
+    - Problem: In the first attempt, only one letter was displayed in each line. 
+  - Step 2: [test2.pdf](docs/test2.pdf)
+    - Problem: Since the text was a list, some special characters were displayed that disturbed reading.
+  - Final step: [testfinal.pdf](docs/testfinal.pdf)
+    - Problem: Still not perfect, but the pdf is pleasant to read. For potential improvements, see Outlook. 
+  
 
 
 - <ins>pkl file:</ins> <br>
