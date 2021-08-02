@@ -614,6 +614,7 @@ There are also some topics we would like to implement in the future:
 - Make recommendations for keywords to search for 
 - Possibility to look for given topics 
 - Possibility to select more languages
+- In addition to Rss feeds also consider Atom feeds 
 
 2. <ins>Set options in application</ins> 
 - enter save path for the MP3 and PDF file
