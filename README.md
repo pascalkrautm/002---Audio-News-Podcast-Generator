@@ -73,6 +73,9 @@ The process steps in this project have been illustrated for clarity:
 
 ![Project_Process.png](docs/Project_Process_Overview.png)
 
+You will find all necessary info in this readme. Please see that first you have to clone the repository to use the app. 
+
+
 ### 2. Business Understanding
 In the course of the task, a command line tool was created that automatically generates a podcast for the user after he
 enters his interests. The podcast plays the latest interesting news for the user.
@@ -539,7 +542,6 @@ The save_as_pdf function saves the podcast as a pdf file so that the user can ac
             pdf.output(file_name, 'F')
 
 
-- Learnings: 
 
 ***
 
@@ -597,12 +599,10 @@ By saving new parameters via input from the user the pkl file gets overwritten a
 The following shows the whole process of the app based on bpmn notation. 
 This illustrates the user's way through the communication.
 Please find notations language details here: https://www.omg.org/spec/BPMN/2.0/
+
 ![img.png](docs/User_process.png)
 
-The process steps in this project have been illustrated for clarity: 
-
-![Project_Process.png](docs/Project_Process_Overview.png)
-
+Please find all steps detailed in the class description. 
 
 ***
 
