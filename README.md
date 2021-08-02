@@ -573,9 +573,7 @@ We had to clean everything except the part we really needed for the speaking, wr
 
   
 - <ins>Encoding the text:</ins> <br>
-For the proper cleaning the app needs to understand the text that we have transformed from our output. 
-This task is specially necessary in creating the PDF file. It's possible to clean up the text without encoding it to latin-8 format. 
-Only then the package fpdf can deal with the text output 
+For the proper cleaning the app needs to understand the text that we have transformed from our output. This task is specially necessary in creating the PDF file. It's possible to clean up the text with encoding it to latin-8 format. Only then the package fpdf can deal with the text output.
 
 
 - <ins>Creating MP3 file</ins> <br>
