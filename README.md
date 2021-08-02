@@ -596,7 +596,7 @@ By saving new parameters via input from the user the pkl file gets overwritten a
 ***
 
 ### 6. Display the Process
-The following shows the whole process of the app based on bpmn notation. 
+In the following, the entire process is presented from the point of view of the user of the application using the bpmn notation. 
 This illustrates the user's way through the communication.
 Please find notations language details here: https://www.omg.org/spec/BPMN/2.0/
 
