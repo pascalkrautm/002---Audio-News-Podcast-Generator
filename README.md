@@ -352,11 +352,11 @@ After the user typed in his keywords, this function will split all inputs with "
         if keyword == "h":
             Helper.print_help()
             keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)"))
-            keywords = keyword.lower().split(",")
+            keywords = keyword.lower().replace(" ","").split(",")
             print(f"Given topics are {keywords}")
             return keywords
         else:
-            keywords = keyword.lower().split(",")
+            keywords = keyword.lower().replace(" ","").split(",")
             print(f"Given topics are {keywords}")
             return keywords
 
@@ -559,6 +559,11 @@ So the first step was to create a process to guide the user through the process.
 This process has to be that easy, that anybody will be able to use the app without questions by the first run.
 After the process was created we additionally add a helper function to guide the user.
 It's possible to call these function by typing `h` with the first answer the user can provide
+
+
+- <ins>" " in Userinput:</ins><br>
+The app should only search for the word in userinput. First it takes every character like also empty spaces. 
+As Result words have to have a space before they start when the user types a space in. The userinput was cleaned from noise such as spaces to get the word only.
 
 
 - <ins>Capitalization</ins> <br>
