@@ -41,7 +41,7 @@ def main():
                     else:
                         print(r"Your answer may not comply, please note that you may only press 'r', 'm' or 'p'.")
             else:
-                print(f"No podcast with Keyword {keywords} found.")
+                print(f"No podcast with Keyword {keywords} found. Please rerun the app")
             break
         except AttributeError:
             print("Ups an error has occurred. Please try another keyword.")
