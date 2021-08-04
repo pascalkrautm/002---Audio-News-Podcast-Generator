@@ -35,11 +35,11 @@ class Helper:
         if keyword == "h":
             Helper.print_help()
             keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)"))
-            keywords = keyword.lower().replace(" ","").split(",")
+            keywords = keyword.lower().replace(" ", "").split(",")
             print(f"Given topics are {keywords}")
             return keywords
         else:
-            keywords = keyword.lower().replace(" ","").split(",")
+            keywords = keyword.lower().replace(" ", "").split(",")
             print(f"Given topics are {keywords}")
             return keywords
 
