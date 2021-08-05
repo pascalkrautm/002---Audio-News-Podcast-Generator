@@ -6,7 +6,6 @@ The following Markdown code would create a valid output. Only Pascal Krautmacher
 will evaluate for the use case.
 
 <a href="https://github.com/pascalkrautm/002---Audio-News-Podcast-Generator"><img src="https://img.shields.io/github/issues/pascalkrautm/002---Audio-News-Podcast-Generator" alt="Foo - Bar"></a>
-<a href="https://github.com/pascalkrautm/002---Audio-News-Podcast-Generator"><img src="https://img.shields.io/github/license/pascalkrautm/002---Audio-News-Podcast-Generator" alt="Foo - Bar"></a>
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 <a href="https://github.com/pascalkrautm/002---Audio-News-Podcast-Generator"><img src="https://img.shields.io/badge/python-3.9-blue" alt="Foo - Bar"></a>
 <a href="https://github.com/pascalkrautm/002---Audio-News-Podcast-Generator"><img src="https://img.shields.io/badge/constributers-3-green" alt="Foo - Bar"></a>
@@ -14,6 +13,7 @@ will evaluate for the use case.
 # 002---Audio-News-Podcast-Generator
 
 **002 - Audio News Podcast Generator, MBA HSD SS21**
+[![RSS - Podgen](https://img.shields.io/static/v1?label=RSS&message=Podgen&color=%23FFA500&logo=RSS&logoColor=%23FFA500)](https://)
 
 **Summary**: Automated generation of a podcast from relevant news available on the internet.
 
