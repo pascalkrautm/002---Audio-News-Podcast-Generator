@@ -77,15 +77,18 @@ class Converter(object):
                     engine.setProperty('volume', voice_volume_default)
                     if voice_language_default == "e":
                         if voice_gender_default == "m":
-                            engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
+                            engine.setProperty('voice', "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_DAVID_11.0")
+                            #engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
                         if voice_gender_default == "f":
-                            engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
+                            engine.setProperty('voice', "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-GB_HAZEL_11.0")
+                            #engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
                     if self.language == "g":
-                        engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
+                        engine.setProperty('voice', "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0")
+                        #engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
                 except IOError:
-                    engine.setProperty('rate', 150)
+                    engine.setProperty('rate', 200)
                     engine.setProperty('volume', 1.0)
-                    engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
+                    engine.setProperty('voice', "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_DAVID_11.0")
                 break
             else:
                 print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
