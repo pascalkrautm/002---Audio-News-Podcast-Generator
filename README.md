@@ -638,12 +638,6 @@ problems with solution you will find below. Maybe they can also be as support fo
   for the speaking, writing or MP3 output.
 
 
-- <ins>Encoding the text:</ins> <br>
-  For the proper cleaning the app needs to understand the text that we have transformed from our output. This task is
-  specially necessary in creating the PDF file. It's possible to clean up the text with encoding it to latin-8 format.
-  Only then the package fpdf can deal with the text output.
-
-
 - <ins>Creating MP3 file</ins> <br>
   While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by
   replacing all the dots with commas.This still leaves a pause when speaking and the text is read aloud completely.
