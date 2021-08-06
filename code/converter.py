@@ -83,7 +83,7 @@ class Converter(object):
                     if self.language == "g":
                         engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
                 except IOError:
-                    engine.setProperty('rate', 200)
+                    engine.setProperty('rate', 150)
                     engine.setProperty('volume', 1.0)
                     engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
                 break
