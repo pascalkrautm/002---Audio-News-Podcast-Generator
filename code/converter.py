@@ -85,7 +85,7 @@ class Converter(object):
                 except IOError:
                     engine.setProperty('rate', 200)
                     engine.setProperty('volume', 1.0)
-                    engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
+                    engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
                 break
             else:
                 print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
