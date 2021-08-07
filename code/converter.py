@@ -79,15 +79,15 @@ class Converter(object):
                     engine.setProperty('volume', voice_volume_default)
                     if voice_language_default == "e":
                         if voice_gender_default == "m":
-                            engine.setProperty('voice', voices[2].id)
+                            engine.setProperty('voice', voices[0].id)
                         if voice_gender_default == "f":
-                            engine.setProperty('voice', voices[1].id)
+                            engine.setProperty('voice', voices[10].id)
                     if self.language == "g":
-                        engine.setProperty('voice', "de+f1")
+                        engine.setProperty('voice', voices[4].id)
                 except IOError:
                     engine.setProperty('rate', 150)
                     engine.setProperty('volume', 1.0)
-                    engine.setProperty('voice', voices[1].id)
+                    engine.setProperty('voice', voices[0].id)
                 break
             else:
                 print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
