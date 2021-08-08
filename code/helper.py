@@ -7,17 +7,18 @@ class Helper:
         """Returns the help description"""
         helper_description = ("",
                               "To generate the RSS feed, you need to answer several questions."
-                              "Below are these questions with their purpose for clarification and understanding:",
-                              "-In the first step you need to enter your desired topics so that the present program"
-                              " can search the Internet according to your entered interests.",
-                              "-You will then be asked whether you want the news to be generated as a pdf, MP3 or"
-                              " voice-speak. If you choose the pdf or MP3 variant, please note that the result will"
-                              " be saved in the 'data' folder. If you decide for PDF, there is nothing more to do, "
+                              "Below, you can find these questions including their purpose for clarification and "
+                              "understanding:",
+                              "-In the first step, you need to enter your desired topics so that the current program"
+                              " can search the internet according to your entered interests.",
+                              "-You will then be asked whether you want the news to be generated as a pdf, an mp3 or"
+                              " voice-speak. If you choose the pdf or mp3 option, please note that the result will"
+                              " be saved in the 'data' folder. If you decide for pdf, there is nothing more to do, "
                               " accept entering the name you wish for you file. ",
-                              "-If you use the MP3 or voice-speak variant there are further questions to consider"
+                              "-If you use the mp3 or voice-speak option there are further questions to consider."
                               " You have to set the voice rate, language and volume for your output. "
                               " You will be asked if you want to use the default settings. "
-                              " Note: When you start the program for the first time, please note to enter your "
+                              " Note: When you start the program for the first time, please enter your "
                               " desired parameters. Otherwise the program will start with the default parameters "
                               " set by us. You can change the parameters at any time according to your preferences.",
                               "")
