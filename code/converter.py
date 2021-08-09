@@ -35,16 +35,16 @@ class Converter(object):
                         while True:
                             self.gender = Helper.get_voice_gender()
                             if self.gender == "m":
-                                engine.setProperty('voice', voices[2].id)
+                                engine.setProperty('voice', voices[0].id)
                                 break
                             if self.gender == "f":
-                                engine.setProperty('voice', voices[1].id)
+                                engine.setProperty('voice', voices[10].id)
                                 break
                             else:
                                 print(r"Your answer may not comply, please note that you may only press 'm' or 'f'")
                         break
                     if self.language == "g":
-                        engine.setProperty('voice', voices[0].id)
+                        engine.setProperty('voice', voices[4].id)
                         break
                     else:
                         print(r"Your answer may not comply, please note that you may only press 'g' or 'e'")
@@ -85,7 +85,7 @@ class Converter(object):
                     if self.language == "g":
                         engine.setProperty('voice', voices[4].id)
                 except IOError:
-                    engine.setProperty('rate', 150)
+                    engine.setProperty('rate', 200)
                     engine.setProperty('volume', 1.0)
                     engine.setProperty('voice', voices[0].id)
                 break
