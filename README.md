@@ -70,10 +70,10 @@ Running the application:
 
 
 - Start the console on your computer and go to the path of installation 
-- Type in python main.py
+- Type in python podgen.py
 - Maybe there are packages not yet installed (error: package XY not found)
 - install necessary packages via pip install XY
-- run main again
+- run podgen again
 
 
 ![img.png](docs/img.png)
@@ -225,7 +225,7 @@ respective package, you will automatically be redirected to the documentation of
 
 ### 5. Modeling
 
-By executing the [main file](code/podgen.py), you can start with the podcast generator. Nevertheless, in the following
+By executing the podgen.py, you can start with the podcast generator. Nevertheless, in the following
 all, classes are briefly listed and the essential explanation aspects are highlighted:
 
 <ins>1. Class: **Main()**
@@ -638,6 +638,11 @@ with. You will find all problems with the respective solutions below. Eventually
 further development.
 
 #### Problems we had to deal with:
+
+- <ins>Getting the right data while scrapping</ins><br>
+  Different RSS feeds, different tags and name. Not all RSS feeds looks the same. So ist was a challenge to get an universal scraper, 
+  that gets the right data. In the end we have challenged it.
+
 
 - <ins>Helper:</ins><br>
   The goal was to create a user-friendly way to use the app. Therefore, the first step was to create a process to guide
