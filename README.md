@@ -225,7 +225,7 @@ respective package, you will automatically be redirected to the documentation of
 
 ### 5. Modeling
 
-By executing the [main file](code/main.py), you can start with the podcast generator. Nevertheless, in the following
+By executing the [main file](code/podgen.py), you can start with the podcast generator. Nevertheless, in the following
 all, classes are briefly listed and the essential explanation aspects are highlighted:
 
 <ins>1. Class: **Main()**
