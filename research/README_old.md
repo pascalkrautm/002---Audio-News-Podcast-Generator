@@ -34,7 +34,7 @@ will evaluate for the use case.
 -Start date: 30.04.2021
 -End date: 13.08.2021
 
-![Cover.png](docs/Cover.png)
+![Cover.png](../docs/Cover.png)
 
 ***
 
@@ -89,7 +89,7 @@ scope of our analysis project, such as deployment or acceptance, we have only or
 
 The process steps in this project have been illustrated for clarity:
 
-![Project_Process.png](docs/Project_Process_Overview.png)
+![Project_Process.png](../docs/Project_Process_Overview.png)
 
 You will find all necessary info in this readme. Please see that first you have to clone the repository to use the app.
 
@@ -131,7 +131,7 @@ file with user-defined tags that describe the document structure and specify how
 transported.
 
 <ins>For example, an XML file looks like this:</ins>
-![XML-file.png](docs/Example_of_XML-file.png)
+![XML-file.png](../docs/Example_of_XML-file.png)
 In this example we have the `<channel>` tag, which contains several sub-elements or tags.
 
 The tags are listed and explained below:
@@ -162,7 +162,7 @@ The used packages are all already listed in the requirements and only need to be
 however, these are listed separately and briefly explained in the following. If you click on the respective package, you
 will be automatically redirected to the documentation of the respective package.
 
-See: [requirements](code/requirements.txt)
+See: [requirements](../code/requirements.txt)
 
 [pyttsx3](https://pypi.org/project/pyttsx3/)
 
@@ -207,7 +207,7 @@ See: [requirements](code/requirements.txt)
 
 ### 4. Modeling
 
-By executing the [main](code/main.py) you can start with the podcast generator. Nevertheless, in the following all
+By executing the [main](../code/podgen.py) you can start with the podcast generator. Nevertheless, in the following all
 classes are briefly listed and the essential explanation aspects are highlighted
 
 <ins>1. Class: **Main()**
@@ -289,7 +289,7 @@ at this point. In case errors occur that we have not yet detected, we have writt
 
 The generator first divides the URL list into different sources of RSS feeds. Our URL list includes well-known
 newsletters such as BBC, Skynews, Yahoo, CNN, NYT, FoxNews and others. The list can be found
-here: [url_list](code/url_list.txt)
+here: [url_list](../code/url_list.txt)
 
     file = open("url_list.txt", "r")
     self.content = file.read()
@@ -653,11 +653,11 @@ problems with solution you will find below. Maybe they can also be as support fo
   feed entries beforehand with `('\n')` and then using a for loop to apply the
   module [textwrap.wrap](https://docs.python.org/3/library/textwrap.html) to all entries. In the following you can see
   the process of creating the pdf:
-    - Step 1: [test1.pdf](docs/test1.pdf)
+    - Step 1: [test1.pdf](../docs/test1.pdf)
         - Problem: In the first attempt, only one letter was displayed in each line.
-    - Step 2: [test2.pdf](docs/test2.pdf)
+    - Step 2: [test2.pdf](../docs/test2.pdf)
         - Problem: Since the text was a list, some special characters were displayed that disturbed reading.
-    - Final step: [testfinal.pdf](docs/testfinal.pdf)
+    - Final step: [testfinal.pdf](../docs/testfinal.pdf)
         - Problem: Still not perfect, but the pdf is pleasant to read. For potential improvements, see Outlook.
 
 
@@ -675,7 +675,7 @@ In the following, the entire process is presented from the point of view of the 
 notation. This illustrates the user's way through the communication. Please find notations language details
 here: https://www.omg.org/spec/BPMN/2.0/
 
-![img.png](docs/User_process.png)
+![img.png](../docs/User_process.png)
 
 Please find all steps detailed in the class description.
 
