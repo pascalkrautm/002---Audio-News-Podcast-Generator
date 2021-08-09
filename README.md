@@ -54,7 +54,8 @@ will evaluate for the use case.
 
 ### Installation
 
-A little intro about the installation.
+
+A little intro about the installation:
 
 ```
 $ git clone https://github.com/pascalkrautm/002---Audio-News-Podcast-Generator.git
@@ -63,7 +64,20 @@ $ npm install
 $ npm start
 ```
 
-Side information: To use the application in a special environment use ```lorem ipsum```
+If you don't find the directory just search for "Podcast Generator" on your computer.
+
+Running the application:
+
+
+- Start the console on your computer and go to the path of installation 
+- Type in python main.py
+- Maybe there are packages not yet installed (error: package XY not found)
+- install necessary packages via pip install XY
+- run main again
+
+
+![img.png](docs/img.png)
+
 ***
 
 ### 1. Task
