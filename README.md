@@ -78,6 +78,8 @@ Running the application:
 
 ![img.png](docs/img.png)
 
+Feel free to type `h` for support while using first time. 
+
 ***
 
 ### 1. Task
@@ -699,7 +701,7 @@ here: https://www.omg.org/spec/BPMN/2.0/
 
 ![User_process.png](docs/User_process.png)
 
-Please find all steps detailed in the class description.
+Please find all steps detailed in the class description above.
 
 ***
 
