@@ -1,10 +1,11 @@
-import pyttsx3
-import textwrap
 import pickle
-from fpdf import FPDF
-from helper import Helper
 import platform
+import textwrap
 
+import pyttsx3
+from fpdf import FPDF
+
+from helper import Helper
 
 engine = pyttsx3.init()
 
@@ -32,7 +33,6 @@ class Converter(object):
                 engine.setProperty('volume', self.volume)
                 while True:
                     self.language = Helper.get_voice_language()
-                    voices = engine.getProperty('voices')
                     if self.language == "e":
                         while True:
                             self.gender = Helper.get_voice_gender()
@@ -40,13 +40,15 @@ class Converter(object):
                                 if platform.system() == "Darwin":
                                     engine.setProperty('voice', 'com.apple.speech.synthesis.voice.Alex')
                                 else:
-                                    engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_DAVID_11.0')
+                                    engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech'
+                                                                '\\Voices\\Tokens\\TTS_MS_EN-US_DAVID_11.0')
                                 break
                             if self.gender == "f":
                                 if platform.system() == "Darwin":
                                     engine.setProperty('voice', 'com.apple.speech.synthesis.voice.Victoria')
                                 else:
-                                    engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-GB_HAZEL_11.0')
+                                    engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech'
+                                                                '\\Voices\\Tokens\\TTS_MS_EN-GB_HAZEL_11.0')
                                 break
                             else:
                                 print(r"Your answer may not comply, please note that you may only press 'm' or 'f'")
@@ -55,7 +57,8 @@ class Converter(object):
                         if platform.system() == "Darwin":
                             engine.setProperty('voice', 'com.apple.speech.synthesis.voice.anna.premium')
                         else:
-                            engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0')
+                            engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices'
+                                                        '\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0')
                         break
                     else:
                         print(r"Your answer may not comply, please note that you may only press 'g' or 'e'")
@@ -76,7 +79,6 @@ class Converter(object):
                         print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
                 break
             if engine_parameters == "y":
-                voices = engine.getProperty('voices')
                 try:
                     # load saved parameters from last session
                     open_file = open("parameters.pkl", "rb")
@@ -93,24 +95,28 @@ class Converter(object):
                             if platform.system() == "Darwin":
                                 engine.setProperty('voice', 'com.apple.speech.synthesis.voice.Alex')
                             else:
-                                engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_DAVID_11.0')
+                                engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices'
+                                                            '\\Tokens\\TTS_MS_EN-US_DAVID_11.0')
                         if voice_gender_default == "f":
                             if platform.system() == "Darwin":
                                 engine.setProperty('voice', 'com.apple.speech.synthesis.voice.Victoria')
                             else:
-                                engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-GB_HAZEL_11.0')
+                                engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices'
+                                                            '\\Tokens\\TTS_MS_EN-GB_HAZEL_11.0')
                     if self.language == "g":
                         if platform.system() == "Darwin":
                             engine.setProperty('voice', 'com.apple.speech.synthesis.voice.anna.premium')
                         else:
-                            engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0')
+                            engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices'
+                                                        '\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0')
                 except IOError:
                     engine.setProperty('rate', 200)
                     engine.setProperty('volume', 1.0)
                     if platform.system() == "Darwin":
                         engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
                     else:
-                        engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_DAVID_11.0')
+                        engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens'
+                                                    '\\TTS_MS_EN-US_DAVID_11.0')
                 break
             else:
                 print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
