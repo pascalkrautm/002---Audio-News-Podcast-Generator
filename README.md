@@ -1,7 +1,7 @@
 - Pascal Krautmacher [697450]
 - Marco Alexander Meinhold [872406]
 - Eren Ünal [859039]
-- Thomas Zeutschler (support and feedback loop)
+- Thomas Zeutschler
 
 The following Markdown code would create a valid output. Only Pascal Krautmacher, Marco Alexander Meinhold and Eren Ünal
 will evaluate for the use case.
@@ -54,7 +54,6 @@ will evaluate for the use case.
 
 ### Installation
 
-
 A little intro about the installation:
 
 ```
@@ -68,17 +67,15 @@ If you don't find the directory just search for "Podcast Generator" on your comp
 
 Running the application:
 
-
-- Start the console on your computer and go to the path of installation 
+- Start the console on your computer and go to the path of installation
 - Type in python podgen.py
 - Maybe there are packages not yet installed (error: package XY not found)
 - install necessary packages via pip install XY
 - run podgen again
 
+![Start_Picture.png](docs/Start_Picture.png)
 
-![img.png](docs/img.png)
-
-Feel free to type `h` for support while using first time. 
+Feel free to type `h` for support while using first time.
 
 ***
 
@@ -225,8 +222,8 @@ respective package, you will automatically be redirected to the documentation of
 
 ### 5. Modeling
 
-By executing the podgen.py, you can start with the podcast generator. Nevertheless, in the following
-all, classes are briefly listed and the essential explanation aspects are highlighted:
+By executing the podgen.py, you can start with the podcast generator. Nevertheless, in the following all, classes are
+briefly listed and the essential explanation aspects are highlighted:
 
 <ins>1. Class: **Main()**
 
@@ -241,9 +238,9 @@ user-friendly.
       "You can either have them read to you immediately or download them for later as mp3 or pdf. ")
     print(" ")
 
-First, the `PodcastGenerator` will be started. With the provided Keywords from class "Helper" it will crawl through all
-URLs inside the URL list. If the number of podcast with entries > 0, it will start the user input from class "Helper" to
-decide the further steps.
+First, the `PodcastGenerator` will be started. With the provided Keywords from class "**Helper**" it will crawl through
+all URLs inside the URL list. If the number of podcast with entries > 0, it will start the user input from class 
+"**Helper**" to decide the further steps.
 
     def main():
         while True:
@@ -315,8 +312,8 @@ here: [url_list](code/url_list.txt)
     self.content = file.read()
     self.url_list = self.content.split(",")
 
-`get_feed_data` scans every URL in the list and searches for the keyword (user input: find details in class "**
-Helper**"). If the title contains one of the keywords, the summary of the article is stored in a list. This list is
+`get_feed_data` scans every URL in the list and searches for the keyword (user input: find details in class
+"**Helper**"). If the title contains one of the keywords, the summary of the article is stored in a list. This list is
 adjusted for readable and necessary content. We go there and only pull out the pure text on the respective day. This
 means, for example, that we extract only the plain text from the tags `<summary>` or `<published>` and remove the
 special characters. In addition, we add “New Item”, “Date” and “Source” to ensure clarity
@@ -640,8 +637,8 @@ further development.
 #### Problems we had to deal with:
 
 - <ins>Getting the right data while scrapping</ins><br>
-  Different RSS feeds, different tags and name. Not all RSS feeds looks the same. So ist was a challenge to get an universal scraper, 
-  that gets the right data. In the end we have challenged it.
+  Different RSS feeds, different tags and name. Not all RSS feeds looks the same. So ist was a challenge to get a
+  universal scraper, that gets the right data. In the end we have challenged it.
 
 
 - <ins>Helper:</ins><br>
