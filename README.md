@@ -677,6 +677,7 @@ further development.
   speech support does not work on Windows operating systems. To solve this problem we implemented a loop to check the
   operating system and provide the corresponding speech settings.
 
+
 - <ins>Getting the right data while scrapping</ins><br>
   Different RSS feeds, different tags and name. Not all RSS feeds looks the same. So ist was a challenge to get a
   universal scraper, that gets the right data. In the end we have challenged it.
