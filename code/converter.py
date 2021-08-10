@@ -28,9 +28,9 @@ class Converter(object):
             engine_parameters = Helper.ask_parameters()
             if engine_parameters == "n":
                 self.rate = Helper.get_voice_rate()
-                engine.setProperty('rate', self.rate)
+                engine.setProperty("rate", self.rate)
                 self.volume = Helper.get_voice_volume()
-                engine.setProperty('volume', self.volume)
+                engine.setProperty("volume", self.volume)
                 while True:
                     self.language = Helper.get_voice_language()
                     if self.language == "e":
@@ -38,27 +38,30 @@ class Converter(object):
                             self.gender = Helper.get_voice_gender()
                             if self.gender == "m":
                                 if platform.system() == "Darwin":
-                                    engine.setProperty('voice', 'com.apple.speech.synthesis.voice.Alex')
+                                    engine.setProperty("voice", "com.apple.speech.synthesis.voice.Alex")
                                 else:
-                                    engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech'
-                                                                '\\Voices\\Tokens\\TTS_MS_EN-US_DAVID_11.0')
+                                    engine.setProperty("voice",
+                                                       "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                                       "Tokens\\TTS_MS_EN-US_DAVID_11.0")
                                 break
                             if self.gender == "f":
                                 if platform.system() == "Darwin":
-                                    engine.setProperty('voice', 'com.apple.speech.synthesis.voice.Victoria')
+                                    engine.setProperty("voice", "com.apple.speech.synthesis.voice.Victoria")
                                 else:
-                                    engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech'
-                                                                '\\Voices\\Tokens\\TTS_MS_EN-GB_HAZEL_11.0')
+                                    engine.setProperty("voice",
+                                                       "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                                       "Tokens\\TTS_MS_EN-GB_HAZEL_11.0")
                                 break
                             else:
                                 print(r"Your answer may not comply, please note that you may only press 'm' or 'f'")
                         break
                     if self.language == "g":
                         if platform.system() == "Darwin":
-                            engine.setProperty('voice', 'com.apple.speech.synthesis.voice.anna.premium')
+                            engine.setProperty("voice", "com.apple.speech.synthesis.voice.anna.premium")
                         else:
-                            engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices'
-                                                        '\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0')
+                            engine.setProperty("voice",
+                                               "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                               "Tokens\\TTS_MS_DE-DE_HEDDA_11.0")
                         break
                     else:
                         print(r"Your answer may not comply, please note that you may only press 'g' or 'e'")
@@ -88,35 +91,39 @@ class Converter(object):
                     voice_volume_default = parameter_list[1]
                     voice_language_default = parameter_list[2]
                     voice_gender_default = parameter_list[3]
-                    engine.setProperty('rate', voice_rate_default)
-                    engine.setProperty('volume', voice_volume_default)
+                    engine.setProperty("rate", voice_rate_default)
+                    engine.setProperty("volume", voice_volume_default)
                     if voice_language_default == "e":
                         if voice_gender_default == "m":
                             if platform.system() == "Darwin":
-                                engine.setProperty('voice', 'com.apple.speech.synthesis.voice.Alex')
+                                engine.setProperty("voice", "com.apple.speech.synthesis.voice.Alex")
                             else:
-                                engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices'
-                                                            '\\Tokens\\TTS_MS_EN-US_DAVID_11.0')
+                                engine.setProperty("voice",
+                                                   "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                                   "Tokens\\TTS_MS_EN-US_DAVID_11.0")
                         if voice_gender_default == "f":
                             if platform.system() == "Darwin":
-                                engine.setProperty('voice', 'com.apple.speech.synthesis.voice.Victoria')
+                                engine.setProperty("voice", "com.apple.speech.synthesis.voice.Victoria")
                             else:
-                                engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices'
-                                                            '\\Tokens\\TTS_MS_EN-GB_HAZEL_11.0')
+                                engine.setProperty("voice",
+                                                   "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                                   "Tokens\\TTS_MS_EN-GB_HAZEL_11.0")
                     if self.language == "g":
                         if platform.system() == "Darwin":
-                            engine.setProperty('voice', 'com.apple.speech.synthesis.voice.anna.premium')
+                            engine.setProperty("voice", "com.apple.speech.synthesis.voice.anna.premium")
                         else:
-                            engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices'
-                                                        '\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0')
+                            engine.setProperty("voice",
+                                               "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                               "Tokens\\TTS_MS_DE-DE_HEDDA_11.0")
                 except IOError:
-                    engine.setProperty('rate', 200)
-                    engine.setProperty('volume', 1.0)
+                    engine.setProperty("rate", 200)
+                    engine.setProperty("volume", 1.0)
                     if platform.system() == "Darwin":
-                        engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
+                        engine.setProperty("voice", "com.apple.speech.synthesis.voice.Alex")
                     else:
-                        engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens'
-                                                    '\\TTS_MS_EN-US_DAVID_11.0')
+                        engine.setProperty("voice",
+                                           "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                           "Tokens\\TTS_MS_EN-US_DAVID_11.0")
                 break
             else:
                 print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
@@ -143,13 +150,13 @@ class Converter(object):
         Saves the cleaned text as pdf based on the set parameters.
         :return: pdf-file
         """
-        text_encoded = text.encode('latin-1', 'replace').decode('latin-1')
+        text_encoded = text.encode("latin-1", "replace").decode("latin-1")
         text = text_encoded.replace("?", ".").replace("[", "").replace("]", "").replace("'", "")
 
-        pdf = FPDF(orientation='P', unit='mm', format='A4')
+        pdf = FPDF(orientation="P", unit="mm", format="A4")
         pdf.set_auto_page_break(True, margin=10)
         pdf.add_page()
-        pdf.set_font(family='Courier', size=12)
+        pdf.set_font(family="Courier", size=12)
         splitter = text.split('\n')
 
         for line in splitter:
@@ -158,4 +165,4 @@ class Converter(object):
                 pdf.ln()
             for wrap in lines:
                 pdf.cell(0, 4, wrap, ln=1)
-            pdf.output(file_name, 'F')
+            pdf.output(file_name, "F")
