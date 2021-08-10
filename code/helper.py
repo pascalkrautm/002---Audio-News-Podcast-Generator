@@ -13,7 +13,7 @@ class Helper:
                               " can search the internet according to your entered interests.",
                               "-You will then be asked whether you want the news to be generated as a pdf, an mp3 or"
                               " voice-speak. If you choose the pdf or mp3 option, please note that the result will"
-                              " be saved in the 'code' folder. If you decide for pdf, there is nothing more to do, "
+                              " be saved in the 'co' folder. If you decide for pdf, there is nothing more to do, "
                               " accept entering the name you wish for you file. ",
                               "-If you use the mp3 or voice-speak option there are further questions to consider."
                               " You have to set the voice rate, language and volume for your output. "
