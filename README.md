@@ -340,7 +340,11 @@ special characters. In addition, we add “New Item”, “Date” and “Source
                             if str(keyword) in entry.title.lower():
                                 clean_summary = re.sub("(<.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
                                                        re.MULTILINE)
-    
+                                                            try:
+                                pubdate = entry.published
+                            except:
+                                pubdate = ""
+
                                 self.feeds.append(
                                     "New Article: " + feed.feed["title"] + " " + entry.published[3:17] + ", "
                                     + entry.title + ". " + clean_summary)
@@ -671,6 +675,12 @@ with. You will find all problems with the respective solutions below. Eventually
 further development.
 
 #### Problems we had to deal with:
+
+- <ins>Code stops when no entry.published is found</ins><br>
+  There are some entries without published date. This app will read this tag and also provide it as output.
+  Entries without this date will result in error and no podcast will be provided.
+  We solve this problem by checking if there exists a tag named "published" and if not provide it as ""
+
 
 - <ins>Separate MacOS user from Windows user</ins><br>
   One main problem was the difference between both operating system due to difference language settings. The apple
