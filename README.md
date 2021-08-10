@@ -478,15 +478,20 @@ You will also find the questions for reading or saving in mp3 or pdf in this par
 
 4. <ins>Class: **Converter()**
 
-- <ins>Task</ins>: supports the main functions. The converter class includes the functions to read out the podcast, save
+- <ins>Task</ins>: Supports the main functions. The converter class includes the functions to read out the podcast, save
   it as mp3 and save it as pdf. Additionally, the class includes the setting of the rate, the volume and the voice of
-  the podcast.
+  the podcast. Additionally the Class separates Windows-User and MacOS-User because it is necessary to provide different 
+  language setting. MacOS uses e.g. the `"com.apple.speech.synthesis.voice.anna.premium"`. Windows User need to specify
+  the local language settings like `"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0")`.
 
 With `parameter_settings` the user's specifications are considered in the program. Several while loops are coded here to
 warn the user, if he enters information that is not within the definition range and thus cannot be processed by the
 program. At this point, however, the user is prompted again to enter the information correctly. If the user answers,
 whether he wants to use the default settings with `n`, he must enter his desired parameters (=rate, volume)
 in the context of the queries.
+After the user has specified the rate and volume, he is asked for the desired language. If the user selects `e` and thus
+English, he has the option to choose between a female `f` and male `m` voice. If, on the other hand, the user
+selects `g` and thus the German language, a female voice is used by default.
 
     def parameter_settings(self):
         """
@@ -497,33 +502,41 @@ in the context of the queries.
             engine_parameters = Helper.ask_parameters()
             if engine_parameters == "n":
                 self.rate = Helper.get_voice_rate()
-                engine.setProperty('rate', self.rate)
+                engine.setProperty("rate", self.rate)
                 self.volume = Helper.get_voice_volume()
-                engine.setProperty('volume', self.volume)
-
-After the user has specified the rate and volume, he is asked for the desired language. If the user selects `e` and thus
-English, he has the option to choose between a female `f` and male `m` voice. If, on the other hand, the user
-selects `g` and thus the German language, a female voice is used by default.
-
+                engine.setProperty("volume", self.volume)
                 while True:
                     self.language = Helper.get_voice_language()
                     if self.language == "e":
                         while True:
                             self.gender = Helper.get_voice_gender()
                             if self.gender == "m":
-                                engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
+                                if platform.system() == "Darwin":
+                                    engine.setProperty("voice", "com.apple.speech.synthesis.voice.Alex")
+                                else:
+                                    engine.setProperty("voice",
+                                                       "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                                       "Tokens\\TTS_MS_EN-US_DAVID_11.0")
                                 break
                             if self.gender == "f":
-                                engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
+                                if platform.system() == "Darwin":
+                                    engine.setProperty("voice", "com.apple.speech.synthesis.voice.Victoria")
+                                else:
+                                    engine.setProperty("voice",
+                                                       "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                                       "Tokens\\TTS_MS_EN-GB_HAZEL_11.0")
                                 break
                             else:
                                 print(r"Your answer may not comply, please note that you may only press 'm' or 'f'")
                         break
                     if self.language == "g":
-                        engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
+                        if platform.system() == "Darwin":
+                            engine.setProperty("voice", "com.apple.speech.synthesis.voice.anna.premium")
+                        else:
+                            engine.setProperty("voice",
+                                               "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                               "Tokens\\TTS_MS_DE-DE_HEDDA_11.0")
                         break
-                    else:
-                        print(r"Your answer may not comply, please note that you may only press 'g' or 'e'")
 
 As soon as the user has completely answered all the questions about the parameters, the program asks him whether he
 wants to save them for the next session. If the user chooses `y` and thus to save, the file **parameters.pkl** is
@@ -545,32 +558,55 @@ thus does not want to save, the program already begins with the next query.
                         break
                     else:
                         print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
-                break
 
 If the user decides to use the already entered parameters again and thus types `y`, the program will fetch the
 corresponding parameters from the parameters.pkl file. If the user starts the program for the first time and still
-selects `y` at this point, the program will run with the parameters we have already preset.
+selects `y` at this point, the program will run with the parameters we have already preset. At this moment it will be 
+the english voice male with 150 rate and 1.0 volume. 
 
             if engine_parameters == "y":
-                # load saved parameters from last session
-                open_file = open("parameters.pkl", "rb")
-                parameter_list = pickle.load(open_file)
-                open_file.close()
-                voice_rate_default = parameter_list[0]
-                voice_volume_default = parameter_list[1]
-                voice_language_default = parameter_list[2]
-                voice_gender_default = parameter_list[3]
-                engine.setProperty('rate', voice_rate_default)
-                engine.setProperty('volume', voice_volume_default)
-                if voice_language_default == "e":
-                    if voice_gender_default == "m":
-                        engine.setProperty('voice', "com.apple.speech.synthesis.voice.Alex")
-                    if voice_gender_default == "f":
-                        engine.setProperty('voice', "com.apple.speech.synthesis.voice.Victoria")
-                if self.language == "g":
-                    engine.setProperty('voice', "com.apple.speech.synthesis.voice.anna.premium")
-
-                engine.setProperty('language', voice_language_default)
+                try:
+                    # load saved parameters from last session
+                    open_file = open("parameters.pkl", "rb")
+                    parameter_list = pickle.load(open_file)
+                    open_file.close()
+                    voice_rate_default = parameter_list[0]
+                    voice_volume_default = parameter_list[1]
+                    voice_language_default = parameter_list[2]
+                    voice_gender_default = parameter_list[3]
+                    engine.setProperty("rate", voice_rate_default)
+                    engine.setProperty("volume", voice_volume_default)
+                    if voice_language_default == "e":
+                        if voice_gender_default == "m":
+                            if platform.system() == "Darwin":
+                                engine.setProperty("voice", "com.apple.speech.synthesis.voice.Alex")
+                            else:
+                                engine.setProperty("voice",
+                                                   "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                                   "Tokens\\TTS_MS_EN-US_DAVID_11.0")
+                        if voice_gender_default == "f":
+                            if platform.system() == "Darwin":
+                                engine.setProperty("voice", "com.apple.speech.synthesis.voice.Victoria")
+                            else:
+                                engine.setProperty("voice",
+                                                   "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                                   "Tokens\\TTS_MS_EN-GB_HAZEL_11.0")
+                    if self.language == "g":
+                        if platform.system() == "Darwin":
+                            engine.setProperty("voice", "com.apple.speech.synthesis.voice.anna.premium")
+                        else:
+                            engine.setProperty("voice",
+                                               "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                               "Tokens\\TTS_MS_DE-DE_HEDDA_11.0")
+                except IOError:
+                    engine.setProperty("rate", 200)
+                    engine.setProperty("volume", 1.0)
+                    if platform.system() == "Darwin":
+                        engine.setProperty("voice", "com.apple.speech.synthesis.voice.Alex")
+                    else:
+                        engine.setProperty("voice",
+                                           "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                           "Tokens\\TTS_MS_EN-US_DAVID_11.0")
                 break
             else:
                 print(r"Your answer may not comply, please note that you may only press 'y' or 'n'")
