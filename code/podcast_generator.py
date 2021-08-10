@@ -53,6 +53,7 @@ class PodcastGenerator:
                                 pubdate = entry.published
                             except:
                                 pubdate = ""
+
                             self.feeds.append(
                                 "New Article: " + feed.feed["title"] + " " + pubdate[3:17] + ", "
                                 + entry.title + ". " + clean_summary)
