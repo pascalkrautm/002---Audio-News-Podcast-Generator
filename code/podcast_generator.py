@@ -44,15 +44,17 @@ class PodcastGenerator:
             # rss_feed_scrapper
             for url in self.url_list:
                 feed = feedparser.parse(str(url))
-
                 for entry in feed.entries:
                     for keyword in self.keywords:
                         if str(keyword) in entry.title.lower():
                             clean_summary = re.sub("(<.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
                                                    re.MULTILINE)
-
+                            try:
+                                pubdate = entry.published
+                            except:
+                                pubdate = ""
                             self.feeds.append(
-                                "New Article: " + feed.feed["title"] + " " + entry.published[3:17] + ", "
+                                "New Article: " + feed.feed["title"] + " " + pubdate[3:17] + ", "
                                 + entry.title + ". " + clean_summary)
                             self.number_of_posts += 1
 
