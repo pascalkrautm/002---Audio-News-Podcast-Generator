@@ -1,7 +1,8 @@
-import feedparser
 import re
-from tqdm import tqdm
 import ssl
+
+import feedparser
+from tqdm import tqdm
 
 
 class PodcastGenerator:
@@ -69,6 +70,6 @@ class PodcastGenerator:
         :return: the cleaned text, ready for reading
         """
         feeds_clean = str(self.feeds)
-        feeds_clean = feeds_clean.replace("</p>'", " ").replace("<p>", ".").replace("<h1>", " ").replace("</h1>", " ")\
+        feeds_clean = feeds_clean.replace("</p>'", " ").replace("<p>", ".").replace("<h1>", " ").replace("</h1>", " ") \
             .replace("</p>", " ").replace("<hr />.", " ")
         return feeds_clean

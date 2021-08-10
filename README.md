@@ -239,7 +239,7 @@ user-friendly.
     print(" ")
 
 First, the `PodcastGenerator` will be started. With the provided Keywords from class "**Helper**" it will crawl through
-all URLs inside the URL list. If the number of podcast with entries > 0, it will start the user input from class 
+all URLs inside the URL list. If the number of podcast with entries > 0, it will start the user input from class
 "**Helper**" to decide the further steps.
 
     def main():
@@ -480,18 +480,18 @@ You will also find the questions for reading or saving in mp3 or pdf in this par
 
 - <ins>Task</ins>: Supports the main functions. The converter class includes the functions to read out the podcast, save
   it as mp3 and save it as pdf. Additionally, the class includes the setting of the rate, the volume and the voice of
-  the podcast. Additionally the Class separates Windows-User and MacOS-User because it is necessary to provide different 
+  the podcast. Additionally the Class separates Windows-User and MacOS-User because it is necessary to provide different
   language setting. MacOS uses e.g. the `"com.apple.speech.synthesis.voice.anna.premium"`. Windows User need to specify
-  the local language settings like `"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0")`.
+  the local language settings
+  like `"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0")`.
 
 With `parameter_settings` the user's specifications are considered in the program. Several while loops are coded here to
 warn the user, if he enters information that is not within the definition range and thus cannot be processed by the
 program. At this point, however, the user is prompted again to enter the information correctly. If the user answers,
 whether he wants to use the default settings with `n`, he must enter his desired parameters (=rate, volume)
-in the context of the queries.
-After the user has specified the rate and volume, he is asked for the desired language. If the user selects `e` and thus
-English, he has the option to choose between a female `f` and male `m` voice. If, on the other hand, the user
-selects `g` and thus the German language, a female voice is used by default.
+in the context of the queries. After the user has specified the rate and volume, he is asked for the desired language.
+If the user selects `e` and thus English, he has the option to choose between a female `f` and male `m` voice. If, on
+the other hand, the user selects `g` and thus the German language, a female voice is used by default.
 
     def parameter_settings(self):
         """
@@ -561,8 +561,8 @@ thus does not want to save, the program already begins with the next query.
 
 If the user decides to use the already entered parameters again and thus types `y`, the program will fetch the
 corresponding parameters from the parameters.pkl file. If the user starts the program for the first time and still
-selects `y` at this point, the program will run with the parameters we have already preset. At this moment it will be 
-the english voice male with 150 rate and 1.0 volume. 
+selects `y` at this point, the program will run with the parameters we have already preset. At this moment it will be
+the english voice male with 150 rate and 1.0 volume.
 
             if engine_parameters == "y":
                 try:
@@ -673,9 +673,9 @@ further development.
 #### Problems we had to deal with:
 
 - <ins>Separate MacOS user from Windows user</ins><br>
-  One main problem was the difference between both operating system due to difference language settings.
-  The apple speech support does not work on Windows operating systems. To solve this problem we implemented a loop
-  to check the operating system and provide the corresponding speech settings.
+  One main problem was the difference between both operating system due to difference language settings. The apple
+  speech support does not work on Windows operating systems. To solve this problem we implemented a loop to check the
+  operating system and provide the corresponding speech settings.
 
 - <ins>Getting the right data while scrapping</ins><br>
   Different RSS feeds, different tags and name. Not all RSS feeds looks the same. So ist was a challenge to get a

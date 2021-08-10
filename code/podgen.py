@@ -1,7 +1,8 @@
-from converter import Converter
-from podcast_generator import PodcastGenerator
-from helper import Helper
 from art import *
+
+from converter import Converter
+from helper import Helper
+from podcast_generator import PodcastGenerator
 
 print(text2art('''Podcast Gen''', font="small"))  # Multi-line print
 print("by Krautmacher - Ünal - Meinhold ")
