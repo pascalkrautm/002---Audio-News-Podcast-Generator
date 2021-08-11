@@ -407,7 +407,8 @@ instructions are listed together using a for loop to give users better clarity.
 
 `get_keyword `provides the user input as topics to the PodcastGenerator. Additionally, the previous class is implemented
 to this function. This will provide the manual to the user when typing `h` instead of any topic. After the user typed in
-his keywords, this function will split all inputs with commas "," to prepare them for crawling through feeds.
+his keywords, this function will split all inputs with commas "," to prepare them for crawling through feeds. In addition it will check 
+if there is an empty input and asks the user for valid input. Without checking this it would provide all news from RSS source.
 
     @staticmethod
     def get_keyword():
@@ -417,16 +418,20 @@ his keywords, this function will split all inputs with commas "," to prepare the
         """
         keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany) or enter "
                             "'h' to get an introduction into the program: "))
-        if keyword == "h":
-            Helper.print_help()
-            keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)"))
-            keywords = keyword.lower().replace(" ","").split(",")
-            print(f"Given topics are {keywords}")
-            return keywords
-        else:
-            keywords = keyword.lower().replace(" ","").split(",")
-            print(f"Given topics are {keywords}")
-            return keywords
+
+        while keyword == "":
+            print("Please enter valid keywords!")
+            keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or enter "
+                            "'h' to get an introduction into the program: "))
+            while keyword == "h":
+                Helper.print_help()
+                keyword = str(
+                    input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or enter "
+                          "'h' to get an introduction into the program: "))
+
+        keywords = keyword.lower().replace(" ", "").split(",")
+        print(f"Given topics are {keywords}")
+        return keywords
 
 Following functions will ask the user fo his parameters used inside speech part. These parameters can be saved and
 automatically used for the next run. Please note that in the first run of the program, there are no parameters for the
