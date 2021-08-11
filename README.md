@@ -95,7 +95,7 @@ information while the podcast is in generation. As result, the user has differen
 
 ***
 
-#### 2. Working Process
+### 2. Working Process
 
 To achieve this task, we proceed according to the idea of the Team Data Science
 Process ([TDSP](https://docs.microsoft.com/en-us/azure/architecture/data-science-process/overview)). This is a
