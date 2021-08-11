@@ -596,9 +596,7 @@ thus does not want to save, the program already begins with the next query.
                 while True:
                     engine_save_parameter = Helper.ask_to_save_parameter()
                     if engine_save_parameter == "y":
-                        # create a list with our default parameters
                         save_parameters = [self.rate, self.volume, self.language, self.gender]
-                        # save our list for next session
                         open_file = open("parameters.pkl", "wb")
                         pickle.dump(save_parameters, open_file)
                         open_file.close()
@@ -616,7 +614,6 @@ the english voice male with 150 rate and 1.0 volume.
 
             if engine_parameters == "y":
                 try:
-                    # load saved parameters from last session
                     open_file = open("parameters.pkl", "rb")
                     parameter_list = pickle.load(open_file)
                     open_file.close()
