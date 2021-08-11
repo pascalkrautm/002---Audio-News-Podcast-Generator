@@ -366,8 +366,7 @@ special characters. In addition, we add “New Item”, “Date” and “Source
             with tqdm(total=ticks, leave=False) as progress_bar:
                 progress_bar.set_description("Scraping")
                 counter = 0
-    
-                # rss_feed_scrapper
+
                 for url in self.url_list:
                     feed = feedparser.parse(str(url))
                     # delete entries_len not in use?
