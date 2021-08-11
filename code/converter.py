@@ -66,9 +66,7 @@ class Converter(object):
                 while True:
                     engine_save_parameter = Helper.ask_to_save_parameter()
                     if engine_save_parameter == "y":
-                        # create a list with our default parameters
                         save_parameters = [self.rate, self.volume, self.language, self.gender]
-                        # save our list for next session
                         open_file = open("parameters.pkl", "wb")
                         pickle.dump(save_parameters, open_file)
                         open_file.close()
@@ -81,7 +79,6 @@ class Converter(object):
                 break
             if engine_parameters == "y":
                 try:
-                    # load saved parameters from last session
                     open_file = open("parameters.pkl", "rb")
                     parameter_list = pickle.load(open_file)
                     open_file.close()
