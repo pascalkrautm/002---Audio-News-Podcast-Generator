@@ -270,7 +270,7 @@ briefly listed and the essential explanation aspects are highlighted:
 The first part provides the design of the terminal app. The goal here is to make the commandline tool more
 user-friendly.
 
-    print(text2art('''Podcast Gen''', font="small"))  # Multi-line print
+    print(text2art('''Podcast Gen''', font="small"))
     print("by Krautmacher - Ünal - Meinhold ")
     print("With this podcast generator you get an overview of the news that are interesting for you. "
       "You can either have them read to you immediately or download them for later as mp3 or pdf. ")
