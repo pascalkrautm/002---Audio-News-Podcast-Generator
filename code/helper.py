@@ -36,13 +36,13 @@ class Helper:
 
         while keyword == "":
             print("Please enter valid keywords!")
-            keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or enter "
-                            "'h' to get an introduction into the program: "))
-            while keyword == "h":
-                Helper.print_help()
-                keyword = str(
-                    input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or enter "
-                          "'h' to get an introduction into the program: "))
+            keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or "
+                                "enter 'h' to get an introduction into the program: "))
+        while keyword == "h":
+            Helper.print_help()
+            keyword = str(
+                input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or enter 'h' to "
+                      "get an introduction into the program: "))
 
         keywords = keyword.lower().replace(" ", "").split(",")
         print(f"Given topics are {keywords}")
