@@ -1,6 +1,5 @@
 import re
 import ssl
-
 import feedparser
 from tqdm import tqdm
 

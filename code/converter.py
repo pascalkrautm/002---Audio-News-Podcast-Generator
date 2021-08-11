@@ -1,10 +1,8 @@
 import pickle
 import platform
 import textwrap
-
 import pyttsx3
 from fpdf import FPDF
-
 from helper import Helper
 
 engine = pyttsx3.init()

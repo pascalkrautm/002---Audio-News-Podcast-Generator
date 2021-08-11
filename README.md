@@ -301,8 +301,8 @@ interrupt the program flow.
 
 <ins>2. Class: **PodcastGenerator()**
 
-- <ins>Task</ins>: this class provides the content of RSS pages based on user-defined topics. It searches the XML files
-  for appropriate information and prepares the content in a searchable format.
+- <ins>Task</ins>: This class provides the content of RSS pages based on user-defined topics. It searches the XML files
+  for appropriate information and prepares the output in a readable format for further processing.
 
 The generator first divides the URL list into different sources of RSS feeds. Our URL list includes well-known
 newsletters such as BBC, Skynews, Yahoo, CNN, NYT, FoxNews and others. The list can be found
@@ -680,17 +680,34 @@ further development.
   There are some entries without published date. This app will read this tag and also provide it as output.
   Entries without this date will result in error and no podcast will be provided.
   We solve this problem by checking if there exists a tag named "published" and if not provide it as ""
+ 
+```                         
+try:
+  pubdate = entry.published
+except:
+  pubdate = ""
 
+self.feeds.append("New Article: " + feed.feed["title"] + " " + pubdate[3:17] + ", "
+                    + entry.title + ". " + clean_summary)
+self.number_of_posts += 1
+```
 
 - <ins>Separate MacOS user from Windows user</ins><br>
   One main problem was the difference between both operating system due to difference language settings. The apple
   speech support does not work on Windows operating systems. To solve this problem we implemented a loop to check the
   operating system and provide the corresponding speech settings.
 
+``` 
+if platform.system() == "Darwin":
+  engine.setProperty("voice", "com.apple.speech.synthesis.voice.Victoria")
+else:
+  engine.setProperty("voice","HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                             "Tokens\\TTS_MS_EN-GB_HAZEL_11.0")
+```
 
 - <ins>Getting the right data while scrapping</ins><br>
   Different RSS feeds, different tags and name. Not all RSS feeds looks the same. So ist was a challenge to get a
-  universal scraper, that gets the right data. In the end we have challenged it.
+  universal scraper, that gets the right data. In the end we have challenged it. Please find more details in section [Data Acquisition and Understanding](#4-data-acquisition-and-understanding). 
 
 
 - <ins>Helper:</ins><br>
@@ -705,23 +722,30 @@ further development.
   result, words needed to have a space before they start when the user types a space. The user input was cleaned from
   noise (such as spaces) to retrieve the word only.
 
+`keywords = keyword.lower().replace(" ", "").split(",")`
+
 
 - <ins>Capitalization</ins> <br>
   One big problem was the letter structure of the user input. "Corona" should be the same as "corona". These words are
   not the same while working with Python. Thus, we implemented the transformation of every word in small letters. For
   the pdf file, we had to use another output because for reading, it is necessary to get capital letters as well.
 
-
+`keyword.lower()
+`
 - <ins>Cleaning up the output:</ins> <br>
   Additionally, the cleaning part for the speaking represents a big problem we had to deal with. Code loaded directly
   from RSS page is full of tags and special characters, also called noise. We had to clean everything, except the part
   we really needed for the speaking, writing or mp3 output.
 
+`feeds_clean = feeds_clean.replace("</p>'", " ").replace("<p>", ".").replace("<h1>", " ").replace("</h1>", " ") \
+               .replace("</p>", " ").replace("<hr />.", " ")
+`
 
 - <ins>Creating MP3 file</ins> <br>
   While creating the mp3 file, the problem appeared that the mp3 was stopped after the first dot. We fixed this by
-  replacing all the dots with commas.This causes a break when speaking and the text is read out loud completely.
+  replacing all the dots with commas. This causes a break when speaking and the text is read out loud completely.
 
+`text = text.replace(".", ", ")`
 
 - <ins>Creating pdf file:</ins> <br>
   It is problematic to save the text as utf-8 because it contains special characters that can only be captured by
@@ -745,6 +769,16 @@ further development.
   first time. For the second run, the pkl file can be loaded by answering for the default parameters. By saving new
   parameters via input from the user, the pkl file gets overwritten and saved as default parameters for the next run.
 
+``` 
+except IOError:
+  engine.setProperty("rate", 200)
+  engine.setProperty("volume", 1.0)
+  if platform.system() == "Darwin":
+     engine.setProperty("voice", "com.apple.speech.synthesis.voice.Alex")
+  else:
+      engine.setProperty("voice","HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
+                                 "Tokens\\TTS_MS_EN-US_DAVID_11.0")
+```
 ***
 
 ### 7. Display the Process
