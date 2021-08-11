@@ -825,4 +825,13 @@ There are also some topics, we would like to implement in the future:
 
 ### 9. Summary
 
-- coming soon
+The task was to develop a commandline tool podcast generator that creates podcasts from RSS feeds based on individual topics. This task was solved as follows: 
+A sequential app was developed that guides the user through the process based on questions and inputs. 
+The user can specify topics by entering keywords. 
+RSS feeds are searched based on these topics. If a topic is deemed relevant, the article text is saved and prepared for output. Several topics from different areas can be processed in one go. The user can then decide how the output should be done. Both the language and the format are customizable. The parameter settings can be saved and recalled for further use. 
+The app works on MacOS devices as well as on Windows devices. 
+The process flow was visualized and designed to be user-friendly as far as possible. 
+Further areas of development are planned for the future. A ML component for the general collection of the topic and not only the search for keywords would be conceivable. In addition, the code can be used as a web app and supplemented with design elements on a website. With access to user data, topic suggestions or the latest topics could also be offered. 
+For the program flow an improvement of the process is planned. This includes the implementation of a settingssection and a menu navigation. At this stage, the app is fully functional and also reacts to possibly not yet known errors with a user-friendly error loop.
+
+#### Feel free to check our tool and give us feedback! Enjoy ;) 
