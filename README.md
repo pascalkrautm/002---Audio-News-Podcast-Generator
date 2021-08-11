@@ -49,6 +49,7 @@ will evaluate for the use case.
 6. [Achievements](#6-achievements)
 7. [Display the Process](#7-display-the-process)
 8. [Outlook](#8-outlook)
+9. [Summary](#9-summary)
 
 ***
 
