@@ -20,7 +20,9 @@ class Helper:
                               " You will be asked if you want to use the default settings. "
                               " Note: When you start the program for the first time, please enter your "
                               " desired parameters. Otherwise the program will start with the default parameters "
-                              " set by us. You can change the parameters at any time according to your preferences.",
+                              "set by us. You can change the parameters at any time according to your preferences. If "
+                              "you decide for mp3, there is nothing more to do, accept entering the name you wish for "
+                              "you file.",
                               "")
         for value in helper_description:
             print(value)
