@@ -107,6 +107,10 @@ The process steps in this project have been illustrated for clarity:
 
 ![Project_Process_Overview.png](docs/Project_Process_Overview.png)
 
+Microsoft Teams and GitHub were used to communicate with each other. In GitHub, the conversation can be followed on the
+basis of the [issues](https://github.com/pascalkrautm/002---Audio-News-Podcast-Generator/projects/1). The weekly
+meetings via Microsoft Teams can be followed up on the basis of the issues created.
+
 You will find all necessary information in this readme. Please clone the repository before using the app.
 
 ***
@@ -230,26 +234,26 @@ respective package, you will automatically be redirected to the documentation of
 - http://abcnews.go.com/abcnews/internationalheadlines,
 - https://www.cbsnews.com/latest/rss/world,
 - http://feeds.skynews.com/feeds/rss/world.xml,
-- https://www.rand.org/topics/international-affairs.xml/feed, 
+- https://www.rand.org/topics/international-affairs.xml/feed,
 - https://www.vox.com/rss/world/index.xml,
-- https://feeds.npr.org/1004/rss.xml, 
-- https://sputniknews.com/export/rss2/world/index.xml, 
-- https://www.latimes.com/world/rss2.0.xml, 
-- https://www.independent.co.uk/news/world/rss, 
-- https://www.euronews.com/rss?level=theme&name=news, 
-- https://www.ctvnews.ca/rss/world/ctvnews-ca-world-public-rss-1.822289, 
-- https://www.scmp.com/rss/91/feed, https://feeds.24.com/articles/news24/World/rss, 
-- https://rss.csmonitor.com/feeds/world, 
-- https://www1.cbn.com/app_feeds/rss/news/rss.php?section=world&mobile=false&q=cbnnews/world/feed, 
-- https://feeds.thelocal.com/rss/es, 
-- https://stardiapost.com/feed, 
-- https://internetprotocol.co/rss/, 
-- https://www.spiegel.de/international/index.rss, 
-- https://news.yahoo.com/rss/, 
-- https://thewest.com.au/business/rss, 
-- https://thewest.com.au/news/world/rss, 
-- https://thewest.com.au/sport/rss, 
-- https://thewest.com.au/politics/rss, 
+- https://feeds.npr.org/1004/rss.xml,
+- https://sputniknews.com/export/rss2/world/index.xml,
+- https://www.latimes.com/world/rss2.0.xml,
+- https://www.independent.co.uk/news/world/rss,
+- https://www.euronews.com/rss?level=theme&name=news,
+- https://www.ctvnews.ca/rss/world/ctvnews-ca-world-public-rss-1.822289,
+- https://www.scmp.com/rss/91/feed, https://feeds.24.com/articles/news24/World/rss,
+- https://rss.csmonitor.com/feeds/world,
+- https://www1.cbn.com/app_feeds/rss/news/rss.php?section=world&mobile=false&q=cbnnews/world/feed,
+- https://feeds.thelocal.com/rss/es,
+- https://stardiapost.com/feed,
+- https://internetprotocol.co/rss/,
+- https://www.spiegel.de/international/index.rss,
+- https://news.yahoo.com/rss/,
+- https://thewest.com.au/business/rss,
+- https://thewest.com.au/news/world/rss,
+- https://thewest.com.au/sport/rss,
+- https://thewest.com.au/politics/rss,
 - https://rss.weatherzone.com.au/?u=12994-1285&news=1,
 
 ***
@@ -426,22 +430,25 @@ instructions are listed together using a for loop to give users better clarity.
                               " can search the internet according to your entered interests.",
                               "-You will then be asked whether you want the news to be generated as a pdf, an mp3 or"
                               " voice-speak. If you choose the pdf or mp3 option, please note that the result will"
-                              " be saved in the 'data' folder. If you decide for pdf, there is nothing more to do, "
+                              " be saved in the 'code' folder. If you decide for pdf, there is nothing more to do, "
                               " accept entering the name you wish for you file. ",
                               "-If you use the mp3 or voice-speak option there are further questions to consider."
                               " You have to set the voice rate, language and volume for your output. "
                               " You will be asked if you want to use the default settings. "
                               " Note: When you start the program for the first time, please enter your "
                               " desired parameters. Otherwise the program will start with the default parameters "
-                              " set by us. You can change the parameters at any time according to your preferences.",
+                              "set by us. You can change the parameters at any time according to your preferences. If "
+                              "you decide for mp3, there is nothing more to do, accept entering the name you wish for "
+                              "you file.", 
                               "")
             for value in helper_description:
                 print(value)
 
 `get_keyword `provides the user input as topics to the PodcastGenerator. Additionally, the previous class is implemented
 to this function. This will provide the manual to the user when typing `h` instead of any topic. After the user typed in
-his keywords, this function will split all inputs with commas "," to prepare them for crawling through feeds. In addition it will check 
-if there is an empty input and asks the user for valid input. Without checking this it would provide all news from RSS source.
+his keywords, this function will split all inputs with commas "," to prepare them for crawling through feeds. In
+addition it will check if there is an empty input and asks the user for valid input. Without checking this it would
+provide all news from RSS source.
 
     @staticmethod
     def get_keyword():
@@ -716,10 +723,10 @@ further development.
 #### Problems we had to deal with:
 
 - <ins>Code stops when no entry.published is found</ins><br>
-  There are some entries without published date. This app will read this tag and also provide it as output.
-  Entries without this date will result in error and no podcast will be provided.
-  We solve this problem by checking if there exists a tag named "published" and if not provide it as ""
- 
+  There are some entries without published date. This app will read this tag and also provide it as output. Entries
+  without this date will result in error and no podcast will be provided. We solve this problem by checking if there
+  exists a tag named "published" and if not provide it as ""
+
 ```                         
 try:
   pubdate = entry.published
@@ -746,7 +753,8 @@ else:
 
 - <ins>Getting the right data while scrapping</ins><br>
   Different RSS feeds, different tags and name. Not all RSS feeds looks the same. So ist was a challenge to get a
-  universal scraper, that gets the right data. In the end we have challenged it. Please find more details in section [Data Acquisition and Understanding](#4-data-acquisition-and-understanding). 
+  universal scraper, that gets the right data. In the end we have challenged it. Please find more details in
+  section [Data Acquisition and Understanding](#4-data-acquisition-and-understanding).
 
 
 - <ins>Helper:</ins><br>
@@ -763,7 +771,6 @@ else:
 
 `keywords = keyword.lower().replace(" ", "").split(",")`
 
-
 - <ins>Capitalization</ins> <br>
   One big problem was the letter structure of the user input. "Corona" should be the same as "corona". These words are
   not the same while working with Python. Thus, we implemented the transformation of every word in small letters. For
@@ -771,13 +778,14 @@ else:
 
 `keyword.lower()
 `
+
 - <ins>Cleaning up the output:</ins> <br>
   Additionally, the cleaning part for the speaking represents a big problem we had to deal with. Code loaded directly
   from RSS page is full of tags and special characters, also called noise. We had to clean everything, except the part
   we really needed for the speaking, writing or mp3 output.
 
 `feeds_clean = feeds_clean.replace("</p>'", " ").replace("<p>", ".").replace("<h1>", " ").replace("</h1>", " ") \
-               .replace("</p>", " ").replace("<hr />.", " ")
+.replace("</p>", " ").replace("<hr />.", " ")
 `
 
 - <ins>Creating MP3 file</ins> <br>
@@ -818,6 +826,7 @@ except IOError:
       engine.setProperty("voice","HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\"
                                  "Tokens\\TTS_MS_EN-US_DAVID_11.0")
 ```
+
 ***
 
 ### 7. Display the Process
@@ -865,13 +874,18 @@ There are also some topics, we would like to implement in the future:
 
 ### 9. Summary
 
-The task was to develop a commandline tool podcast generator that creates podcasts from RSS feeds based on individual topics. This task was solved as follows: 
-A sequential app was developed that guides the user through the process based on questions and inputs. 
-The user can specify topics by entering keywords. 
-RSS feeds are searched based on these topics. If a topic is deemed relevant, the article text is saved and prepared for output. Several topics from different areas can be processed in one go. The user can then decide how the output should be done. Both the language and the format are customizable. The parameter settings can be saved and recalled for further use. 
-The app works on MacOS devices as well as on Windows devices. 
-The process flow was visualized and designed to be user-friendly as far as possible. 
-Further areas of development are planned for the future. A ML component for the general collection of the topic and not only the search for keywords would be conceivable. In addition, the code can be used as a web app and supplemented with design elements on a website. With access to user data, topic suggestions or the latest topics could also be offered. 
-For the program flow an improvement of the process is planned. This includes the implementation of a settingssection and a menu navigation. At this stage, the app is fully functional and also reacts to possibly not yet known errors with a user-friendly error loop.
+The task was to develop a commandline tool podcast generator that creates podcasts from RSS feeds based on individual
+topics. This task was solved as follows:
+A sequential app was developed that guides the user through the process based on questions and inputs. The user can
+specify topics by entering keywords. RSS feeds are searched based on these topics. If a topic is deemed relevant, the
+article text is saved and prepared for output. Several topics from different areas can be processed in one go. The user
+can then decide how the output should be done. Both the language and the format are customizable. The parameter settings
+can be saved and recalled for further use. The app works on MacOS devices as well as on Windows devices. The process
+flow was visualized and designed to be user-friendly as far as possible. Further areas of development are planned for
+the future. A ML component for the general collection of the topic and not only the search for keywords would be
+conceivable. In addition, the code can be used as a web app and supplemented with design elements on a website. With
+access to user data, topic suggestions or the latest topics could also be offered. For the program flow an improvement
+of the process is planned. This includes the implementation of a settingssection and a menu navigation. At this stage,
+the app is fully functional and also reacts to possibly not yet known errors with a user-friendly error loop.
 
 #### Feel free to check our tool and give us feedback! Enjoy ;) 
