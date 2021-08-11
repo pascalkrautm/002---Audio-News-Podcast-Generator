@@ -219,6 +219,39 @@ respective package, you will automatically be redirected to the documentation of
 
 - Instantly make your loops show a smart progress meter - just wrap any iterable with tqdm(iterable), and you’re done!
 
+#### RSS Feeds used recently
+
+- http://feeds.bbci.co.uk/news/world/rss.xml,
+- https://rss.nytimes.com/services/xml/rss/nyt/World.xml,
+- https://www.globalissues.org/news/feed,
+- http://rss.cnn.com/rss/edition_world.rss,
+- http://feeds.washingtonpost.com/rss/world,
+- https://www.cnbc.com/id/100727362/device/rss/rss.html,
+- http://abcnews.go.com/abcnews/internationalheadlines,
+- https://www.cbsnews.com/latest/rss/world,
+- http://feeds.skynews.com/feeds/rss/world.xml,
+- https://www.rand.org/topics/international-affairs.xml/feed, 
+- https://www.vox.com/rss/world/index.xml,
+- https://feeds.npr.org/1004/rss.xml, 
+- https://sputniknews.com/export/rss2/world/index.xml, 
+- https://www.latimes.com/world/rss2.0.xml, 
+- https://www.independent.co.uk/news/world/rss, 
+- https://www.euronews.com/rss?level=theme&name=news, 
+- https://www.ctvnews.ca/rss/world/ctvnews-ca-world-public-rss-1.822289, 
+- https://www.scmp.com/rss/91/feed, https://feeds.24.com/articles/news24/World/rss, 
+- https://rss.csmonitor.com/feeds/world, 
+- https://www1.cbn.com/app_feeds/rss/news/rss.php?section=world&mobile=false&q=cbnnews/world/feed, 
+- https://feeds.thelocal.com/rss/es, 
+- https://stardiapost.com/feed, 
+- https://internetprotocol.co/rss/, 
+- https://www.spiegel.de/international/index.rss, 
+- https://news.yahoo.com/rss/, 
+- https://thewest.com.au/business/rss, 
+- https://thewest.com.au/news/world/rss, 
+- https://thewest.com.au/sport/rss, 
+- https://thewest.com.au/politics/rss, 
+- https://rss.weatherzone.com.au/?u=12994-1285&news=1,
+
 ***
 
 ### 5. Modeling
@@ -810,6 +843,7 @@ There are also some topics, we would like to implement in the future:
 - Possibility to look for given topics
 - Possibility to select more languages
 - In addition to Rss feeds also consider Atom feeds
+- Possibility to change sources via user input. At the moment you have to change the urls inside url_list
 
 2. <ins>Set options in application</ins>
 
