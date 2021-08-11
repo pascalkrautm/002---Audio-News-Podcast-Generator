@@ -40,7 +40,6 @@ class PodcastGenerator:
             progress_bar.set_description("Scraping")
             counter = 0
 
-            # rss_feed_scrapper
             for url in self.url_list:
                 feed = feedparser.parse(str(url))
                 for entry in feed.entries:
