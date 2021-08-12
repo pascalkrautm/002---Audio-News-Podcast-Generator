@@ -260,8 +260,8 @@ respective package, you will automatically be redirected to the documentation of
 
 ### 5. Modeling
 
-By executing the podgen.py, you can start with the podcast generator. Nevertheless, in the following all, classes are
-briefly listed and the essential explanation aspects are highlighted:
+By executing the [podgen.py](/code/podgen.py), you can start with the podcast generator. Nevertheless, in the following
+all, classes are briefly listed and the essential explanation aspects are highlighted:
 
 <ins>1. Class: **Main()**
 
@@ -446,7 +446,7 @@ instructions are listed together using a for loop to give users better clarity.
 `get_keyword `provides the user input as topics to the PodcastGenerator. Additionally, the previous class is implemented
 to this function. This will provide the manual to the user when typing `h` instead of any topic. After the user typed in
 his keywords, this function will split all inputs with commas "," to prepare them for crawling through feeds. In
-addition it will check if there is an empty input and asks the user for valid input. Without checking this it would
+addition, it will check if there is an empty input and asks the user for valid input. Without checking this it would
 provide all news from RSS source.
 
     @staticmethod
@@ -462,11 +462,11 @@ provide all news from RSS source.
             print("Please enter valid keywords!")
             keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or enter "
                             "'h' to get an introduction into the program: "))
-            while keyword == "h":
-                Helper.print_help()
-                keyword = str(
-                    input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or enter "
-                          "'h' to get an introduction into the program: "))
+        while keyword == "h":
+            Helper.print_help()
+            keyword = str(
+                input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or enter 'h' to "
+                      "get an introduction into the program: "))
 
         keywords = keyword.lower().replace(" ", "").split(",")
         print(f"Given topics are {keywords}")
@@ -527,11 +527,11 @@ You will also find the questions for reading or saving in mp3 or pdf in this par
 
 4. <ins>Class: **Converter()**
 
-- <ins>Task</ins>: Supports the main functions. The converter class includes the functions to read out the podcast, save
+- <ins>Task</ins>: Supports the main functions. The **Converter** class includes the functions to read out the podcast, save
   it as mp3 and save it as pdf. Additionally, the class includes the setting of the rate, the volume and the voice of
-  the podcast. Additionally the Class separates Windows-User and MacOS-User because it is necessary to provide different
-  language setting. MacOS uses e.g. the `"com.apple.speech.synthesis.voice.anna.premium"`. Windows User need to specify
-  the local language settings
+  the podcast. Additionally, the class separates Windows-User and macOS-User because it is necessary to provide
+  different language setting. MacOS uses e.g. the `"com.apple.speech.synthesis.voice.anna.premium"`. Windows User need
+  to specify the local language settings
   like `"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0")`.
 
 With `parameter_settings` the user's specifications are considered in the program. Several while loops are coded here to
@@ -718,10 +718,10 @@ further development.
 
 #### Problems we had to deal with:
 
-- <ins>Code stops when no entry.published is found</ins><br>
+- <ins>Code stops when no "_entry.published_" is found</ins><br>
   There are some entries without published date. This app will read this tag and also provide it as output. Entries
   without this date will result in error and no podcast will be provided. We solve this problem by checking if there
-  exists a tag named "published" and if not provide it as ""
+  exists a tag named "published" and if not provide it as "".
 
 ```                         
 try:
@@ -734,7 +734,7 @@ self.feeds.append("New Article: " + feed.feed["title"] + " " + pubdate[3:17] + "
 self.number_of_posts += 1
 ```
 
-- <ins>Separate MacOS user from Windows user</ins><br>
+- <ins>Separate macOS user from Windows user</ins><br>
   One main problem was the difference between both operating system due to difference language settings. The apple
   speech support does not work on Windows operating systems. To solve this problem we implemented a loop to check the
   operating system and provide the corresponding speech settings.
@@ -749,7 +749,7 @@ else:
 
 - <ins>Getting the right data while scrapping</ins><br>
   Different RSS feeds, different tags and name. Not all RSS feeds looks the same. So ist was a challenge to get a
-  universal scraper, that gets the right data. In the end we have challenged it. Please find more details in
+  universal scraper that gets the right data. In the end, we have managed it. Please find more details in
   section [Data Acquisition and Understanding](#4-data-acquisition-and-understanding).
 
 
@@ -876,12 +876,12 @@ A sequential app was developed that guides the user through the process based on
 specify topics by entering keywords. RSS feeds are searched based on these topics. If a topic is deemed relevant, the
 article text is saved and prepared for output. Several topics from different areas can be processed in one go. The user
 can then decide how the output should be done. Both the language and the format are customizable. The parameter settings
-can be saved and recalled for further use. The app works on MacOS devices as well as on Windows devices. The process
+can be saved and recalled for further use. The app works on macOS devices as well as on Windows devices. The process
 flow was visualized and designed to be user-friendly as far as possible. Further areas of development are planned for
-the future. A ML component for the general collection of the topic and not only the search for keywords would be
+the future. An ML component for the general collection of the topic and not only the search for keywords would be
 conceivable. In addition, the code can be used as a web app and supplemented with design elements on a website. With
 access to user data, topic suggestions or the latest topics could also be offered. For the program flow an improvement
-of the process is planned. This includes the implementation of a settingssection and a menu navigation. At this stage,
-the app is fully functional and also reacts to possibly not yet known errors with a user-friendly error loop.
+of the process is planned. This includes implementing a settings area and menu navigation. At this stage, the app is
+fully functional and also reacts to possibly not yet known errors with a user-friendly error loop.
 
 #### Feel free to check our tool and give us feedback! Enjoy ;) 
