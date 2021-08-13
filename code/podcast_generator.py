@@ -1,5 +1,6 @@
 import re
 import ssl
+
 import feedparser
 from tqdm import tqdm
 
@@ -45,16 +46,19 @@ class PodcastGenerator:
                 for entry in feed.entries:
                     for keyword in self.keywords:
                         if str(keyword) in entry.title.lower():
-                            try:
+                            if hasattr(entry, "summary"):
                                 summary = entry.summary
-                            except:
-                                summary = ""
+                            else:
+                                if hasattr(entry, "description"):
+                                    summary = entry.description
+                                else:
+                                    summary = ""
 
                             clean_summary = re.sub("(<.*?>)", "", summary, 0, re.IGNORECASE | re.DOTALL |
                                                    re.MULTILINE)
-                            try:
+                            if hasattr(entry, "published"):
                                 pubdate = entry.published
-                            except:
+                            else:
                                 pubdate = ""
 
                             self.feeds.append(
@@ -65,7 +69,7 @@ class PodcastGenerator:
                 for i in range(len(self.feeds)):
                     self.feeds[i] = self.feeds[i].lower()
 
-                counter += 0.25
+                counter += 0.06
                 progress_bar.update(counter)
             progress_bar.update(ticks)
             print("Scraping done! Process finished: 100%")
