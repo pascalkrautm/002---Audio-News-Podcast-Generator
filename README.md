@@ -13,7 +13,7 @@ will evaluate for the use case.
 
 # 002---Audio-News-Podcast-Generator
 
-**002 - Audio News Podcast Generator, MBA HSD SS21**
+**002 - Audio News Podcast Generator, MBA HSD SS21** <br>
 [![RSS - Podgen](https://img.shields.io/static/v1?label=RSS&message=Podgen&color=%23FFA500&logo=RSS&logoColor=%23FFA500)](https://)
 
 **Summary**: Automated generation of a podcast from relevant news available on the internet.
