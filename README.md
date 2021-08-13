@@ -387,18 +387,21 @@ special characters. In addition, we add “New Item”, “Date” and “Source
     
                     for entry in feed.entries:
                         for keyword in self.keywords:
-                            if str(keyword) in entry.title.lower():
-                              try:
-                                  summary = entry.summary
-                              except:
-                                  summary = ""
-                              clean_summary = re.sub("(<.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
-                                                       re.MULTILINE)
+                          if str(keyword) in entry.title.lower():
+                            if hasattr(entry, "summary"):
+                                summary = entry.summary
+                            else:
+                                if hasattr(entry, "description"):
+                                    summary = entry.description
+                                else:
+                                    summary = ""
 
-                              try:
-                                  pubdate = entry.published
-                              except:
-                                  pubdate = ""
+                            clean_summary = re.sub("(<.*?>)", "", summary, 0, re.IGNORECASE | re.DOTALL |
+                                                   re.MULTILINE)
+                            if hasattr(entry, "published"):
+                                pubdate = entry.published
+                            else:
+                                pubdate = ""
 
                               self.feeds.append(
                                 "New Article: " + feed.feed["title"] + " " + entry.published[3:17] + ", "
@@ -408,7 +411,7 @@ special characters. In addition, we add “New Item”, “Date” and “Source
                     for i in range(len(self.feeds)):
                         self.feeds[i] = self.feeds[i].lower()
     
-                    counter += 0.5
+                    counter += 0.06
                     progress_bar.update(counter)
                 progress_bar.update(ticks)
                 print("Scraping done! Process finished: 100%")
@@ -476,15 +479,25 @@ provide all news from RSS source.
         keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany) or enter "
                             "'h' to get an introduction into the program: "))
 
-        while keyword == "":
-            print("Please enter valid keywords!")
-            keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or enter "
-                            "'h' to get an introduction into the program: "))
         while keyword == "h":
             Helper.print_help()
             keyword = str(
                 input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or enter 'h' to "
                       "get an introduction into the program: "))
+            while keyword == "":
+                print("Please enter valid keywords!")
+                keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or "
+                                    "enter 'h' to get an introduction into the program: "))
+        while keyword == "":
+            print("Please enter valid keywords!")
+            keyword = str(input("To start enter one or more comma separated topics (eg: corona, soccer, germany)or "
+                                "enter 'h' to get an introduction into the program: "))
+            while keyword == "h":
+                Helper.print_help()
+                keyword = str(
+                    input(
+                        "To start enter one or more comma separated topics (eg: corona, soccer, germany)or enter 'h' "
+                        "to get an introduction into the program: "))
 
         keywords = keyword.lower().replace(" ", "").split(",")
         print(f"Given topics are {keywords}")
