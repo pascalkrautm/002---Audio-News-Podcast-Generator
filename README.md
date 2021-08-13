@@ -69,10 +69,10 @@ If you don't find the directory just search for "Podcast Generator" on your comp
 Running the application:
 
 - Start the console on your computer and go to the path of installation
-- Type in python podgen.py
+- Type in python "podgen.py"
 - Maybe there are packages not yet installed (error: package XY not found)
 - install necessary packages via pip install XY
-- run podgen again
+- run "podgen.py" again
 
 ![Start_Picture.png](docs/Start_Picture.png)
 
@@ -117,8 +117,8 @@ You will find all necessary information in this readme. Please clone the reposit
 
 ### 3. Business Understanding
 
-During the task, a commandline tool was created which automatically generates a podcast for the user after the user
-after he indicated his interests. The podcast plays the latest news tailored to the user's interests.
+During the task, a commandline tool was created which automatically generates a podcast for the user after he indicated
+his interests. The podcast plays the latest news tailored to the user's interests.
 
 Thus, the **goal of the task** was to create a user-friendly tool for automatic podcast generation. The tool queries the
 user´s topic preferences and generates the latest news accordingly. These news items are then read aloud by the tool. In
@@ -527,10 +527,10 @@ You will also find the questions for reading or saving in mp3 or pdf in this par
 
 4. <ins>Class: **Converter()**
 
-- <ins>Task</ins>: Supports the main functions. The **Converter** class includes the functions to read out the podcast, save
-  it as mp3 and save it as pdf. Additionally, the class includes the setting of the rate, the volume and the voice of
-  the podcast. Additionally, the class separates Windows-User and macOS-User because it is necessary to provide
-  different language setting. MacOS uses e.g. the `"com.apple.speech.synthesis.voice.anna.premium"`. Windows User need
+- <ins>Task</ins>: Supports the main functions. The **Converter** class includes the functions to read out the podcast,
+  save it as mp3 and save it as pdf. Additionally, the class includes the setting of the rate, the volume and the voice
+  of the podcast. Additionally, the class separates Windows-User and macOS-User because it is necessary to provide
+  different language setting. macOS uses e.g. the `"com.apple.speech.synthesis.voice.anna.premium"`. Windows User need
   to specify the local language settings
   like `"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_DE-DE_HEDDA_11.0")`.
 
