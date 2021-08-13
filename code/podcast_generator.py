@@ -69,7 +69,7 @@ class PodcastGenerator:
                 for i in range(len(self.feeds)):
                     self.feeds[i] = self.feeds[i].lower()
 
-                counter += 0.06
+                counter += 0.1
                 progress_bar.update(counter)
             progress_bar.update(ticks)
             print("Scraping done! Process finished: 100%")
