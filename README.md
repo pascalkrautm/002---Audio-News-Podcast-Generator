@@ -57,26 +57,39 @@ will evaluate for the use case.
 
 A little intro about the installation:
 
+- Start the installation by typing the followoing into your console
+
 ```
 $ git clone https://github.com/pascalkrautm/002---Audio-News-Podcast-Generator.git
-$ cd ../path/to/the/file
-$ npm install
-$ npm start
 ```
+- Go to the path on your disk where the files are located. Just copy the path and fill it into the code below.<br>
+```
+$ cd ../path/to/the/file
+``` 
+  - Or go manually to the folder and start the terminal straight there
 
 If you don't find the directory just search for "Podcast Generator" on your computer.
 
 Running the application:
 
-- Start the console on your computer and go to the path of installation
-- Type in python "podgen.py"
-- Maybe there are packages not yet installed (error: package XY not found)
-- install necessary packages via pip install XY
-- run "podgen.py" again
+- Type in 
+```
+python podgen.py
+```
+- Maybe there are packages not yet installed (error: no module named XY found)
+- Install necessary packages via 
+```
+pip install XY
+```
+- Type again
+```
+python podgen.py
+```
+Now you are ready to go!
 
 ![Start_Picture.png](docs/Start_Picture.png)
 
-Feel free to type `h` for support while using first time.
+Feel free to type `h` for support when using first time.
 
 ***
 
