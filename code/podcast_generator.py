@@ -45,7 +45,12 @@ class PodcastGenerator:
                 for entry in feed.entries:
                     for keyword in self.keywords:
                         if str(keyword) in entry.title.lower():
-                            clean_summary = re.sub("(<.*?>)", "", entry.summary, 0, re.IGNORECASE | re.DOTALL |
+                            try:
+                                summary = entry.summary
+                            except:
+                                summary = ""
+
+                            clean_summary = re.sub("(<.*?>)", "", summary, 0, re.IGNORECASE | re.DOTALL |
                                                    re.MULTILINE)
                             try:
                                 pubdate = entry.published
@@ -60,7 +65,7 @@ class PodcastGenerator:
                 for i in range(len(self.feeds)):
                     self.feeds[i] = self.feeds[i].lower()
 
-                counter += 0.5
+                counter += 0.25
                 progress_bar.update(counter)
             progress_bar.update(ticks)
             print("Scraping done! Process finished: 100%")
