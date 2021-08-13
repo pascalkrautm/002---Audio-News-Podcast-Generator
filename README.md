@@ -357,9 +357,9 @@ interrupt the program flow.
 
 The generator first divides the URL list into different sources of RSS feeds. Our URL list includes well-known
 newsletters such as BBC, Skynews, Yahoo, CNN, NYT, FoxNews and others. The list can be found
-here: [url_list](code/url_list.txt)
+here: [url_list](data/url_list.txt)
 
-    file = open("url_list.txt", "r")
+    file = open("../data/url_list.txt", "r")
     self.content = file.read()
     self.url_list = self.content.split(",")
 
