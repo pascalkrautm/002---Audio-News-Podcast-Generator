@@ -916,3 +916,4 @@ of the process is planned. This includes implementing a settings area and menu n
 fully functional and also reacts to possibly not yet known errors with a user-friendly error loop.
 
 #### Feel free to check our tool and give us feedback! Enjoy ;) 
+© by the authors. Free for use in non-commercial way. Please contact for further purpose.
